@@ -4,9 +4,15 @@ Signature Validation Token (SVT) Draft Specifications
 
 This is the working area for the [TBD Working Group]() draft of [Signature Validation Token]
 
-SVT specification:
-* [Editor's copy](TBD)
-* [Working Group Draft](https://tools.ietf.org/html/draft-santesson-svt)
+Current working draft for SVT specifications are located in the folders:
+
+- svt-main for the main protocol
+- svt-xml for the XML profile
+- svt-pdf for the PDF profile
+
+The latest compiled versions of each draft are located in the this root directory.
+
+Note: That the latest working version found here normally is a later version than the last version submitted to the IETF.
 
 
 Contributing
@@ -16,7 +22,7 @@ This is the preliminary repository for developing drafts related to signature va
 
 This repository may be replaces at a later stage with a repository assigned by the IETF.
 
-Contributions are wellcome either by 
+Contributions are wellcome either by
 
 - submitting issues
 - by providing pull requests
