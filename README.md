@@ -53,12 +53,16 @@ Submission procedure
 Issue processing procedure
 ------------------
 
-1. Create an issue in the repo
-2. Create a bransh named after the issue
-3. Fix the issue
-4. Create a pull request and request review
-5. Iterate until issue is resolved
-5. Merge to master and close the issue
+Create an issue in the repo
+
+**If issue is a minor issue:** fix the issue in master and close the issue
+
+**If the issue is a substantial issue:**
+  1. Create a branch named after the issue
+  2. Fix the issue
+  3. Create a pull request and request review
+  4. Iterate until issue is resolved
+  5. Merge to master and close the issue
 
 
 NOTE WELL
