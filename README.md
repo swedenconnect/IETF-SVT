@@ -32,11 +32,33 @@ Contributions are wellcome either by
 - by providing pull requests
 - by sending e-mail to the authors (see current draft for author contact info)
 
-Building The Draft
+Building The Drafts
 ------------------
 
-You will need kramdown-rfc2629 (https://github.com/cabo/kramdown-rfc2629)
+Each draft folder has a build script for building the txt drafts
+
+This requires locally installed kramdown-rfc2629 (https://github.com/cabo/kramdown-rfc2629)
 and xml2rfc (https://xml2rfc.tools.ietf.org/).
+
+Submission procedure
+------------------
+
+1. Build the draft to be submitted
+2. Rename draft to the appropriate version number and remove "-SNAPSHOT" from name.
+3. Create a published/draft-nn folder inside the target draft folder and place relevant markdown and text document of the submited version.
+4. Update the version number of the current working draft.
+5. Create a new release of the Github repo.
+
+
+Issue processing procedure
+------------------
+
+1. Create an issue in the repo
+2. Create a bransh named after the issue
+3. Fix the issue
+4. Create a pull request and request review
+5. Iterate until issue is resolved
+5. Merge to master and close the issue
 
 
 NOTE WELL
