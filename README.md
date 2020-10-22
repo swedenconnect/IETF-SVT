@@ -1,53 +1,26 @@
 
-TLS 1.3 Draft Specifications
+Signature Validation Token (SVT) Draft Specifications
 =============================
 
-This is the working area for the [IETF TLS Working
-Group](https://datatracker.ietf.org/wg/tls/documents/) draft of [TLS 1.3]
+This is the working area for the [TBD Working Group]() draft of [Signature Validation Token]
 
-TLS 1.3 specification:
-* [Editor's copy](https://tlswg.github.io/tls13-spec/)
-* [Working Group Draft](https://tools.ietf.org/html/draft-ietf-tls-tls13)
+SVT specification:
+* [Editor's copy](TBD)
+* [Working Group Draft](https://tools.ietf.org/html/draft-santesson-svt)
 
 
 Contributing
 ------------
 
-Before submitting feedback, please familiarize yourself with our current issues
-list and review the [working
-group home page](https://datatracker.ietf.org/wg/tls/documents/). If you're
-new to this, you may also want to read the [Tao of the
-IETF](https://www.ietf.org/tao.html).
+This is the preliminary repository for developing drafts related to signature validation tokens intended for standardization and publication as an IETF standards track RFC.
 
-Be aware that all contributions to the specification fall under the "NOTE WELL"
-terms outlined below.
+This repository may be replaces at a later stage with a repository assigned by the IETF.
 
-1. The best way to provide feedback (editorial or design) and ask questions is
-sending an e-mail to [our mailing
-list](https://www.ietf.org/mailman/listinfo/tls). This will assure that
-the entire Working Group sees your input in a timely fashion.
+Contributions are wellcome either by 
 
-2. If you have **editorial** suggestions (i.e., those that do not change the
-meaning of the specification), you can either:
-
-  a) Fork this repository and submit a pull request; this is the lowest
-  friction way to get editorial changes in.
-  
-  b) Submit a new issue to Github, and mention that you believe it is editorial
-  in the issue body. It is not necessary to notify the mailing list for
-  editorial issues.
-  
-  c) Make comments on individual commits in Github. Note that this feedback is
-  processed only with best effort by the editors, so it should only be used for
-  quick editorial suggestions or questions.
-
-3. For non-editorial (i.e., **design**) issues, you can also create an issue on
-Github. However, you **must notify the mailing list** when creating such issues,
-providing a link to the issue in the message body.
-
-  Note that **github issues are not for substantial discussions**; the only
-  appropriate place to discuss design issues is on the mailing list itself.
-
+- submitting issues
+- by providing pull requests
+- by sending e-mail to the authors (see current draft for author contact info)
 
 Building The Draft
 ------------------
@@ -68,22 +41,22 @@ are addressed to:
 
  * The IETF plenary session
  * The IESG, or any member thereof on behalf of the IESG
- * Any IETF mailing list, including the IETF list itself, any working group 
+ * Any IETF mailing list, including the IETF list itself, any working group
    or design team list, or any other list functioning under IETF auspices
  * Any IETF working group or portion thereof
  * Any Birds of a Feather (BOF) session
  * The IAB or any member thereof on behalf of the IAB
  * The RFC Editor or the Internet-Drafts function
- * All IETF Contributions are subject to the rules of 
-   [RFC 5378](https://tools.ietf.org/html/rfc5378) and 
-   [RFC 3979](https://tools.ietf.org/html/rfc3979) 
+ * All IETF Contributions are subject to the rules of
+   [RFC 5378](https://tools.ietf.org/html/rfc5378) and
+   [RFC 3979](https://tools.ietf.org/html/rfc3979)
    (updated by [RFC 4879](https://tools.ietf.org/html/rfc4879)).
 
 Statements made outside of an IETF session, mailing list or other function,
 that are clearly not intended to be input to an IETF activity, group or
 function, are not IETF Contributions in the context of this notice.
 
-Please consult [RFC 5378](https://tools.ietf.org/html/rfc5378) and [RFC 
+Please consult [RFC 5378](https://tools.ietf.org/html/rfc5378) and [RFC
 3979](https://tools.ietf.org/html/rfc3979) for details.
 
 A participant in any IETF activity is deemed to accept all IETF rules of
