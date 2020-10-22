@@ -14,6 +14,10 @@ The latest compiled versions of each draft are located in the this root director
 
 Note: That the latest working version found here normally is a later version than the last version submitted to the IETF.
 
+**Latest drafts submitted to the IETF:**
+
+- [https://datatracker.ietf.org/doc/draft-santesson-svt/](https://datatracker.ietf.org/doc/draft-santesson-svt/?include_text=1)
+
 
 Contributing
 ------------
