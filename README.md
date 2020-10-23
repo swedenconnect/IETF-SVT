@@ -17,7 +17,8 @@ Note: That the latest working version found here normally is a later version tha
 **Latest drafts submitted to the IETF:**
 
 - [https://datatracker.ietf.org/doc/draft-santesson-svt/](https://datatracker.ietf.org/doc/draft-santesson-svt/?include_text=1)
-
+- [https://datatracker.ietf.org/doc/draft-santesson-svt-pdf/](https://datatracker.ietf.org/doc/draft-santesson-svt-pdf/)
+- [https://datatracker.ietf.org/doc/draft-santesson-svt-xml/](https://datatracker.ietf.org/doc/draft-santesson-svt-xml/)
 
 Contributing
 ------------
