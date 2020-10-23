@@ -489,96 +489,106 @@ breaks are not allowed in valid JSON data.
 Signature validation token JWT:
 
 ~~~
-    eyJraWQiOiJPZW5JKzQzNEpoYnZmRG50ZlZcLzhyT3hHN0ZrdnlqYUtWSmFWcUlG
-    QlhvaFZoQWU1Zks4YW5vdjFTNjg4cjdLYmFsK2Z2cGFIMWo4aWJnNTJRQnkxUFE9
-    PSIsInR5cCI6IkpXVCIsImFsZyI6IlJTNTEyIn0.eyJhdWQiOiJodHRwOlwvXC9l
-    eGFtcGxlLmNvbVwvYXVkaWVuY2UxIiwiaXNzIjoiaHR0cHM6XC9cL3N3ZWRlbmNv
-    bm5lY3Quc2VcL3ZhbGlkYXRvciIsImlhdCI6MTU4MjczMDY0NSwianRpIjoiZTIy
-    YzViZTZkZDZjYzZkYjgzNGJjY2QwNjZmNWUyZTMiLCJzaWdfdmFsX2NsYWltcyI6
-    eyJzaWciOlt7ImV4dCI6bnVsbCwic2lnX3ZhbCI6W3sibXNnIjoiSW52YWxpZCBz
-    aWduYXR1cmUiLCJleHQiOm51bGwsInJlcyI6IkZBSUxFRCIsInBvbCI6Imh0dHA6
-    XC9cL2lkLnN3ZWRlbmNvbm5lY3Quc2VcL3N2dFwvc2lndmFsLXBvbGljeVwvY2hh
-    aW5cLzAxIn1dLCJzaWdfcmVmIjp7InNpZ19oYXNoIjoiQmh1RTlCQ1lkcUxneW93
-    bDJQYm1uSzlkSkFtaVZ0VDF1OVZnaUY5OWgyaFZQekU0WExXdmJDUGU0YUNKM0l6
-    RmZvTDlrM3RXcjBXK3d5OUJlcWlyY1E9PSIsImlkIjpudWxsLCJzYl9oYXNoIjoi
-    YnVlcTVIVE8xYnRwQ3JYUlg3VHpFS1VyTkpRaEdHOHFCaDR3eEVTcVJMM0J6bjRj
-    bHZLMzdqWXUwS2pNTWtnSlFFTWZBMWIzaW1peTc5dDdoK1loOHc9PSJ9LCJzaWdu
-    ZXJfY2VydF9yZWYiOnsicmVmIjpbIk5TdUZNXC92SitiZUJsUXRRVHptY1loNXg3
-    TDhXQzlFMUtQSFJBMWlvTk9sS1ZHYmxhOVVSelljc2lzQXgyYmNzcU9oa3ZWVGMz
-    bUs5RTZhZzA3aGZhdz09Il0sInR5cGUiOiJjaGFpbl9oYXNoIn0sInNpZ19kYXRh
-    X3JlZiI6W3sicmVmIjoiMCAxMjI5MzUgMTI3OTM3IDI3NDMwIiwiaGFzaCI6Imt1
-    VWI4NkZzTU5tSmwzdjRiUUswOUZrUWd2bzlReDAxbk5SeVFLVVppaEdFdW1kVnF0
-    dUJLTlBxWkkxVHpDUWV3Nm44b0ZNak5oQjhDMFhNSmxrRE9RPT0ifV0sInRpbWVf
-    dmFsIjpbXX1dLCJleHQiOnsibmFtZTIiOiJ2YWwyIiwibmFtZTEiOiJ2YWwxIn0s
-    InZlciI6IjEuMCIsInByb2ZpbGUiOiJQREYiLCJoYXNoX2FsZ28iOiJodHRwOlwv
-    XC93d3cudzMub3JnXC8yMDAxXC8wNFwveG1sZW5jI3NoYTUxMiJ9fQ.DhrCRxT_U
-    8LeqK1BU9-5Bqui2cs5n21PrSqPnDtVa7mxUtqTnouOXjVfuWR0lfNAjEkc1y2QS
-    X5x2dmMdCpNLWX127UHYiAm8NzeYuoWqdnxKiy61hZ1l0Jldnk52ngG_2UNDnrCG
-    Bo9OgC90kG2bFQimZB3WgVtE7ad_HAwIXwd-vEHt6Sf2yWXlUTYqQ1Dxgq6pTKQn
-    uf5ahsHVyeDihgNeix8-cGx1MEvvHNUpCcIXBx67BEcZ-SrqRoIZkVqEcW83KFMg
-    qKWmWDgp4z_CKM5ix2dVzwp1GvYOM6M3QUKYgmiNA6dMWJvXeJZ-KKi5A-6gEqfg
-    OsixuZechcDon_3nMzEeNBSJFXU7ohkvxIJN9LXNFAxzAT2UmASxrL9wvaQMmJHY
-    Meet-vUsOPWcsq07eKO5bnsYwrs9igYeotgcT_Nl74Rmf9uMye_IgyzlS_NLL4xq
-    9Aaf6LPXWZ0S_plugvfzv7HuzXNOY994voq8sOpO9xKYhqYnzbdDFKU
+eyJraWQiOiJPZW5JKzQzNEpoYnZmRG50ZlZcLzhyT3hHN0ZrdnlqYUtWSmFWcUlG
+QlhvaFZoQWU1Zks4YW5vdjFTNjg4cjdLYmFsK2Z2cGFIMWo4aWJnNTJRQnkxUFE9
+PSIsInR5cCI6IkpXVCIsImFsZyI6IlJTNTEyIn0.eyJhdWQiOiJodHRwOlwvXC9l
+eGFtcGxlLmNvbVwvYXVkaWVuY2UxIiwiaXNzIjoiaHR0cHM6XC9cL3N3ZWRlbmNv
+bm5lY3Quc2VcL3ZhbGlkYXRvciIsImlhdCI6MTYwMzQ1ODQyMSwianRpIjoiNGQx
+Mzk2ZjFmZjcyOGY0MGQ1MjQwM2I2MWM1NzQ0ODYiLCJzaWdfdmFsX2NsYWltcyI6
+eyJzaWciOlt7ImV4dCI6bnVsbCwic2lnX3ZhbCI6W3sibXNnIjoiT0siLCJleHQi
+Om51bGwsInJlcyI6IlBBU1NFRCIsInBvbCI6Imh0dHA6XC9cL2lkLnN3ZWRlbmNv
+bm5lY3Quc2VcL3N2dFwvc2lndmFsLXBvbGljeVwvdHMtcGtpeFwvMDEifV0sInNp
+Z19yZWYiOnsic2lnX2hhc2giOiJ5Y2VQVkxJemRjcEs5N0lZT2hGSWYxbnk3OUht
+SUNiU1Z6SWVaTmJpem83ckdJd0hOTjB6WElTeUtHakN2bm9uT2FRR2ZMXC9QM3ZE
+dEI4OHlLU1dlWGc9PSIsImlkIjoiaWQtNzM5ODljNmZjMDYzNjM2YWI1ZTc1M2Yx
+MGY3NTc0NjciLCJzYl9oYXNoIjoiQm9QVjRXQ0E5c0FJYWhqSzFIYWpmRnhpK0F6
+QzRKR1R1ZjM5VzNaV2pjekRDVVJ4ZGM5WWV0ZUh0Y3hHVmVnZ3B4SEo3NVwvY1E3
+SE4xZERkbGl5SXdnPT0ifSwic2lnbmVyX2NlcnRfcmVmIjp7InJlZiI6WyIxK2Fh
+SmV0ZzdyZWxFUmxVRFlFaVU0WklaaFQ0UlV2aUlRWnVLN28xR0ZLYVRQUTZ5K2t4
+XC9QTnREcnB1cVE2WGZya0g5d1lESzRleTB5NFdyTkVybnc9PSIsImg0UER4YjVa
+S214MWVUU3F2VnZZRzhnMzNzMDVKendCK05nRUhGVTRnYzl0cUcwa2dIa2Y2VzNv
+THprVHd3dXJJaDZZOUFhZlpZcWMyelAycEUycDRRPT0iLCJEZDJDNXNCMElPUWVN
+Vm5FQmtNNVE5Vzk2bUJITnd3YTJ0elhNcytMd3VZY09VdlBrcnlHUjBhUEc4Tzlu
+SVAzbGJ3NktqUTFoRG1SazZ6Qzh4MmpkZz09Il0sInR5cGUiOiJjaGFpbl9oYXNo
+In0sInNpZ19kYXRhX3JlZiI6W3sicmVmIjoiIiwiaGFzaCI6IkZjR3BPT2Y4aWxj
+UHQyMUdEZDJjR25MR0R4UlM1ajdzdk00YXBwMkg0MWRERUxtMkN6Y2VUWTAybmRl
+SmZXamludG1RMzc2SWxYVE9BcjMxeXpZenNnPT0ifSx7InJlZiI6IiN4YWRlcy0x
+MWExNTVkOTJiZjU1Nzc0NjEzYmI3YjY2MTQ3N2NmZCIsImhhc2giOiJLUmtnYlo2
+UFwvbmhVNjNJTWswR2lVZlVcL0RUd3ZlWWl0ZVFrd0dlSnFDNUJ6VE5WOGJRYnBl
+ZFRUdVdKUHhxdkowUlk4NGh3bTdlWVwvZzBIckFPZWdLdz09In1dLCJ0aW1lX3Zh
+bCI6W119XSwiZXh0IjpudWxsLCJ2ZXIiOiIxLjAiLCJwcm9maWxlIjoiWE1MIiwi
+aGFzaF9hbGdvIjoiaHR0cDpcL1wvd3d3LnczLm9yZ1wvMjAwMVwvMDRcL3htbGVu
+YyNzaGE1MTIifX0.TdHCoIUSZj2zMINKg7E44-8VE_mJq6TG1OoPwnYSs_hyUbuX
+mrLJpuk8GR5YrndeOucPUYAwPxHt_f68JIQyFTi0agO9VJjn1R7Pj3Jt6WG9pYVN
+n5LH-D1maxD11ZxxbcYeHbsstd2Sy2uMa3BdpsstGdPymSmc6GxY5uJoL0-5vwo_
+3l-4Bb3LCTiuxYPcmztKIbDy2hEgJ3Hx1K4HF0SHgn3InpqBev3hm2SLw3hH5BCM
+rywBAhHYE6OGE0aOJ6ktA5UP0jIIHfaw9i1wIiJtHTaGuvtyWSLk5cshmun9Hkdk
+kRTA75bzuq0Iyd0qh070rA8Gje-s4Tw4xzttgKx1KSkvy8n5FqvzWdsZvclCG2mY
+Y9rMxh_7607NXcxajAP4yDOoKNs5nm937ULe0vCN8a7WTrFuiaGjry7HhzRM4C5A
+qxbDOBXPLyoMr4qn4LRJCHxOeLZ6o3ugvDOOWsyjk3eliyBwDu8qJH7UmyicLxDc
+Cr0hUK_kvREqjD2Z
 ~~~
 
 Decoded JWT Header:
 
 ~~~
-    {
-      "kid" : "OenI+434JhbvfDntfV\/8rOxG7FkvyjaKVJaVqIFBXohVhAe5fK8an
-               ov1S688r7Kbal+fvpaH1j8ibg52QBy1PQ==",
-      "typ" : "JWT",
-      "alg" : "RS512"
-    }
+{
+  "kid":"OenI+434JhbvfDntfV\/8rOxG7FkvyjaKVJaVqIFBXohVhAe5fK8anov
+         1S688r7Kbal+fvpaH1j8ibg52QBy1PQ==",
+  "typ":"JWT",
+  "alg":"RS512"
+}
 ~~~
 
 Decoded JWT Claims:
 
 ~~~
-    {
-      "aud" : "http://example.com/audience1",
-      "iss" : "https://swedenconnect.se/validator",
-      "iat" : 1582730645,
-      "jti" : "e22c5be6dd6cc6db834bccd066f5e2e3",
-      "sig_val_claims" : {
-        "sig" : [ {
-          "ext" : null,
-          "sig_val" : [ {
-            "msg" : "Invalid signature",
-            "ext" : null,
-            "res" : "FAILED",
-            "pol" : "http://id.swedenconnect.se/svt/sigval-policy/
-                     chain/01"
-          } ],
-          "sig_ref" : {
-            "sig_hash" : "BhuE9BCYdqLgyowl2PbmnK9dJAmiVtT1u9VgiF99h2h
-                          VPzE4XLWvbCPe4aCJ3IzFfoL9k3tWr0W+wy9BeqircQ
-                          ==",
-            "id" : null,
-            "sb_hash" : "bueq5HTO1btpCrXRX7TzEKUrNJQhGG8qBh4wxESqRL3B
-                         Bzn4clvK37jYu0KjMMkgJQEMfA1b3imiy79t7h+Yh8w=
-                         ="
-          },
-          "signer_cert_ref" : {
-            "ref" : [ "NSuFM/vJ+beBlQtQTzmcYh5x7L8WC9E1KPHRA1ioNOlKVG
-                       bla9URzYcsisAx2bcsqOhkvVTc3mK9E6ag07hfaw==" ],
-            "type" : "chain_hash"
-          },
-          "sig_data_ref" : [ {
-            "ref" : "0 122935 127937 27430",
-            "hash" : "kuUb86FsMNmJl3v4bQK09FkQgvo9Qx01nNRyQKUZihGEumd
-                      VqtuBKNPqZI1TzCQew6n8oFMjNhB8C0XMJlkDOQ=="
-          } ],
-          "time_val" : [ ]
-        } ],
-        "ext" : {
-          "name2" : "val2",
-          "name1" : "val1"
-        },
-        "ver" : "1.0",
-        "profile" : "PDF",
-        "hash_algo" : "http://www.w3.org/2001/04/xmlenc#sha512"
-      }
-    }
+{
+  "aud" : "http://example.com/audience1",
+  "iss" : "https://swedenconnect.se/validator",
+  "iat" : 1603458421,
+  "jti" : "4d1396f1ff728f40d52403b61c574486",
+  "sig_val_claims" : {
+    "sig" : [ {
+      "ext" : null,
+      "sig_val" : [ {
+        "msg" : "OK",
+        "ext" : null,
+        "res" : "PASSED",
+        "pol" : "http://id.swedenconnect.se/svt/sigval-policy/
+                 ts-pkix/01"
+      } ],
+      "sig_ref" : {
+        "sig_hash" : "ycePVLIzdcpK97IYOhFIf1ny79HmICbSVzIeZNbizo7rGIw
+                      HNN0zXISyKGjCvnonOaQGfL/P3vDtB88yKSWeXg==",
+        "id" : "id-73989c6fc063636ab5e753f10f757467",
+        "sb_hash" : "BoPV4WCA9sAIahjK1HajfFxi+AzC4JGTuf39W3ZWjczDCURx
+                     dc9YeteHtcxGVeggpxHJ75/cQ7HN1dDdliyIwg=="
+      },
+      "signer_cert_ref" : {
+        "ref" : [ "1+aaJetg7relERlUDYEiU4ZIZhT4RUviIQZuK7o1GFKaTPQ6y+
+                   kx/PNtDrpuqQ6XfrkH9wYDK4ey0y4WrNErnw==",
+                  "h4PDxb5ZKmx1eTSqvVvYG8g33s05JzwB+NgEHFU4gc9tqG0kgH
+                   kf6W3oLzkTwwurIh6Y9AafZYqc2zP2pE2p4Q==",
+                  "Dd2C5sB0IOQeMVnEBkM5Q9W96mBHNwwa2tzXMs+LwuYcOUvPkr
+                   yGR0aPG8O9nIP3lbw6KjQ1hDmRk6zC8x2jdg==" ],
+        "type" : "chain_hash"
+      },
+      "sig_data_ref" : [ {
+        "ref" : "",
+        "hash" : "FcGpOOf8ilcPt21GDd2cGnLGDxRS5j7svM4app2H41dDELm2Czc
+                  eTY02ndeJfWjintmQ376IlXTOAr31yzYzsg=="
+      }, {
+        "ref" : "#xades-11a155d92bf55774613bb7b661477cfd",
+        "hash" : "KRkgbZ6P/nhU63IMk0GiUfU/DTwveYiteQkwGeJqC5BzTNV8bQb
+                  pedTTuWJPxqvJ0RY84hwm7eY/g0HrAOegKw=="
+      } ],
+      "time_val" : [ ]
+    } ],
+    "ext" : null,
+    "ver" : "1.0",
+    "profile" : "XML",
+    "hash_algo" : "http://www.w3.org/2001/04/xmlenc#sha512"
+  }
+}
 ~~~
