@@ -20,6 +20,17 @@ Note: That the latest working version found here normally is a later version tha
 - [https://datatracker.ietf.org/doc/draft-santesson-svt-pdf/](https://datatracker.ietf.org/doc/draft-santesson-svt-pdf/)
 - [https://datatracker.ietf.org/doc/draft-santesson-svt-xml/](https://datatracker.ietf.org/doc/draft-santesson-svt-xml/)
 
+## Open source and reference implementation
+Implementation of version 1.0 of this specification is available as open source. This open source is free to use under the Apache 2.0 license.
+
+Repo | Description
+---|---
+[https://github.com/idsec-solutions/sig-validation-svt](https://github.com/idsec-solutions/sig-validation-svt) | ore components for generation and validation of Signature Validation Tokens
+[https://github.com/idsec-solutions/sig-validation-base](https://github.com/idsec-solutions/sig-validation-base)  |  SVT enhanced signature validation and functions to extend XML and PDF documents with SVT tokens.
+
+A reference implementation is available at: [https://sandbox.swedenconnect.se/sigval/](https://sandbox.swedenconnect.se/sigval/). This implementation validates elecronic signatures against the EU trusted list (TSL) as well as validatin based on SVT and provides the capability to extend XML and PDF docuemtns with SVT tokens.
+
+
 Contributing
 ------------
 
