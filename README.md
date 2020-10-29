@@ -6,9 +6,9 @@ This is the working area for the [TBD Working Group]() draft of [Signature Valid
 
 Current working draft for SVT specifications are located in the folders:
 
-- svt-main for the main protocol
-- svt-xml for the XML profile
-- svt-pdf for the PDF profile
+- **svt-main** for the main protocol
+- **svt-xml** for the XML profile
+- **svt-pdf** for the PDF profile
 
 The latest compiled versions of each draft are located in the this root directory.
 
