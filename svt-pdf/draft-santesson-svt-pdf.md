@@ -1,5 +1,5 @@
 ---
-title: Signature Validation Token
+title: PDF Signature Validation Token
 docname: draft-santesson-svt-pdf-01-SNAPSHOT
 date: 2020-10-21
 category: std

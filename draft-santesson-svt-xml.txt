@@ -9,8 +9,8 @@ Expires: 24 April 2021                                    Vigil Security
                                                          21 October 2020
 
 
-                       Signature Validation Token
-                       draft-santesson-svt-xml-00
+                     XML Signature Validation Token
+                  draft-santesson-svt-xml-01-SNAPSHOT
 
 Abstract
 
@@ -55,7 +55,7 @@ Copyright Notice
 
 Santesson & Housley       Expires 24 April 2021                 [Page 1]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft       XML Signature Validation Token         October 2020
 
 
 Table of Contents
@@ -111,7 +111,7 @@ Table of Contents
 
 Santesson & Housley       Expires 24 April 2021                 [Page 2]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft       XML Signature Validation Token         October 2020
 
 
 2.  Definitions
@@ -167,7 +167,7 @@ Internet-Draft         Signature Validation Token           October 2020
 
 Santesson & Housley       Expires 24 April 2021                 [Page 3]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft       XML Signature Validation Token         October 2020
 
 
    Note: [XMLDSIG11] requires the Target attribute to be present in
@@ -223,7 +223,7 @@ Internet-Draft         Signature Validation Token           October 2020
 
 Santesson & Housley       Expires 24 April 2021                 [Page 4]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft       XML Signature Validation Token         October 2020
 
 
    <ds:Signature Id="MySignatureId">
@@ -279,7 +279,7 @@ Internet-Draft         Signature Validation Token           October 2020
 
 Santesson & Housley       Expires 24 April 2021                 [Page 5]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft       XML Signature Validation Token         October 2020
 
 
 4.2.  Signed Data Reference Data
@@ -335,7 +335,7 @@ Internet-Draft         Signature Validation Token           October 2020
 
 Santesson & Housley       Expires 24 April 2021                 [Page 6]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft       XML Signature Validation Token         October 2020
 
 
 6.  Normative References
