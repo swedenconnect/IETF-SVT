@@ -4,6 +4,8 @@ Signature Validation Token (SVT) Draft Specifications
 
 This is the working area for the [TBD Working Group]() draft of [Signature Validation Token]
 
+An orientation to the subject is available in the following presentation: [https://youtu.be/IEJBmHJklHY](https://youtu.be/IEJBmHJklHY)
+
 Current working draft for SVT specifications are located in the folders:
 
 - **svt-main** for the main protocol
