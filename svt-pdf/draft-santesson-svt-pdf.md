@@ -1,6 +1,6 @@
 ---
 title: PDF Signature Validation Token
-docname: draft-santesson-svt-pdf-01-SNAPSHOT
+docname: draft-santesson-svt-pdf-01
 date: 2020-10-21
 category: std
 consensus: true

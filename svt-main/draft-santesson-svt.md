@@ -1,6 +1,6 @@
 ---
 title: Signature Validation Token
-docname: draft-santesson-svt-01-SNAPSHOT
+docname: draft-santesson-svt-01
 date: 2020-10-21
 category: std
 consensus: true

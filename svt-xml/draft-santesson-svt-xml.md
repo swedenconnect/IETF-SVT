@@ -1,6 +1,6 @@
 ---
 title: XML Signature Validation Token
-docname: draft-santesson-svt-xml-01-SNAPSHOT
+docname: draft-santesson-svt-xml-01
 date: 2020-10-21
 category: std
 consensus: true
