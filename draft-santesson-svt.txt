@@ -5,12 +5,12 @@
 Network Working Group                                       S. Santesson
 Internet-Draft                                           IDsec Solutions
 Intended status: Standards Track                              R. Housley
-Expires: 24 April 2021                                    Vigil Security
-                                                         21 October 2020
+Expires: 21 November 2021                                 Vigil Security
+                                                             20 May 2021
 
 
                        Signature Validation Token
-                    draft-santesson-svt-01-SNAPSHOT
+                         draft-santesson-svt-01
 
 Abstract
 
@@ -41,11 +41,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 April 2021.
+   This Internet-Draft will expire on 21 November 2021.
 
 Copyright Notice
 
-   Copyright (c) 2020 IETF Trust and the persons identified as the
+   Copyright (c) 2021 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Santesson & Housley       Expires 24 April 2021                 [Page 1]
+Santesson & Housley     Expires 21 November 2021                [Page 1]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Santesson & Housley       Expires 24 April 2021                 [Page 2]
+Santesson & Housley     Expires 21 November 2021                [Page 2]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
    *  Algorithms used to create the electronic signature are no longer
@@ -165,9 +165,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                 [Page 3]
+Santesson & Housley     Expires 21 November 2021                [Page 3]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
    This approach drastically reduces the complexity of validation of
@@ -221,9 +221,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                 [Page 4]
+Santesson & Housley     Expires 21 November 2021                [Page 4]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
 3.  Signature Validation Token
@@ -277,9 +277,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                 [Page 5]
+Santesson & Housley     Expires 21 November 2021                [Page 5]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
    Using the SVT, the electronic signature verification of a document
@@ -333,9 +333,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                 [Page 6]
+Santesson & Housley     Expires 21 November 2021                [Page 6]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
    *  Map<Type> - A JSON object with name-value pairs where the value is
@@ -389,9 +389,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                 [Page 7]
+Santesson & Housley     Expires 21 November 2021                [Page 7]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
       expiration time claim is defined by local policies.  See
@@ -445,9 +445,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                 [Page 8]
+Santesson & Housley     Expires 21 November 2021                [Page 8]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
    *  ext - A Map<String> data type that provides additional claims
@@ -501,9 +501,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                 [Page 9]
+Santesson & Housley     Expires 21 November 2021                [Page 9]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
 3.2.5.  SigReference Claims Object Class
@@ -557,9 +557,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                [Page 10]
+Santesson & Housley     Expires 21 November 2021               [Page 10]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
    *  res - A String data type that contains the result of the
@@ -613,9 +613,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                [Page 11]
+Santesson & Housley     Expires 21 November 2021               [Page 11]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
 3.2.9.  CertReference Claims Object Class
@@ -669,9 +669,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                [Page 12]
+Santesson & Housley     Expires 21 November 2021               [Page 12]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
    *  typ - This parameter MUST have the string value "JWT" (upper
@@ -725,9 +725,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                [Page 13]
+Santesson & Housley     Expires 21 November 2021               [Page 13]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
 5.  Signature Verification with a SVT
@@ -781,9 +781,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                [Page 14]
+Santesson & Housley     Expires 21 November 2021               [Page 14]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
    [ETSI319102-1]
@@ -837,9 +837,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                [Page 15]
+Santesson & Housley     Expires 21 November 2021               [Page 15]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
@@ -893,9 +893,9 @@ Appendix A.  Appendix: Examples
 
 
 
-Santesson & Housley       Expires 24 April 2021                [Page 16]
+Santesson & Housley     Expires 21 November 2021               [Page 16]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
    eyJraWQiOiJPZW5JKzQzNEpoYnZmRG50ZlZcLzhyT3hHN0ZrdnlqYUtWSmFWcUlG
@@ -949,9 +949,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                [Page 17]
+Santesson & Housley     Expires 21 November 2021               [Page 17]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
    Decoded JWT Claims:
@@ -1005,9 +1005,9 @@ Internet-Draft         Signature Validation Token           October 2020
 
 
 
-Santesson & Housley       Expires 24 April 2021                [Page 18]
+Santesson & Housley     Expires 21 November 2021               [Page 18]
 
-Internet-Draft         Signature Validation Token           October 2020
+Internet-Draft         Signature Validation Token               May 2021
 
 
      }
@@ -1061,4 +1061,4 @@ Authors' Addresses
 
 
 
-Santesson & Housley       Expires 24 April 2021                [Page 19]
+Santesson & Housley     Expires 21 November 2021               [Page 19]
