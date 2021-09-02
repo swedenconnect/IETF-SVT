@@ -4,13 +4,13 @@
 
 Network Working Group                                       S. Santesson
 Internet-Draft                                           IDsec Solutions
-Intended status: Informational                                R. Housley
-Expires: 6 March 2022                                     Vigil Security
-                                                        2 September 2021
+Intended status: Standards Track                              R. Housley
+Expires: 21 November 2021                                 Vigil Security
+                                                             20 May 2021
 
 
                      XML Signature Validation Token
-                       draft-santesson-svt-xml-02
+                       draft-santesson-svt-xml-01
 
 Abstract
 
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 March 2022.
+   This Internet-Draft will expire on 21 November 2021.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 1]
+Santesson & Housley     Expires 21 November 2021                [Page 1]
 
-Internet-Draft       XML Signature Validation Token       September 2021
+Internet-Draft       XML Signature Validation Token             May 2021
 
 
 Table of Contents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 2]
+Santesson & Housley     Expires 21 November 2021                [Page 2]
 
-Internet-Draft       XML Signature Validation Token       September 2021
+Internet-Draft       XML Signature Validation Token             May 2021
 
 
 2.  Definitions
@@ -165,9 +165,9 @@ Internet-Draft       XML Signature Validation Token       September 2021
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 3]
+Santesson & Housley     Expires 21 November 2021                [Page 3]
 
-Internet-Draft       XML Signature Validation Token       September 2021
+Internet-Draft       XML Signature Validation Token             May 2021
 
 
    Note: [XMLDSIG11] requires the Target attribute to be present in
@@ -221,9 +221,9 @@ Internet-Draft       XML Signature Validation Token       September 2021
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 4]
+Santesson & Housley     Expires 21 November 2021                [Page 4]
 
-Internet-Draft       XML Signature Validation Token       September 2021
+Internet-Draft       XML Signature Validation Token             May 2021
 
 
    <ds:Signature Id="MySignatureId">
@@ -277,9 +277,9 @@ Internet-Draft       XML Signature Validation Token       September 2021
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 5]
+Santesson & Housley     Expires 21 November 2021                [Page 5]
 
-Internet-Draft       XML Signature Validation Token       September 2021
+Internet-Draft       XML Signature Validation Token             May 2021
 
 
 4.2.  Signed Data Reference Data
@@ -333,9 +333,9 @@ Internet-Draft       XML Signature Validation Token       September 2021
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 6]
+Santesson & Housley     Expires 21 November 2021                [Page 6]
 
-Internet-Draft       XML Signature Validation Token       September 2021
+Internet-Draft       XML Signature Validation Token             May 2021
 
 
 6.  Normative References
@@ -360,7 +360,7 @@ Internet-Draft       XML Signature Validation Token       September 2021
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
    [SVT]      Santesson, S. and R. Housley, "Signature Validation
-              Token", IETF draft-santesson-svt-02, September 2021.
+              Token", IETF draft-santesson-svt-00, October 2020.
 
    [XMLDSIG11]
               Eastlake, D., Reagle, J., Solo, D., Hirsch, F., Nystrom,
@@ -389,4 +389,4 @@ Authors' Addresses
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 7]
+Santesson & Housley     Expires 21 November 2021                [Page 7]

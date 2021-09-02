@@ -1,8 +1,8 @@
 ---
 title: Signature Validation Token
-docname: draft-santesson-svt-02
-date: 2021-09-02
-category: info
+docname: draft-santesson-svt-01
+date: 2021-05-20
+category: std
 consensus: true
 
 ipr: trust200902

@@ -1,8 +1,8 @@
 ---
 title: PDF Signature Validation Token
-docname: draft-santesson-svt-pdf-02
-date: 2021-09-02
-category: info
+docname: draft-santesson-svt-pdf-01
+date: 2021-05-20
+category: std
 consensus: true
 
 ipr: trust200902
@@ -65,9 +65,9 @@ normative:
     -
       ins: R. Housley
       name: Russ Housley
-    date: 2021-09
+    date: 2020-10
     seriesinfo:
-      "IETF": "draft-santesson-svt-02"
+      "IETF": "draft-santesson-svt-00"
 
 --- abstract
 

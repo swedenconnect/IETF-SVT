@@ -4,13 +4,13 @@
 
 Network Working Group                                       S. Santesson
 Internet-Draft                                           IDsec Solutions
-Intended status: Informational                                R. Housley
-Expires: 6 March 2022                                     Vigil Security
-                                                        2 September 2021
+Intended status: Standards Track                              R. Housley
+Expires: 21 November 2021                                 Vigil Security
+                                                             20 May 2021
 
 
                      PDF Signature Validation Token
-                       draft-santesson-svt-pdf-02
+                       draft-santesson-svt-pdf-01
 
 Abstract
 
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 March 2022.
+   This Internet-Draft will expire on 21 November 2021.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 1]
+Santesson & Housley     Expires 21 November 2021                [Page 1]
 
-Internet-Draft       PDF Signature Validation Token       September 2021
+Internet-Draft       PDF Signature Validation Token             May 2021
 
 
 Table of Contents
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 2]
+Santesson & Housley     Expires 21 November 2021                [Page 2]
 
-Internet-Draft       PDF Signature Validation Token       September 2021
+Internet-Draft       PDF Signature Validation Token             May 2021
 
 
 2.  Definitions
@@ -165,9 +165,9 @@ Internet-Draft       PDF Signature Validation Token       September 2021
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 3]
+Santesson & Housley     Expires 21 November 2021                [Page 3]
 
-Internet-Draft       PDF Signature Validation Token       September 2021
+Internet-Draft       PDF Signature Validation Token             May 2021
 
 
    *  sig_hash - The hash over the signature value bytes.
@@ -221,9 +221,9 @@ Internet-Draft       PDF Signature Validation Token       September 2021
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 4]
+Santesson & Housley     Expires 21 November 2021                [Page 4]
 
-Internet-Draft       PDF Signature Validation Token       September 2021
+Internet-Draft       PDF Signature Validation Token             May 2021
 
 
    *  x5c - Holds an X.509 certificate [RFC5280] or a chain of
@@ -277,9 +277,9 @@ Internet-Draft       PDF Signature Validation Token       September 2021
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 5]
+Santesson & Housley     Expires 21 November 2021                [Page 5]
 
-Internet-Draft       PDF Signature Validation Token       September 2021
+Internet-Draft       PDF Signature Validation Token             May 2021
 
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
@@ -287,7 +287,7 @@ Internet-Draft       PDF Signature Validation Token       September 2021
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
    [SVT]      Santesson, S. and R. Housley, "Signature Validation
-              Token", IETF draft-santesson-svt-02, September 2021.
+              Token", IETF draft-santesson-svt-00, October 2020.
 
 Authors' Addresses
 
@@ -333,4 +333,4 @@ Authors' Addresses
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 6]
+Santesson & Housley     Expires 21 November 2021                [Page 6]
