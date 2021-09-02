@@ -194,7 +194,7 @@ Internet-Draft       PDF Signature Validation Token       September 2021
 
    The SVT SHALL contain a CertReference claims object.  The type claim
    of the CertReference claims object SHALL be either chain or
-   chain_hash`.
+   chain_hash.
 
    *  The chain type SHALL be used when signature validation was
       performed using one or more certificates where some or all of the

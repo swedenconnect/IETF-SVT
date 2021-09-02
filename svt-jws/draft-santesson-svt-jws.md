@@ -90,7 +90,7 @@ Each SVT is stored in its associated signature's "svt" header as defined in {{sv
 
 ## "svt" Header Parameter {#svt-header}
 
-The "svt" (Signature Validation Token) Header Parameter is used to contain an array of SVT tokens to support validation of the associated signature. Each SVT token in the array has the format of a JWT as defined in {{RFC7519}} and is stored as a string object without further wrapping or encoding.
+The "svt" (Signature Validation Token) Header Parameter is used to contain an array of SVT tokens to support validation of the associated signature. Each SVT token in the array has the format of a JWT as defined in {{RFC7519}} and is stored using its natural string representation without further wrapping or encoding.
 
 The "svt" Header Parameter, when used, MUST be included as a JWS Unprotected Header.
 
@@ -108,7 +108,7 @@ If the new SVT is stored in addition to the old SVT, it MUST be added to the arr
 
 The SVT SHALL contain a SigReference claims object that SHALL contain the following data:
 
-- sig_hash -- The hash over the associated signature value bytes (the base64url-decoded bytes of the signature parameter).
+- sig_hash -- The hash over the associated signature value (the bytes of the base64url-decoded signature parameter).
 
 - sb_hash -- The hash over all bytes signed by the associated signature (the JWS Signing Input according to {{RFC7515}}).
 
@@ -129,7 +129,7 @@ An SVT according to this profile SHALL contain one instance of the SignedData cl
 
 ## Signer Certificate References {#signer-certificate-references}
 
-The SVT SHALL contain a CertReference claims object. The type claim of the CertReference claims object SHALL be either chain or chain_hash`.
+The SVT SHALL contain a CertReference claims object. The type claim of the CertReference claims object SHALL be either chain or chain_hash.
 
 - The chain type SHALL be used when signature validation was performed using one or more certificates where some or all of the certificates in the chain are not present in the target signature.
 - The chain_hash type SHALL be used when signature validation was performed using one or more certificates where all of the certificates are present in the target signature JOSE header using the "x5c" Header Parameter.

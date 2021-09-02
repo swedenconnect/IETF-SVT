@@ -214,7 +214,7 @@ An SVT according to this profile SHALL contain one instance of the SignedData cl
 
 ## Signer Certificate References {#signer-certificate-references}
 
-The SVT SHALL contain a CertReference claims object. The type claim of the CertReference claims object SHALL be either chain or chain_hash`.
+The SVT SHALL contain a CertReference claims object. The type claim of the CertReference claims object SHALL be either chain or chain_hash.
 
 - The chain type SHALL be used when signature validation was performed using one or more certificates where some or all of the certificates in the chain are not present in the target signature.
 - The chain_hash type SHALL be used when signature validation was performed using one or more certificates where all of the certificates are present in the target signature.
