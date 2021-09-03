@@ -1,8 +1,8 @@
 ---
 title: Signature Validation Token
-docname: draft-santesson-svt-02
-date: 2021-09-03
-category: info
+docname: draft-santesson-svt-01
+date: 2021-05-20
+category: std
 consensus: true
 
 ipr: trust200902
@@ -399,7 +399,7 @@ it contains the following parameters:
 
 The following type identifiers are defined:
 
-- chain -- The ref contains an array of Base64 encoded X.509 certificates {{RFC5280}}. The certificates MUST be provided in the order starting with the end entity certificate. Any following certificate must be able to validate the signature on the previous certificate in the array.
+- "chain" -- The ref contains an array of Base64 encoded X.509 certificates {{RFC5280}}. The certificates MUST be provided in the order starting with the end entity certificate. Any following certificate must be able to validate the signature on the previous certificate in the array.
 
 - chain_hash -- The ref contains an array of one or more Base64 encoded hash values where each hash value is a hash over a X.509 certificate {{RFC5280}} used to validate the signature.  The certificates MUST be provided in the order starting with the end entity certificate.  Any following certificate must be able to validate the signature on the previous certificate in the array. This option MUST NOT be used unless all hashed certificates are present in the target electronic signature.
 
@@ -470,44 +470,11 @@ signature.
 
 # IANA Considerations {#iana}
 
-## Claim Names Registration {#claim-names-reg}
-
-This section registers the "sig_val_claims" claim name in the IANA "JSON Web Token Claims" registry established by Section 10.1 in {{RFC7519}}.
-
-### Registry Contents {#clname-reg-contents}
-
-  - Claim Name: "sig_val_claims"
-  - Claim Description: Signature Validation Token
-  - Change Controller: IESG
-  - Specification Document(s): {{sigvalidation-obj-class}} of {this document}
-
-NOTE to RFC editor: Please replace {this document} with its assigned RFC number.
-
+{ To be written }
 
 # Security Considerations {#seccons}
 
-## Level of reliance {#seccon-lvl-of-reliance}
-
-An SVT allows a signature verifier to still validate the original signature using
-the original signature data and to use the information in the SVT selectively to
-either just confirm the validity and integrity of the original data, such as confirming the integrity of signed data or the validity of the signer's certificate etc.
-
-Another way to use an SVT is to completely rely on the validation conclusion provided
-by the SVT and to omit re-validation of the original signature value and original
-certificate status checking data.
-
-This choice is a decision made by the verifier according to its own policy and risk assessment.
-
-However, even when relying on the SVT validation conclusion of an SVT it is vital to still verify that
-the present SVT is correctly associated with the document and signature that is being validated by
-validating the hashed reference data in the SVT of the signature, signing certificate chain,
-signed data and the signed bytes.
-
-## Aging algorithms {#seccon-aging-algos}
-
-Even if the SVT provides protection against algorithms becoming weakened or broken over time, this protection is only valid for as long as the algorithms used to sign the SVT are still considered secure. It is advisable to re-issue SVT in cases where an algorithm protecting the SVT is getting close to its end of life.
-
-One way to increase the resistance of algorithms becoming insecure, is to issue multiple SVT for the same signature with different algorithms and key lengths where one algorithm could still be secure even if the corresponding algorithm used in the alternative SVT is broken.
+{ To be written }
 
 --- back
 
