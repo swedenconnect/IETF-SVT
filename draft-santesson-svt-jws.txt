@@ -129,7 +129,7 @@ Internet-Draft       JWS Signature Validation Token       September 2021
    An SVT token MAY be added to any signature of a JWS to support
    validation of that signature.  If more than one signature is present
    then each present SVT MUST provide information exclusively related to
-   one associated signature and MUST not include information about any
+   one associated signature and MUST NOT include information about any
    other signature in the JWS.
 
    Each SVT is stored in its associated signature's "svt" header as
@@ -170,16 +170,16 @@ Santesson & Housley       Expires 6 March 2022                  [Page 3]
 Internet-Draft       JWS Signature Validation Token       September 2021
 
 
-   If the new SVT is stored in addition to the old SVT, it MUST be added
-   to the array of SVT tokens in the existing "svt" Header Parameter
-   value.
+   If a JWS signature already contains an array of SVTs and a new SVT is
+   to be added, then the new SVT MUST be added to the array of SVT
+   tokens in the existing "svt" Header Parameter.
 
 4.  SVT Claims
 
 4.1.  Signature Reference Data
 
-   The SVT SHALL contain a SigReference claims object that SHALL contain
-   the following data:
+   The SVT MUST contain a SigReference claim with the following
+   elements:
 
    *  sig_hash - The hash over the associated signature value (the bytes
       of the base64url-decoded signature parameter).
@@ -189,8 +189,8 @@ Internet-Draft       JWS Signature Validation Token       September 2021
 
 4.2.  Signed Data Reference Data
 
-   An SVT according to this profile SHALL contain one instance of the
-   SignedData claims object which SHALL contain the following data:
+   The SVT MUST contain one instance of the SignedData claim with the
+   following elements:
 
    *  ref - This parameter MUST hold one of the following thee possible
       values.
@@ -201,20 +201,20 @@ Internet-Draft       JWS Signature Validation Token       September 2021
       2.  An empty string if the JWS signs detached payload data without
           explicit reference.
 
-      3.  A URI that explicitly identifies the detached signed data and/
-          or its location.  How this URI is associated with the signed
-          data is outside the scope of this specification.
+      3.  A URI that can be used to identify or fetch the detached
+          signed data.  The means to determine the URI for the detached
+          signed data is outside the scope of this specification.
 
    *  hash - The hash over the JWS Payload data bytes (not its
       base64url-encoded string representation).
 
 4.3.  Signer Certificate References
 
-   The SVT SHALL contain a CertReference claims object.  The type claim
-   of the CertReference claims object SHALL be either chain or
+   The SVT MUST contain a CertReference claims object.  The type claim
+   of the CertReference claims object MUST be either chain or
    chain_hash.
 
-   *  The chain type SHALL be used when signature validation was
+   *  The chain type MUST be used when signature validation was
       performed using one or more certificates where some or all of the
       certificates in the chain are not present in the target signature.
 
@@ -226,7 +226,7 @@ Santesson & Housley       Expires 6 March 2022                  [Page 4]
 Internet-Draft       JWS Signature Validation Token       September 2021
 
 
-   *  The chain_hash type SHALL be used when signature validation was
+   *  The chain_hash type MUST be used when signature validation was
       performed using one or more certificates where all of the
       certificates are present in the target signature JOSE header using
       the "x5c" Header Parameter.
