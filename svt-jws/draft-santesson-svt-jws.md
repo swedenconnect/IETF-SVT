@@ -143,13 +143,13 @@ The SVT JOSE header must contain one of the following header parameters in accor
 - "x5c" -- Holds an X.509 certificate {{RFC5280}} or a chain of certificates. The certificate holding the public key that verifies the signature on the SVT MUST be the first certificate in the chain.
 - "kid" -- A key identifier holding the Base64 encoded hash value of the certificate that can verify the signature on the SVT. The hash algorithm MUST be the same hash algorithm used when signing the SVT as specified by the `alg` header parameter.
 
-# IANA Considerations
+# IANA Considerations {#iana}
 
-## Header Parameter Names Registration
+## Header Parameter Names Registration {#iana-header-params}
 
 This section registers the "svt" Header Parameter in the IANA "JSON Web Signature and Encryption Header Parameters" registry established by {{RFC7515}}.
 
-### Registry Contents
+### Registry Contents {#iana-header-params-reg}
 
 - Header Parameter Name: "svt"
 - Header Parameter Description: Signature Validation Token
@@ -158,3 +158,7 @@ This section registers the "svt" Header Parameter in the IANA "JSON Web Signatur
 - Specification Document(s): {{svt-header}} of {this document}
 
 NOTE to RFC editor: Please replace {this document} with its assigned RFC number.
+
+# Security Considerations {#seccons}
+
+The security considerations of {{svt}} applies also to this document.

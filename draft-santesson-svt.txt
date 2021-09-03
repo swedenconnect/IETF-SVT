@@ -71,26 +71,30 @@ Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Definitions . . . . . . . . . . . . . . . . . . . . . . . . .   4
-   3.  Signature Validation Token  . . . . . . . . . . . . . . . . .   5
+   3.  Signature Validation Token  . . . . . . . . . . . . . . . . .   4
      3.1.  Signature Validation Token Function . . . . . . . . . . .   5
      3.2.  Signature Validation Token Syntax . . . . . . . . . . . .   6
        3.2.1.  Data Types  . . . . . . . . . . . . . . . . . . . . .   6
        3.2.2.  Signature Validation Token JWT Claims . . . . . . . .   7
        3.2.3.  SigValidation Object Class  . . . . . . . . . . . . .   8
        3.2.4.  Signature Claims Object Class . . . . . . . . . . . .   9
-       3.2.5.  SigReference Claims Object Class  . . . . . . . . . .  10
+       3.2.5.  SigReference Claims Object Class  . . . . . . . . . .   9
        3.2.6.  SignedData Claims Object Class  . . . . . . . . . . .  10
        3.2.7.  PolicyValidation Claims Object Class  . . . . . . . .  10
        3.2.8.  TimeValidation Claims Object Class  . . . . . . . . .  11
-       3.2.9.  CertReference Claims Object Class . . . . . . . . . .  12
+       3.2.9.  CertReference Claims Object Class . . . . . . . . . .  11
        3.2.10. SVT JOSE Header . . . . . . . . . . . . . . . . . . .  12
    4.  Profiles  . . . . . . . . . . . . . . . . . . . . . . . . . .  13
-   5.  Signature Verification with a SVT . . . . . . . . . . . . . .  14
+   5.  Signature Verification with a SVT . . . . . . . . . . . . . .  13
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  14
-   8.  Normative References  . . . . . . . . . . . . . . . . . . . .  14
-   Appendix A.  Appendix: Examples . . . . . . . . . . . . . . . . .  16
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  19
+     6.1.  Claim Names Registration  . . . . . . . . . . . . . . . .  14
+       6.1.1.  Registry Contents . . . . . . . . . . . . . . . . . .  14
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
+     7.1.  Level of reliance . . . . . . . . . . . . . . . . . . . .  15
+     7.2.  Aging algorithms  . . . . . . . . . . . . . . . . . . . .  15
+   8.  Normative References  . . . . . . . . . . . . . . . . . . . .  16
+   Appendix A.  Appendix: Examples . . . . . . . . . . . . . . . . .  17
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  20
 
 1.  Introduction
 
@@ -102,10 +106,6 @@ Table of Contents
    *  Trusted information about the validity of the certificate
       containing the signer's public key is not available.
 
-   *  Trusted information about the date and time when the signature was
-      actually created is not available.
-
-
 
 
 
@@ -113,6 +113,9 @@ Santesson & Housley       Expires 6 March 2022                  [Page 2]
 
 Internet-Draft         Signature Validation Token         September 2021
 
+
+   *  Trusted information about the date and time when the signature was
+      actually created is not available.
 
    *  Algorithms used to create the electronic signature are no longer
       considered secure.
@@ -151,25 +154,6 @@ Internet-Draft         Signature Validation Token         September 2021
    electronic signature is satisfied by validating the SVT, without any
    need to also validate the original electronic signature.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Santesson & Housley       Expires 6 March 2022                  [Page 3]
-
-Internet-Draft         Signature Validation Token         September 2021
-
-
    This approach drastically reduces the complexity of validation of
    older electronic signatures for the simple reason that validating the
    SVT eliminates the need to validate the many signed objects that
@@ -178,6 +162,14 @@ Internet-Draft         Signature Validation Token         September 2021
    confidence for a considerable time period.  In fact, multiple SVTs
    can be used to offer greater assurance.  For example, one SVT could
    be produced with a large RSA private key, a second one with a strong
+
+
+
+Santesson & Housley       Expires 6 March 2022                  [Page 3]
+
+Internet-Draft         Signature Validation Token         September 2021
+
+
    elliptic curve, and a third one with a quantum safe digital signature
    algorithm to protect against advances in computing power and
    cryptanalytic capabilities.  Further, the trusted authority can add
@@ -214,6 +206,14 @@ Internet-Draft         Signature Validation Token         September 2021
    When these terms are used as defined in this section, they appear
    with a capitalized first letter.
 
+3.  Signature Validation Token
+
+   The Signature Validation Token (SVT) is created by a trusted service
+   to capture evidence of successful electronic signature verification,
+   and then relying parties can depend on the checking that has already
+   taken place by the trusted service.
+
+
 
 
 
@@ -225,13 +225,6 @@ Santesson & Housley       Expires 6 March 2022                  [Page 4]
 
 Internet-Draft         Signature Validation Token         September 2021
 
-
-3.  Signature Validation Token
-
-   The Signature Validation Token (SVT) is created by a trusted service
-   to capture evidence of successful electronic signature verification,
-   and then relying parties can depend on the checking that has already
-   taken place by the trusted service.
 
 3.1.  Signature Validation Token Function
 
@@ -273,6 +266,13 @@ Internet-Draft         Signature Validation Token         September 2021
    greater period between original electronic signature verification and
    subsequent usage.
 
+   Using the SVT, the electronic signature verification of a document
+   can be take place once using a reliable trusted service, and then any
+   relying party that is able to depend on the verification process
+   already performed by the trusted service.  The SVT is therefore not
+   only a valuable tool to extend the lifetime of a signed document, but
+   also avoids the need for careful integration between electronic
+   signature verification and document usage.
 
 
 
@@ -281,14 +281,6 @@ Santesson & Housley       Expires 6 March 2022                  [Page 5]
 
 Internet-Draft         Signature Validation Token         September 2021
 
-
-   Using the SVT, the electronic signature verification of a document
-   can be take place once using a reliable trusted service, and then any
-   relying party that is able to depend on the verification process
-   already performed by the trusted service.  The SVT is therefore not
-   only a valuable tool to extend the lifetime of a signed document, but
-   also avoids the need for careful integration between electronic
-   signature verification and document usage.
 
 3.2.  Signature Validation Token Syntax
 
@@ -329,6 +321,14 @@ Internet-Draft         Signature Validation Token         September 2021
    *  Object<Class> - A JSON object holding a claims object of a class
       defined in this specification (see Section 3.2.2).
 
+   *  Map<Type> - A JSON object with name-value pairs where the value is
+      an object of the specified Type in the notation.  For example,
+      Map<String> is a JSON object with name value pairs where all
+      values are of type String.
+
+
+
+
 
 
 
@@ -337,11 +337,6 @@ Santesson & Housley       Expires 6 March 2022                  [Page 6]
 
 Internet-Draft         Signature Validation Token         September 2021
 
-
-   *  Map<Type> - A JSON object with name-value pairs where the value is
-      an object of the specified Type in the notation.  For example,
-      Map<String> is a JSON object with name value pairs where all
-      values are of type String.
 
    *  Array - A JSON array of a specific data type as defined in this
       section.  An array is expressed in this specification by square
@@ -386,6 +381,11 @@ Internet-Draft         Signature Validation Token         September 2021
       registered claim according to [RFC7519], which expresses the date
       and time when services and responsibilities related to this SVT is
       no longer provided by the SVT issuer.  The precise meaning of the
+      expiration time claim is defined by local policies.  See
+      implementation note below.  Inclusion of the "Expiration Time"
+      claim in a SVT is OPTIONAL.
+
+
 
 
 
@@ -393,10 +393,6 @@ Santesson & Housley       Expires 6 March 2022                  [Page 7]
 
 Internet-Draft         Signature Validation Token         September 2021
 
-
-      expiration time claim is defined by local policies.  See
-      implementation note below.  Inclusion of the "Expiration Time"
-      claim in a SVT is OPTIONAL.
 
    *  sig_val_claims - A Object<SigValidation> data type that contains
       signature validation claims for this SVT extending the standard
@@ -438,7 +434,11 @@ Internet-Draft         Signature Validation Token         September 2021
       one signature, then each signature is represented by a separate
       Signature object.  At least one Signature object MUST be present.
 
-
+   *  ext - A Map<String> data type that provides additional claims
+      related to the SVT.  Extension claims are added at the discretion
+      of the SVT issuer; however, extension claims MUST follow any
+      conventions defined in a profile of this specification (see
+      Section 4).  Inclusion of this parameter is OPTIONAL.
 
 
 
@@ -449,12 +449,6 @@ Santesson & Housley       Expires 6 March 2022                  [Page 8]
 
 Internet-Draft         Signature Validation Token         September 2021
 
-
-   *  ext - A Map<String> data type that provides additional claims
-      related to the SVT.  Extension claims are added at the discretion
-      of the SVT issuer; however, extension claims MUST follow any
-      conventions defined in a profile of this specification (see
-      Section 4).  Inclusion of this parameter is OPTIONAL.
 
 3.2.4.  Signature Claims Object Class
 
@@ -491,21 +485,6 @@ Internet-Draft         Signature Validation Token         September 2021
       follow any conventions defined in a profile of this specification
       (see Section 4).  Inclusion of this parameter is OPTIONAL.
 
-
-
-
-
-
-
-
-
-
-
-Santesson & Housley       Expires 6 March 2022                  [Page 9]
-
-Internet-Draft         Signature Validation Token         September 2021
-
-
 3.2.5.  SigReference Claims Object Class
 
    The sig_ref parameter in the Signature object class uses the
@@ -517,6 +496,15 @@ Internet-Draft         Signature Validation Token         September 2021
 
    *  id - A String data type that contains an identifier assigned to
       the target signature.  Inclusion of this parameter is OPTIONAL.
+
+
+
+
+
+Santesson & Housley       Expires 6 March 2022                  [Page 9]
+
+Internet-Draft         Signature Validation Token         September 2021
+
 
    *  sig_hash - A Base64Binary data type that contains a hash value of
       the target electronic signature value.  This parameter MUST be
@@ -553,15 +541,6 @@ Internet-Draft         Signature Validation Token         September 2021
       policy governing the electronic signature verification process.
       This parameter MUST be present.
 
-
-
-
-
-Santesson & Housley       Expires 6 March 2022                 [Page 10]
-
-Internet-Draft         Signature Validation Token         September 2021
-
-
    *  res - A String data type that contains the result of the
       electronic signature verification process.  The value MUST be one
       of "PASSED", "FAILED" or "INDETERMINATE" as defined by
@@ -575,6 +554,13 @@ Internet-Draft         Signature Validation Token         September 2021
       the discretion of the SVT Issuer; however, extension claims MUST
       follow any conventions defined in a profile of this specification
       (see Section 4).  Inclusion of this parameter is OPTIONAL.
+
+
+
+Santesson & Housley       Expires 6 March 2022                 [Page 10]
+
+Internet-Draft         Signature Validation Token         September 2021
+
 
 3.2.8.  TimeValidation Claims Object Class
 
@@ -609,15 +595,6 @@ Internet-Draft         Signature Validation Token         September 2021
       follow any conventions defined in a profile of this specification
       (see Section 4).  Inclusion of this parameter is OPTIONAL.
 
-
-
-
-
-Santesson & Housley       Expires 6 March 2022                 [Page 11]
-
-Internet-Draft         Signature Validation Token         September 2021
-
-
 3.2.9.  CertReference Claims Object Class
 
    The signer_cert_ref parameter in the Signature object class uses the
@@ -631,6 +608,15 @@ Internet-Draft         Signature Validation Token         September 2021
       type of reference.  The type identifier MUST be one of the
       identifiers defined below, an identifier specified by the selected
       profile, or a URI identifier.  This parameter MUST be present.
+
+
+
+
+
+Santesson & Housley       Expires 6 March 2022                 [Page 11]
+
+Internet-Draft         Signature Validation Token         September 2021
+
 
    *  ref - A [String] data type that contains an array of string
       parameters according to conventions defined by the type
@@ -667,13 +653,6 @@ Internet-Draft         Signature Validation Token         September 2021
    The SVT JWT MUST contain the following JOSE header parameters in
    accordance with Section 5 of [RFC7519]:
 
-
-
-Santesson & Housley       Expires 6 March 2022                 [Page 12]
-
-Internet-Draft         Signature Validation Token         September 2021
-
-
    *  typ - This parameter MUST have the string value "JWT" (upper
       case).
 
@@ -684,6 +663,16 @@ Internet-Draft         Signature Validation Token         September 2021
       identical to the hash algorithm specified in the hash_algo
       parameter of the SigValidation object within the sig_val_claims
       claim.
+
+
+
+
+
+
+Santesson & Housley       Expires 6 March 2022                 [Page 12]
+
+Internet-Draft         Signature Validation Token         September 2021
+
 
    The SVT header MUST contain a public key or a reference to a public
    key used to verify the signature on the SVT in accordance with
@@ -721,15 +710,6 @@ Internet-Draft         Signature Validation Token         September 2021
    *  How to attach an SVT to an electronic signature or signed
       document.
 
-
-
-
-
-Santesson & Housley       Expires 6 March 2022                 [Page 13]
-
-Internet-Draft         Signature Validation Token         September 2021
-
-
 5.  Signature Verification with a SVT
 
    Signature verification based on an a SVT MUST follow these steps:
@@ -742,6 +722,13 @@ Internet-Draft         Signature Validation Token         September 2021
 
    3.  Verify the integrity of the signature and the Signed Bytes of the
        target electronic signature using the sig_ref claim.
+
+
+
+Santesson & Housley       Expires 6 March 2022                 [Page 13]
+
+Internet-Draft         Signature Validation Token         September 2021
+
 
    4.  Verify that the Signed Data reference in the original electronic
        signature matches the reference values in the sig_data_ref claim.
@@ -765,18 +752,31 @@ Internet-Draft         Signature Validation Token         September 2021
 
 6.  IANA Considerations
 
-   { To be written }
+   Two alternatives are provided:
 
-7.  Security Considerations
+   This document has no IANA actions.
 
-   { To be written }
+   Note: This document defines the "sig_val_claims" claim for inclusion
+   in the SVT JWT.  This claim will only appear in an SVT according to
+   this document and the fact that a JWT is an SVT is detemined by the
+   relevant document profile.  For example, the XML profile defines how
+   to identity and extract an SVT from a XML document, the PDF profile
+   does the same for PDF documents, etc.  This claim name is therefore
+   regared as a private claim name and is not subject for registration
+   in the IANA "JSON Web Token Claims" registry established by
+   Section 10.1 in [RFC7519].
 
-8.  Normative References
+   Alternatively:
 
-   [CADES]    ETSI, "Electronic Signatures and Infrastructures (ESI);
-              CAdES digital signatures; Part 1: Building blocks and
-              CAdES baseline signatures", ETSI EN 319 122-1 v1.1.1,
-              April 2016.
+6.1.  Claim Names Registration
+
+   This section registers the "sig_val_claims" claim name in the IANA
+   "JSON Web Token Claims" registry established by Section 10.1 in
+   [RFC7519].
+
+6.1.1.  Registry Contents
+
+   *  Claim Name: "sig_val_claims"
 
 
 
@@ -785,6 +785,69 @@ Santesson & Housley       Expires 6 March 2022                 [Page 14]
 
 Internet-Draft         Signature Validation Token         September 2021
 
+
+   *  Claim Description: Signature Validation Token
+
+   *  Change Controller: IESG
+
+   *  Specification Document(s): Section 3.2.3 of {this document}
+
+   NOTE to RFC editor: Please replace {this document} with its assigned
+   RFC number.
+
+7.  Security Considerations
+
+7.1.  Level of reliance
+
+   An SVT allows a signature verifier to still validate the original
+   signature using the original signature data and to use the
+   information in the SVT selectively to either just confirm the
+   validity and integrity of the original data, such as confirming the
+   integrity of signed data or the validity of the signer's certificate
+   etc.
+
+   Another way to use an SVT is to completely rely on the validation
+   conclusion provided by the SVT and to omit re-validation of the
+   original signature value and original certificate status checking
+   data.
+
+   This choice is a decision made by the verifier according to its own
+   policy and risk assessment.
+
+   However, even when relying on the SVT validation conclusion of an SVT
+   it is vital to still verify that the present SVT is correctly
+   associated with the document and signature that is being validated by
+   validating the hashed reference data in the SVT of the signature,
+   signing certificate chain, signed data and the signed bytes.
+
+7.2.  Aging algorithms
+
+   Even if the SVT provides protection against algorithms becoming
+   weakened or broken over time, this protection is only valid for as
+   long as the algorithms used to sign the SVT are still considered
+   secure.  It is advisable to re-issue SVT in cases where an algorithm
+   protecting the SVT is getting close to its end of life.
+
+   One way to increase the resistance of algorithms becoming insecure,
+   is to issue multiple SVT for the same signature with different
+   algorithms and key lengths where one algorithm could still be secure
+   even if the corresponding algorithm used in the alternative SVT is
+   broken.
+
+
+
+
+Santesson & Housley       Expires 6 March 2022                 [Page 15]
+
+Internet-Draft         Signature Validation Token         September 2021
+
+
+8.  Normative References
+
+   [CADES]    ETSI, "Electronic Signatures and Infrastructures (ESI);
+              CAdES digital signatures; Part 1: Building blocks and
+              CAdES baseline signatures", ETSI EN 319 122-1 v1.1.1,
+              April 2016.
 
    [ETSI319102-1]
               ETSI, "ETSI - Electronic Signatures and Infrastructures
@@ -828,19 +891,16 @@ Internet-Draft         Signature Validation Token         September 2021
               DOI 10.17487/RFC7518, May 2015,
               <https://www.rfc-editor.org/info/rfc7518>.
 
-   [RFC7519]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web Token
-              (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015,
-              <https://www.rfc-editor.org/info/rfc7519>.
 
 
-
-
-
-
-Santesson & Housley       Expires 6 March 2022                 [Page 15]
+Santesson & Housley       Expires 6 March 2022                 [Page 16]
 
 Internet-Draft         Signature Validation Token         September 2021
 
+
+   [RFC7519]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web Token
+              (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015,
+              <https://www.rfc-editor.org/info/rfc7519>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -889,11 +949,7 @@ Appendix A.  Appendix: Examples
 
 
 
-
-
-
-
-Santesson & Housley       Expires 6 March 2022                 [Page 16]
+Santesson & Housley       Expires 6 March 2022                 [Page 17]
 
 Internet-Draft         Signature Validation Token         September 2021
 
@@ -949,7 +1005,7 @@ Internet-Draft         Signature Validation Token         September 2021
 
 
 
-Santesson & Housley       Expires 6 March 2022                 [Page 17]
+Santesson & Housley       Expires 6 March 2022                 [Page 18]
 
 Internet-Draft         Signature Validation Token         September 2021
 
@@ -1005,7 +1061,7 @@ Internet-Draft         Signature Validation Token         September 2021
 
 
 
-Santesson & Housley       Expires 6 March 2022                 [Page 18]
+Santesson & Housley       Expires 6 March 2022                 [Page 19]
 
 Internet-Draft         Signature Validation Token         September 2021
 
@@ -1061,4 +1117,4 @@ Authors' Addresses
 
 
 
-Santesson & Housley       Expires 6 March 2022                 [Page 19]
+Santesson & Housley       Expires 6 March 2022                 [Page 20]

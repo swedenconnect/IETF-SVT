@@ -470,11 +470,52 @@ signature.
 
 # IANA Considerations {#iana}
 
-{ To be written }
+Two alternatives are provided:
+
+This document has no IANA actions.
+
+Note: This document defines the "sig_val_claims" claim for inclusion in the SVT JWT. This claim will only appear in an SVT according to this document and the fact that a JWT is an SVT is detemined by the relevant document profile. For example, the XML profile defines how to identity and extract an SVT from a XML document, the PDF profile does the same for PDF documents, etc. This claim name is therefore regared as a private claim name and is not subject for registration in the IANA "JSON Web Token Claims" registry established by Section 10.1 in {{RFC7519}}.
+
+Alternatively:
+
+## Claim Names Registration {#claim-names-reg}
+
+This section registers the "sig_val_claims" claim name in the IANA "JSON Web Token Claims" registry established by Section 10.1 in {{RFC7519}}.
+
+### Registry Contents {#clname-reg-contents}
+
+  - Claim Name: "sig_val_claims"
+  - Claim Description: Signature Validation Token
+  - Change Controller: IESG
+  - Specification Document(s): {{sigvalidation-obj-class}} of {this document}
+
+NOTE to RFC editor: Please replace {this document} with its assigned RFC number.
+
 
 # Security Considerations {#seccons}
 
-{ To be written }
+## Level of reliance {#seccon-lvl-of-reliance}
+
+An SVT allows a signature verifier to still validate the original signature using
+the original signature data and to use the information in the SVT selectively to
+either just confirm the validity and integrity of the original data, such as confirming the integrity of signed data or the validity of the signer's certificate etc.
+
+Another way to use an SVT is to completely rely on the validation conclusion provided
+by the SVT and to omit re-validation of the original signature value and original
+certificate status checking data.
+
+This choice is a decision made by the verifier according to its own policy and risk assessment.
+
+However, even when relying on the SVT validation conclusion of an SVT it is vital to still verify that
+the present SVT is correctly associated with the document and signature that is being validated by
+validating the hashed reference data in the SVT of the signature, signing certificate chain,
+signed data and the signed bytes.
+
+## Aging algorithms {#seccon-aging-algos}
+
+Even if the SVT provides protection against algorithms becoming weakened or broken over time, this protection is only valid for as long as the algorithms used to sign the SVT are still considered secure. It is advisable to re-issue SVT in cases where an algorithm protecting the SVT is getting close to its end of life.
+
+One way to increase the resistance of algorithms becoming insecure, is to issue multiple SVT for the same signature with different algorithms and key lengths where one algorithm could still be secure even if the corresponding algorithm used in the alternative SVT is broken.
 
 --- back
 
