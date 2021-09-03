@@ -130,13 +130,13 @@ When referring to elements defined in this specification
 
 # SVT in XML Documents {#svt-in-xml}
 
-When SVT is provided for XML signatures then one SVT SHALL be provided for each XML signature.
+When SVT is provided for XML signatures then one SVT MUST be provided for each XML signature.
 
-An SVT embedded within the XML signature element SHALL be placed in a  &lt;svt:SignatureValidationToken&gt; element as defined in {{signaturevalidationtoken-signature-property}}.
+An SVT embedded within the XML signature element MUST be placed in a  &lt;svt:SignatureValidationToken&gt; element as defined in {{signaturevalidationtoken-signature-property}}.
 
 ## SignatureValidationToken Signature Property {#signaturevalidationtoken-signature-property}
 
-The &lt;svt:SignatureValidationToken&gt; element SHALL be placed in a &lt;ds:SignatureProperty&gt; element in accordance with {{XMLDSIG11}}. The &lt;ds:SignatureProperty&gt; element SHALL be placed inside a &lt;ds:SignatureProperties&gt; element inside a &lt;ds:Object&gt; element inside a &lt;ds:Signature&gt; element.
+The &lt;svt:SignatureValidationToken&gt; element MUST be placed in a &lt;ds:SignatureProperty&gt; element in accordance with {{XMLDSIG11}}. The &lt;ds:SignatureProperty&gt; element MUST be placed inside a &lt;ds:SignatureProperties&gt; element inside a &lt;ds:Object&gt; element inside a &lt;ds:Signature&gt; element.
 
 Note: {{XMLDSIG11}} requires the Target attribute to be present in &lt;ds:SignatureProperty&gt;, referencing the signature targeted by this signature property. If an SVT is added to a signature that do not have an Id attribute, implementations SHOULD add an Id attribute to the &lt;ds:Signature&gt; element and reference that Id in the Target attribute. This Id attribute and Target attribute value matching is required by the {{XMLDSIG11}} standard, but it is redundant in the context of SVT validation as the SVT already contains information that uniquely identifies the target signature. Validation applications SHOULD not reject an SVT token because of Id and Target attribute mismatch, and MUST rely on matching against signature using signed information in the SVT itself.
 
@@ -162,7 +162,7 @@ The &lt;svt:SignatureValidationToken&gt; element is defined by the following XML
 </xs:schema>
 ~~~
 
-The SVT token SHALL be included as a string representation of the SVT JWT. Note that this is the string representation of the JWT without further encoding. The SVT MUST NOT be represented by the Base64 encoded bytes of the JWT string.
+The SVT token MUST be included as a string representation of the SVT JWT. Note that this is the string representation of the JWT without further encoding. The SVT MUST NOT be represented by the Base64 encoded bytes of the JWT string.
 
 Example:
 
@@ -215,8 +215,8 @@ The SVT Signature object MUST contain one instance of the "sig_data" claim (Sign
 
 The SVT Signature object MUST contain a "signer_cert_ref" claim (CertReference object). The "type" parameter of the "signer_cert_ref" claim MUST be either "chain" or "chain_hash".
 
-- The "chain" type SHALL be used when signature validation was performed using one or more certificates where some or all of the certificates in the chain are not present in the target signature.
-- The "chain_hash" type SHALL be used when signature validation was performed using one or more certificates where all of the certificates are present in the target signature.
+- The "chain" type MUST be used when signature validation was performed using one or more certificates where some or all of the certificates in the chain are not present in the target signature.
+- The "chain_hash" type MUST be used when signature validation was performed using one or more certificates where all of the certificates are present in the target signature.
 
 # JOSE Header {#jose-header}
 

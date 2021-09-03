@@ -102,9 +102,9 @@ The definitions in {{SVT}} apply also to this document.
 
 The SVT for a signed PDF document MAY provide signature validation information about any of the present signatures in the PDF. The SVT MUST contain a separate "sig" claim (Signature object) for each signature on the PDF that is covered by the SVT.
 
-An SVT added to a signed PDF document SHALL be added to a document timestamp accordance with ISO 32000-2:2017 {{ISOPDF2}}.
+An SVT added to a signed PDF document MUST be added to a document timestamp accordance with ISO 32000-2:2017 {{ISOPDF2}}.
 
-The document timestamp contains an {{RFC3161}} timestamp token (TSTInfo) in EncapsulatedContentInfo of the CMS signature. The SVT SHALL be added to the timestamp token (TSTInfo) as an Extension object as defined in  {{svt-extension-to-timestamps}}.
+The document timestamp contains an {{RFC3161}} timestamp token (TSTInfo) in EncapsulatedContentInfo of the CMS signature. The SVT MUST be added to the timestamp token (TSTInfo) as an Extension object as defined in  {{svt-extension-to-timestamps}}.
 
 ## SVT Extension to Timestamp Tokens {#svt-extension-to-timestamps}
 
@@ -116,7 +116,7 @@ Editors note: This is the current used OID. Consider assigning an IETF extension
 
 This extension data (OCTET STRING) holds the bytes of SVT JWT, represented as a UTF-8 encoded string.
 
-This extension SHALL NOT be marked critical.
+This extension MUST NOT be marked critical.
 
 Note: Extensions in timestamp tokens according to {{RFC3161}} are imported from the definition of the X.509 certificate extensions defined in {{RFC5280}}.
 
@@ -145,8 +145,8 @@ The SVT Signature object MUST contain one instance of the "sig_data" claim (Sign
 
 The SVT Signature object MUST contain a "signer_cert_ref" claim (CertReference object). The "type" parameter of the "signer_cert_ref" claim MUST be either "chain" or "chain_hash".
 
-- The "chain" type SHALL be used when signature validation was performed using one or more certificates where some or all of the certificates in the chain are not present in the target signature.
-- The "chain_hash" type SHALL be used when signature validation was performed using one or more certificates where all of the certificates are present in the target signature.
+- The "chain" type MUST be used when signature validation was performed using one or more certificates where some or all of the certificates in the chain are not present in the target signature.
+- The "chain_hash" type MUST be used when signature validation was performed using one or more certificates where all of the certificates are present in the target signature.
 
 Note: The referenced signer certificate MUST match any certificates referenced using ESSCertID or ESSCertIDv2 from {{RFC5035}}.
 

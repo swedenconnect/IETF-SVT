@@ -147,17 +147,17 @@ Internet-Draft       XML Signature Validation Token       September 2021
 
 3.  SVT in XML Documents
 
-   When SVT is provided for XML signatures then one SVT SHALL be
-   provided for each XML signature.
+   When SVT is provided for XML signatures then one SVT MUST be provided
+   for each XML signature.
 
-   An SVT embedded within the XML signature element SHALL be placed in a
+   An SVT embedded within the XML signature element MUST be placed in a
    <svt:SignatureValidationToken> element as defined in Section 3.1.
 
 3.1.  SignatureValidationToken Signature Property
 
-   The <svt:SignatureValidationToken> element SHALL be placed in a
+   The <svt:SignatureValidationToken> element MUST be placed in a
    <ds:SignatureProperty> element in accordance with [XMLDSIG11].  The
-   <ds:SignatureProperty> element SHALL be placed inside a
+   <ds:SignatureProperty> element MUST be placed inside a
    <ds:SignatureProperties> element inside a <ds:Object> element inside
    a <ds:Signature> element.
 
@@ -204,7 +204,7 @@ Internet-Draft       XML Signature Validation Token       September 2021
 
    </xs:schema>
 
-   The SVT token SHALL be included as a string representation of the SVT
+   The SVT token MUST be included as a string representation of the SVT
    JWT.  Note that this is the string representation of the JWT without
    further encoding.  The SVT MUST NOT be represented by the Base64
    encoded bytes of the JWT string.
@@ -304,11 +304,11 @@ Internet-Draft       XML Signature Validation Token       September 2021
    (CertReference object).  The "type" parameter of the
    "signer_cert_ref" claim MUST be either "chain" or "chain_hash".
 
-   *  The "chain" type SHALL be used when signature validation was
+   *  The "chain" type MUST be used when signature validation was
       performed using one or more certificates where some or all of the
       certificates in the chain are not present in the target signature.
 
-   *  The "chain_hash" type SHALL be used when signature validation was
+   *  The "chain_hash" type MUST be used when signature validation was
       performed using one or more certificates where all of the
       certificates are present in the target signature.
 
