@@ -470,14 +470,6 @@ signature.
 
 # IANA Considerations {#iana}
 
-Two alternatives are provided:
-
-This document has no IANA actions.
-
-Note: This document defines the "sig_val_claims" claim for inclusion in the SVT JWT. This claim will only appear in an SVT according to this document and the fact that a JWT is an SVT is detemined by the relevant document profile. For example, the XML profile defines how to identity and extract an SVT from a XML document, the PDF profile does the same for PDF documents, etc. This claim name is therefore regared as a private claim name and is not subject for registration in the IANA "JSON Web Token Claims" registry established by Section 10.1 in {{RFC7519}}.
-
-Alternatively:
-
 ## Claim Names Registration {#claim-names-reg}
 
 This section registers the "sig_val_claims" claim name in the IANA "JSON Web Token Claims" registry established by Section 10.1 in {{RFC7519}}.

@@ -89,10 +89,10 @@ Table of Contents
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
      6.1.  Claim Names Registration  . . . . . . . . . . . . . . . .  14
        6.1.1.  Registry Contents . . . . . . . . . . . . . . . . . .  14
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  14
      7.1.  Level of reliance . . . . . . . . . . . . . . . . . . . .  15
      7.2.  Aging algorithms  . . . . . . . . . . . . . . . . . . . .  15
-   8.  Normative References  . . . . . . . . . . . . . . . . . . . .  16
+   8.  Normative References  . . . . . . . . . . . . . . . . . . . .  15
    Appendix A.  Appendix: Examples . . . . . . . . . . . . . . . . .  17
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  20
 
@@ -752,22 +752,6 @@ Internet-Draft         Signature Validation Token         September 2021
 
 6.  IANA Considerations
 
-   Two alternatives are provided:
-
-   This document has no IANA actions.
-
-   Note: This document defines the "sig_val_claims" claim for inclusion
-   in the SVT JWT.  This claim will only appear in an SVT according to
-   this document and the fact that a JWT is an SVT is detemined by the
-   relevant document profile.  For example, the XML profile defines how
-   to identity and extract an SVT from a XML document, the PDF profile
-   does the same for PDF documents, etc.  This claim name is therefore
-   regared as a private claim name and is not subject for registration
-   in the IANA "JSON Web Token Claims" registry established by
-   Section 10.1 in [RFC7519].
-
-   Alternatively:
-
 6.1.  Claim Names Registration
 
    This section registers the "sig_val_claims" claim name in the IANA
@@ -777,14 +761,6 @@ Internet-Draft         Signature Validation Token         September 2021
 6.1.1.  Registry Contents
 
    *  Claim Name: "sig_val_claims"
-
-
-
-
-Santesson & Housley       Expires 6 March 2022                 [Page 14]
-
-Internet-Draft         Signature Validation Token         September 2021
-
 
    *  Claim Description: Signature Validation Token
 
@@ -796,6 +772,19 @@ Internet-Draft         Signature Validation Token         September 2021
    RFC number.
 
 7.  Security Considerations
+
+
+
+
+
+
+
+
+
+Santesson & Housley       Expires 6 March 2022                 [Page 14]
+
+Internet-Draft         Signature Validation Token         September 2021
+
 
 7.1.  Level of reliance
 
@@ -834,6 +823,17 @@ Internet-Draft         Signature Validation Token         September 2021
    even if the corresponding algorithm used in the alternative SVT is
    broken.
 
+8.  Normative References
+
+   [CADES]    ETSI, "Electronic Signatures and Infrastructures (ESI);
+              CAdES digital signatures; Part 1: Building blocks and
+              CAdES baseline signatures", ETSI EN 319 122-1 v1.1.1,
+              April 2016.
+
+
+
+
+
 
 
 
@@ -841,13 +841,6 @@ Santesson & Housley       Expires 6 March 2022                 [Page 15]
 
 Internet-Draft         Signature Validation Token         September 2021
 
-
-8.  Normative References
-
-   [CADES]    ETSI, "Electronic Signatures and Infrastructures (ESI);
-              CAdES digital signatures; Part 1: Building blocks and
-              CAdES baseline signatures", ETSI EN 319 122-1 v1.1.1,
-              April 2016.
 
    [ETSI319102-1]
               ETSI, "ETSI - Electronic Signatures and Infrastructures
@@ -891,16 +884,19 @@ Internet-Draft         Signature Validation Token         September 2021
               DOI 10.17487/RFC7518, May 2015,
               <https://www.rfc-editor.org/info/rfc7518>.
 
+   [RFC7519]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web Token
+              (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015,
+              <https://www.rfc-editor.org/info/rfc7519>.
+
+
+
+
 
 
 Santesson & Housley       Expires 6 March 2022                 [Page 16]
 
 Internet-Draft         Signature Validation Token         September 2021
 
-
-   [RFC7519]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web Token
-              (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015,
-              <https://www.rfc-editor.org/info/rfc7519>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -926,6 +922,10 @@ Appendix A.  Appendix: Examples
    readablilty.  Line breaks are not allowed in valid JSON data.
 
    Signature validation token JWT:
+
+
+
+
 
 
 
