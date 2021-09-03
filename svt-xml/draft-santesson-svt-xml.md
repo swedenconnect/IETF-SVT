@@ -194,30 +194,29 @@ For interoperability robustness, signature validation applications MUST be able 
 
 ## Signature Reference Data {#signature-reference-data}
 
-The SVT SHALL contain a SigReference claims object that SHALL contain the following data:
+The SVT Signature object MUST contain a "sig_ref" claim (SigReference object) with the following elements:
 
-- id -- The Id-attribute of the XML signature, if present.
+- "id" -- The Id-attribute of the XML signature, if present.
 
-- sig_hash -- The hash over the signature value bytes.
+- "sig_hash" -- The hash over the signature value bytes.
 
-- sb_hash -- The hash over the canonicalized &lt;ds:SignedInfo&gt; element (the bytes the XML signature algorithm has signed to generated the signature value).
+- "sb_hash" -- The hash over the canonicalized &lt;ds:SignedInfo&gt; element (the bytes the XML signature algorithm has signed to generated the signature value).
 
 
 ## Signed Data Reference Data {#signed-data-reference}
 
-An SVT according to this profile SHALL contain one instance of the SignedData claims object for each &lt;ds:Reference&gt; element in the &lt;ds:SignedInfo&gt; element. The SignedData claims object shall contain the following data:
+The SVT Signature object MUST contain one instance of the "sig_data" claim (SignedData object) for each &lt;ds:Reference&gt; element in the &lt;ds:SignedInfo&gt; element. The "sig_data" claim MUST contain the following elements:
 
+- "ref" -- The value of the URI attribute of the corresponding &lt;ds:Reference&gt; element.
 
-- ref -- The value of the URI attribute of the corresponding &lt;ds:Reference&gt; element.
-
-- hash -- The hash of all bytes identified corresponding &lt;ds:Reference&gt; element after applying all identified canonicalization and transformation algorithms. These are the same bytes that is hashed by the hash value in the &lt;ds:DigestValue&gt; element inside the &lt;ds:Reference&gt; element.
+- "hash" -- The hash of all bytes identified corresponding &lt;ds:Reference&gt; element after applying all identified canonicalization and transformation algorithms. These are the same bytes that is hashed by the hash value in the &lt;ds:DigestValue&gt; element inside the &lt;ds:Reference&gt; element.
 
 ## Signer Certificate References {#signer-certificate-references}
 
-The SVT SHALL contain a CertReference claims object. The type claim of the CertReference claims object SHALL be either chain or chain_hash.
+The SVT Signature object MUST contain a "signer_cert_ref" claim (CertReference object). The "type" parameter of the "signer_cert_ref" claim MUST be either "chain" or "chain_hash".
 
-- The chain type SHALL be used when signature validation was performed using one or more certificates where some or all of the certificates in the chain are not present in the target signature.
-- The chain_hash type SHALL be used when signature validation was performed using one or more certificates where all of the certificates are present in the target signature.
+- The "chain" type SHALL be used when signature validation was performed using one or more certificates where some or all of the certificates in the chain are not present in the target signature.
+- The "chain_hash" type SHALL be used when signature validation was performed using one or more certificates where all of the certificates are present in the target signature.
 
 # JOSE Header {#jose-header}
 
@@ -225,5 +224,5 @@ The SVT SHALL contain a CertReference claims object. The type claim of the CertR
 
 The SVT JOSE header must contain one of the following header parameters in accordance with {{RFC7515}}, for storing a reference to the public key used to verify the signature on the SVT:
 
-- x5c -- Holds an X.509 certificate {{RFC5280}} or a chain of certificates. The certificate holding the public key that verifies the signature on the SVT MUST be the first certificate in the chain.
-- kid -- A key identifier holding the Base64 encoded hash value of the certificate that can verify the signature on the SVT. The hash algorithm MUST be the same hash algorithm used when signing the SVT as specified by the `alg` header parameter.
+- "x5c" -- Holds an X.509 certificate {{RFC5280}} or a chain of certificates. The certificate holding the public key that verifies the signature on the SVT MUST be the first certificate in the chain.
+- "kid" -- A key identifier holding the Base64 encoded hash value of the certificate that can verify the signature on the SVT. The hash algorithm MUST be the same hash algorithm used when signing the SVT as specified by the `alg` header parameter.

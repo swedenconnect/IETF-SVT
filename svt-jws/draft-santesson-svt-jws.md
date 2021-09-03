@@ -106,33 +106,33 @@ If a JWS signature already contains an array of SVTs and a new SVT is to be adde
 
 ## Signature Reference Data {#signature-reference-data}
 
-The SVT MUST contain a SigReference claim with the following elements:
+The SVT Signature object MUST contain a "sig_ref" claim (SigReference object) with the following elements:
 
-- sig_hash -- The hash over the associated signature value (the bytes of the base64url-decoded signature parameter).
+- "sig_hash" -- The hash over the associated signature value (the bytes of the base64url-decoded signature parameter).
 
-- sb_hash -- The hash over all bytes signed by the associated signature (the JWS Signing Input according to {{RFC7515}}).
+- "sb_hash" -- The hash over all bytes signed by the associated signature (the JWS Signing Input according to {{RFC7515}}).
 
 
 ## Signed Data Reference Data {#signed-data-reference}
 
-The SVT MUST contain one instance of the SignedData claim with the following elements:
+The SVT Signature object MUST contain one instance of the "sig_data" claim (SignedData object) with the following elements:
 
-- ref -- This parameter MUST hold one of the following thee possible values.
+- "ref" -- This parameter MUST hold one of the following thee possible values.
 
   1. The explicit string value "payload" if the signed JWS Payload is embedded in a "payload" member of the JWS.
 
-  2. An empty string if the JWS signs detached payload data without explicit reference.
+  2. The explicit string value "detached" if the JWS signs detached payload data without explicit reference.
 
   3. A URI that can be used to identify or fetch the detached signed data. The means to determine the URI for the detached signed data is outside the scope of this specification.
 
-- hash -- The hash over the JWS Payload data bytes (not its base64url-encoded string representation).
+- "hash" -- The hash over the JWS Payload data bytes (not its base64url-encoded string representation).
 
 ## Signer Certificate References {#signer-certificate-references}
 
-The SVT MUST contain a CertReference claims object. The type claim of the CertReference claims object MUST be either chain or chain_hash.
+The SVT Signature object MUST contain a "signer_cert_ref" claim (CertReference object). The "type" parameter of the "signer_cert_ref" claim MUST be either "chain" or "chain_hash".
 
-- The chain type MUST be used when signature validation was performed using one or more certificates where some or all of the certificates in the chain are not present in the target signature.
-- The chain_hash type MUST be used when signature validation was performed using one or more certificates where all of the certificates are present in the target signature JOSE header using the "x5c" Header Parameter.
+- The "chain" type MUST be used when signature validation was performed using one or more certificates where some or all of the certificates in the chain are not present in the target signature.
+- The "chain_hash" type MUST be used when signature validation was performed using one or more certificates where all of the certificates are present in the target signature JOSE header using the "x5c" Header Parameter.
 
 # SVT JOSE Header {#svt-jose-header}
 
@@ -140,8 +140,8 @@ The SVT MUST contain a CertReference claims object. The type claim of the CertRe
 
 The SVT JOSE header must contain one of the following header parameters in accordance with {{RFC7515}}, for storing a reference to the public key used to verify the signature on the SVT:
 
-- x5c -- Holds an X.509 certificate {{RFC5280}} or a chain of certificates. The certificate holding the public key that verifies the signature on the SVT MUST be the first certificate in the chain.
-- kid -- A key identifier holding the Base64 encoded hash value of the certificate that can verify the signature on the SVT. The hash algorithm MUST be the same hash algorithm used when signing the SVT as specified by the `alg` header parameter.
+- "x5c" -- Holds an X.509 certificate {{RFC5280}} or a chain of certificates. The certificate holding the public key that verifies the signature on the SVT MUST be the first certificate in the chain.
+- "kid" -- A key identifier holding the Base64 encoded hash value of the certificate that can verify the signature on the SVT. The hash algorithm MUST be the same hash algorithm used when signing the SVT as specified by the `alg` header parameter.
 
 # IANA Considerations
 
