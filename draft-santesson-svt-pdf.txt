@@ -5,8 +5,8 @@
 Network Working Group                                       S. Santesson
 Internet-Draft                                           IDsec Solutions
 Intended status: Informational                                R. Housley
-Expires: 6 March 2022                                     Vigil Security
-                                                        2 September 2021
+Expires: 7 March 2022                                     Vigil Security
+                                                        3 September 2021
 
 
                      PDF Signature Validation Token
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 March 2022.
+   This Internet-Draft will expire on 7 March 2022.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 1]
+Santesson & Housley       Expires 7 March 2022                  [Page 1]
 
 Internet-Draft       PDF Signature Validation Token       September 2021
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 2]
+Santesson & Housley       Expires 7 March 2022                  [Page 2]
 
 Internet-Draft       PDF Signature Validation Token       September 2021
 
@@ -165,7 +165,7 @@ Internet-Draft       PDF Signature Validation Token       September 2021
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 3]
+Santesson & Housley       Expires 7 March 2022                  [Page 3]
 
 Internet-Draft       PDF Signature Validation Token       September 2021
 
@@ -221,7 +221,7 @@ Internet-Draft       PDF Signature Validation Token       September 2021
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 4]
+Santesson & Housley       Expires 7 March 2022                  [Page 4]
 
 Internet-Draft       PDF Signature Validation Token       September 2021
 
@@ -259,11 +259,6 @@ Internet-Draft       PDF Signature Validation Token       September 2021
    [ISOPDF2]  ISO, "Document management -- Portable document format --
               Part 2: PDF 2.0", ISO 32000-2, July 2017.
 
-   [PADES]    ETSI, "Electronic Signatures and Infrastructures (ESI);
-              PAdES digital signatures; Part 1: Building blocks and
-              PAdES baseline signatures", ETSI EN 319 142-1 v1.1.1,
-              April 2016.
-
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -274,18 +269,18 @@ Internet-Draft       PDF Signature Validation Token       September 2021
               Protocol (TSP)", RFC 3161, DOI 10.17487/RFC3161, August
               2001, <https://www.rfc-editor.org/info/rfc3161>.
 
-
-
-
-Santesson & Housley       Expires 6 March 2022                  [Page 5]
-
-Internet-Draft       PDF Signature Validation Token       September 2021
-
-
    [RFC5035]  Schaad, J., "Enhanced Security Services (ESS) Update:
               Adding CertID Algorithm Agility", RFC 5035,
               DOI 10.17487/RFC5035, August 2007,
               <https://www.rfc-editor.org/info/rfc5035>.
+
+
+
+
+Santesson & Housley       Expires 7 March 2022                  [Page 5]
+
+Internet-Draft       PDF Signature Validation Token       September 2021
+
 
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key
@@ -333,4 +328,9 @@ Authors' Addresses
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 6]
+
+
+
+
+
+Santesson & Housley       Expires 7 March 2022                  [Page 6]

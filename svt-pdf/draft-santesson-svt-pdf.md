@@ -1,7 +1,7 @@
 ---
 title: PDF Signature Validation Token
 docname: draft-santesson-svt-pdf-02
-date: 2021-09-02
+date: 2021-09-03
 category: info
 consensus: true
 
@@ -49,13 +49,6 @@ normative:
     date: 2017-07
     seriesinfo:
       "ISO": "32000-2"
-  PADES:
-    title: "Electronic Signatures and Infrastructures (ESI); PAdES digital signatures; Part 1: Building blocks and PAdES baseline signatures"
-    author:
-      org: ETSI
-    date: 2016-04
-    seriesinfo:
-      "ETSI": "EN 319 142-1 v1.1.1"
   SVT:
     title: "Signature Validation Token"
     author:

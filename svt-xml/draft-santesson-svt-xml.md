@@ -1,7 +1,7 @@
 ---
 title: XML Signature Validation Token
 docname: draft-santesson-svt-xml-02
-date: 2021-09-02
+date: 2021-09-03
 category: info
 consensus: true
 

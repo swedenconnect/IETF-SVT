@@ -1,7 +1,7 @@
 ---
 title: JWS Signature Validation Token
 docname: draft-santesson-svt-jws-00
-date: 2021-09-02
+date: 2021-09-03
 category: info
 consensus: true
 
