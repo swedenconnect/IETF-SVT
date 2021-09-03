@@ -11,6 +11,7 @@ Current working draft for SVT specifications are located in the folders:
 - **svt-main** for the main protocol
 - **svt-xml** for the XML profile
 - **svt-pdf** for the PDF profile
+- **svt-jws** for the JWS profile
 
 The latest compiled versions of each draft are located in the this root directory.
 
@@ -21,6 +22,7 @@ Note: That the latest working version found here normally is a later version tha
 - [https://datatracker.ietf.org/doc/draft-santesson-svt/](https://datatracker.ietf.org/doc/draft-santesson-svt/?include_text=1)
 - [https://datatracker.ietf.org/doc/draft-santesson-svt-pdf/](https://datatracker.ietf.org/doc/draft-santesson-svt-pdf/)
 - [https://datatracker.ietf.org/doc/draft-santesson-svt-xml/](https://datatracker.ietf.org/doc/draft-santesson-svt-xml/)
+- [https://datatracker.ietf.org/doc/draft-santesson-svt-jws/](https://datatracker.ietf.org/doc/draft-santesson-svt-jws/)
 
 ## Open source and reference implementation
 Implementation of version 1.0 of this specification is available as open source. This open source is free to use under the Apache 2.0 license.
