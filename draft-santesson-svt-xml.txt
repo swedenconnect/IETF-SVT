@@ -73,7 +73,9 @@ Table of Contents
      4.3.  Signer Certificate References . . . . . . . . . . . . . .   6
    5.  JOSE Header . . . . . . . . . . . . . . . . . . . . . . . . .   6
      5.1.  SVT Signing Key Reference . . . . . . . . . . . . . . . .   6
-   6.  Normative References  . . . . . . . . . . . . . . . . . . . .   7
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   7
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   7
+   8.  Normative References  . . . . . . . . . . . . . . . . . . . .   7
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   7
 
 1.  Introduction
@@ -99,8 +101,6 @@ Table of Contents
    To provide a generic solution for any type of XML signature an SVT is
    added to each XML signature element within the XML signature
    <ds:Object> element.
-
-
 
 
 
@@ -338,7 +338,15 @@ Santesson & Housley       Expires 6 March 2022                  [Page 6]
 Internet-Draft       XML Signature Validation Token       September 2021
 
 
-6.  Normative References
+6.  IANA Considerations
+
+   This document has no IANA actions.
+
+7.  Security Considerations
+
+   The security considerations of [SVT] applies also to this document.
+
+8.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -379,6 +387,13 @@ Authors' Addresses
    Email: sts@aaa-sec.com
 
 
+
+
+Santesson & Housley       Expires 6 March 2022                  [Page 7]
+
+Internet-Draft       XML Signature Validation Token       September 2021
+
+
    Russ Housley
    Vigil Security, LLC
    516 Dranesville Road
@@ -389,4 +404,45 @@ Authors' Addresses
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 7]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Santesson & Housley       Expires 6 March 2022                  [Page 8]

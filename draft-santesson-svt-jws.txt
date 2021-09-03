@@ -74,7 +74,8 @@ Table of Contents
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
      6.1.  Header Parameter Names Registration . . . . . . . . . . .   5
        6.1.1.  Registry Contents . . . . . . . . . . . . . . . . . .   5
-   7.  Normative References  . . . . . . . . . . . . . . . . . . . .   5
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
+   8.  Normative References  . . . . . . . . . . . . . . . . . . . .   6
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
@@ -99,7 +100,6 @@ Table of Contents
    To provide a generic solution for JWS, an SVT is added to each
    present signature as a JWS Unprotected Header.  If a JWS includes
    multiple signatures, then each signature includes its own SVT.
-
 
 
 
@@ -272,7 +272,7 @@ Internet-Draft       JWS Signature Validation Token       September 2021
    NOTE to RFC editor: Please replace {this document} with its assigned
    RFC number.
 
-7.  Normative References
+
 
 
 
@@ -281,6 +281,12 @@ Santesson & Housley       Expires 6 March 2022                  [Page 5]
 
 Internet-Draft       JWS Signature Validation Token       September 2021
 
+
+7.  Security Considerations
+
+   The security considerations of [SVT] applies also to this document.
+
+8.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -319,6 +325,19 @@ Authors' Addresses
    Email: sts@aaa-sec.com
 
 
+
+
+
+
+
+
+
+
+Santesson & Housley       Expires 6 March 2022                  [Page 6]
+
+Internet-Draft       JWS Signature Validation Token       September 2021
+
+
    Russ Housley
    Vigil Security, LLC
    516 Dranesville Road
@@ -333,4 +352,41 @@ Authors' Addresses
 
 
 
-Santesson & Housley       Expires 6 March 2022                  [Page 6]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Santesson & Housley       Expires 6 March 2022                  [Page 7]

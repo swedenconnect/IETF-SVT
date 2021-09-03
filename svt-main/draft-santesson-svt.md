@@ -399,7 +399,7 @@ it contains the following parameters:
 
 The following type identifiers are defined:
 
-- "chain" -- The ref contains an array of Base64 encoded X.509 certificates {{RFC5280}}. The certificates MUST be provided in the order starting with the end entity certificate. Any following certificate must be able to validate the signature on the previous certificate in the array.
+- chain -- The ref contains an array of Base64 encoded X.509 certificates {{RFC5280}}. The certificates MUST be provided in the order starting with the end entity certificate. Any following certificate must be able to validate the signature on the previous certificate in the array.
 
 - chain_hash -- The ref contains an array of one or more Base64 encoded hash values where each hash value is a hash over a X.509 certificate {{RFC5280}} used to validate the signature.  The certificates MUST be provided in the order starting with the end entity certificate.  Any following certificate must be able to validate the signature on the previous certificate in the array. This option MUST NOT be used unless all hashed certificates are present in the target electronic signature.
 

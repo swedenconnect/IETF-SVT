@@ -624,7 +624,7 @@ Internet-Draft         Signature Validation Token         September 2021
 
    The following type identifiers are defined:
 
-   *  "chain" - The ref contains an array of Base64 encoded X.509
+   *  chain - The ref contains an array of Base64 encoded X.509
       certificates [RFC5280].  The certificates MUST be provided in the
       order starting with the end entity certificate.  Any following
       certificate must be able to validate the signature on the previous

@@ -161,4 +161,4 @@ NOTE to RFC editor: Please replace {this document} with its assigned RFC number.
 
 # Security Considerations {#seccons}
 
-The security considerations of {{svt}} applies also to this document.
+The security considerations of {{SVT}} applies also to this document.

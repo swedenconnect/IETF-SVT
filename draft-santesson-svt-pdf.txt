@@ -70,7 +70,9 @@ Table of Contents
      4.3.  Signer Certificate References . . . . . . . . . . . . . .   4
    5.  JOSE Header . . . . . . . . . . . . . . . . . . . . . . . . .   5
      5.1.  SVT Signing Key Reference . . . . . . . . . . . . . . . .   5
-   6.  Normative References  . . . . . . . . . . . . . . . . . . . .   5
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
+   8.  Normative References  . . . . . . . . . . . . . . . . . . . .   5
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
@@ -99,8 +101,6 @@ Table of Contents
    an extension to a document timestamp added to the signed PDF as an
    incremental update.  This SVT covers all signatures of the signed
    PDF.
-
-
 
 
 
@@ -246,7 +246,15 @@ Internet-Draft       PDF Signature Validation Token       September 2021
       referenced certificate SHOULD be the same certificate that was
       used to sign the document timestamp that contains the SVT.
 
-6.  Normative References
+6.  IANA Considerations
+
+   This document has no IANA actions.
+
+7.  Security Considerations
+
+   The security considerations of [SVT] applies also to this document.
+
+8.  Normative References
 
    [ISOPDF2]  ISO, "Document management -- Portable document format --
               Part 2: PDF 2.0", ISO 32000-2, July 2017.
@@ -266,14 +274,6 @@ Internet-Draft       PDF Signature Validation Token       September 2021
               Protocol (TSP)", RFC 3161, DOI 10.17487/RFC3161, August
               2001, <https://www.rfc-editor.org/info/rfc3161>.
 
-   [RFC5035]  Schaad, J., "Enhanced Security Services (ESS) Update:
-              Adding CertID Algorithm Agility", RFC 5035,
-              DOI 10.17487/RFC5035, August 2007,
-              <https://www.rfc-editor.org/info/rfc5035>.
-
-
-
-
 
 
 
@@ -281,6 +281,11 @@ Santesson & Housley       Expires 6 March 2022                  [Page 5]
 
 Internet-Draft       PDF Signature Validation Token       September 2021
 
+
+   [RFC5035]  Schaad, J., "Enhanced Security Services (ESS) Update:
+              Adding CertID Algorithm Agility", RFC 5035,
+              DOI 10.17487/RFC5035, August 2007,
+              <https://www.rfc-editor.org/info/rfc5035>.
 
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key
@@ -317,11 +322,6 @@ Authors' Addresses
    United States of America
 
    Email: housley@vigilsec.com
-
-
-
-
-
 
 
 
