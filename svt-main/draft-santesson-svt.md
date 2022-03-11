@@ -1,7 +1,7 @@
 ---
 title: Signature Validation Token
 docname: draft-santesson-svt-02
-date: 2021-09-03
+date: 2022-03-11
 category: info
 consensus: true
 
@@ -510,6 +510,344 @@ Even if the SVT provides protection against algorithms becoming weakened or brok
 One way to increase the resistance of algorithms becoming insecure, is to issue multiple SVT for the same signature with different algorithms and key lengths where one algorithm could still be secure even if the corresponding algorithm used in the alternative SVT is broken.
 
 --- back
+
+# Appendix: Schemas
+
+## Concise Data Definition Language (CDDL)
+
+The following informative CDDL {{RFC8610}} express the structure of an SVT token:
+
+~~~
+  svt = {
+    jti: text,
+    iss: text,
+    iat: uint,
+    ? aud: text / [+ text],
+    ? exp: uint,
+    sig_val_claims
+  }
+
+  sig_val_claims = (
+    ver: text,
+    profile: text,
+    hash_algo: text,
+    sig: [+ Signature],
+    ? ext: Extension
+  )
+
+  Signature = (
+    sig_ref: SigReference,
+    sig_data: [+ SignedData],
+    signer_cert_ref: CertReference,
+    sig_val: [+ PolicyValidation],
+    ? time_val: [+ TimeValidation]
+    ? ext: Extension
+  )
+
+  SigReference = (
+    ? id: text,
+    sig_hash: bstr,
+    sb_hash: bstr,
+  )
+
+  SignedData = (
+    ref: text,
+    hash: bstr
+  )
+
+  CertReference = (
+    type: "chain" / "chain_hash"
+    ref: [+ text]
+  )
+
+  PolicyValidation = (
+    pol: text,
+    res: "PASSED" / "FAILED" / "INDETERMINATE",
+    ? msg: text,
+    ? ext: Extension
+  )
+
+  TimeValidation = (
+    time: uint,
+    type: text,
+    iss: text,
+    ? id: text,
+    ? val: [+ PolicyValidation],
+    ? ext: Extension
+  )
+
+
+  Extension = (
+   + text => text
+  )
+~~~
+
+## JSON Schema
+
+The following informative JSON schema describes the syntax of the SVT token payload.
+
+~~~
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Signature Validation Token JSON Schema",
+    "description": "Schema defining the payload format for SVT",
+    "type": "object",
+    "required": [
+        "jti",
+        "iss",
+        "iat",
+        "sig_val_claims"
+    ],
+    "properties": {
+        "jti": {
+            "description": "JWT ID registered claim according to [RFC7519]",
+            "type": "string"
+        },
+        "iss": {
+            "description": "Issuer registered claim according to [RFC7519]",
+            "type": "string"
+        },
+        "iat": {
+            "description": "Issued At registered claim according to [RFC7519]",
+            "type": "integer"
+        },
+        "aud": {
+            "description": "Audience registered claim according to [RFC7519]",
+            "type": [
+                "string",
+                "array"
+            ],
+            "items": {"type": "string"}
+        },
+        "exp": {
+            "description": "Expiration time (seconds since epoch)",
+            "type": "integer"
+        },
+        "sig_val_claims": {
+            "description": "Signature validation claims",
+            "type": "object",
+            "required": [
+                "ver",
+                "profile",
+                "hash_algo",
+                "sig"
+            ],
+            "properties": {
+                "ver": {
+                    "description": "Version",
+                    "type": "string"
+                },
+                "profile": {
+                    "description": "Implementation profile",
+                    "type": "string"
+                },
+                "hash_algo": {
+                    "description": "Hash algorithm URI",
+                    "type": "string"
+                },
+                "sig": {
+                    "description": "Information about validated signatures",
+                    "type": "array",
+                    "items": {"$ref": "#/$def/Signature"}
+                },
+                "ext": {
+                    "description": "Extensibility map with string values",
+                    "$ref": "#/$def/Extension"
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+"additionalProperties": false,
+"$def": {
+         "Signature":{
+             "type": "object",
+             "required": [
+                 "sig_ref",
+                 "sig_data_ref",
+                 "signer_cert_ref",
+                 "sig_val"
+             ],
+             "properties": {
+                 "sig_ref": {
+                     "description": "Signature Reference",
+                     "$ref": "#/$def/SigReference"
+                 },
+                 "sig_data_ref": {
+                     "description": "Signed data array",
+                     "type": "array",
+                     "items": {
+                         "$ref" : "#/$def/SignedData"
+                     }
+                 },
+                 "signer_cert_ref": {
+                     "description": "Signer certificate reference",
+                     "$ref": "#/$def/CertReference"
+                 },
+                 "sig_val": {
+                     "description": "Signature validation results",
+                     "type": "array",
+                     "items": {
+                         "$ref": "#/$def/PolicyValidation"
+                     }
+                 },
+                 "time_val": {
+                     "description": "Time validations",
+                     "type": "array",
+                     "items": {
+                         "$ref": "#/$def/TimeValidation"
+                     }
+                 },
+                "ext": {
+                    "description": "Extensibility map with string values",
+                    "$ref": "#/$def/Extension"
+                }
+             },
+             "additionalProperties": false
+         },
+         "SigReference":{
+             "type": "object",
+             "required": [
+                 "sig_hash",
+                 "sb_hash"
+             ],
+             "properties": {
+                 "sig_hash": {
+                     "description": "Hash of the signature value",
+                     "type": "string",
+                     "format": "base64"
+                 },
+                 "sb_hash": {
+                     "description": "Hash of the signed document bytes",
+                     "type": "string",
+                     "format": "base64"
+                 },
+                 "id": {
+                     "description": "ID reference for this signature",
+                     "type": ["string","null"]
+                 }
+             },
+            "additionalProperties": false
+         },
+         "SignedData": {
+             "type": "object",
+             "required": [
+                 "ref",
+                 "hash"
+             ],
+             "properties": {
+                 "ref": {
+                     "description": "Reference to the signed data",
+                     "type": "string"
+                 },
+                 "hash": {
+                     "description": "Hash of the bytes encrypted by the signature value",
+                     "type": "string",
+                     "format": "base64"
+                 }
+             },
+            "additionalProperties": false
+         },
+         "CertReference":{
+             "type": "object",
+             "required": [
+                 "type",
+                 "ref"
+             ],
+             "properties": {
+                 "type": {
+                     "description": "Type of certificate reference",
+                     "type": "string",
+                     "enum": ["chain","chain_hash"]
+                 },
+                 "ref": {
+                     "description": "Certificate reference data",
+                     "type": "array",
+                     "items": {
+                         "type": "string",
+                         "format": "base64"
+                     }
+                 }
+             },
+            "additionalProperties": false
+         },
+         "PolicyValidation":{
+             "type": "object",
+             "required": [
+                 "pol",
+                 "res"
+             ],
+             "properties": {
+                 "pol": {
+                     "description": "Identifier of the policy used to validate the signature",
+                     "type": "string"
+                 },
+                 "res": {
+                     "description": "Signature validation result",
+                     "type": "string",
+                     "enum": ["PASSED","FAILED","INDETERMINATE"]
+                 },
+                 "msg": {
+                     "description": "Message",
+                     "type": ["string","null"]
+                 },
+                 "ext": {
+                    "description": "Extensibility map with string values",
+                    "$ref": "#/$def/Extension"
+                }
+             },
+            "additionalProperties": false
+         },
+         "TimeValidation":{
+             "type": "object",
+             "required": [
+                 "time",
+                 "type",
+                 "iss"
+             ],
+             "properties": {
+                 "time": {
+                     "description": "Verified time when this signature existed",
+                     "type": "integer"
+                 },
+                 "type": {
+                     "description": "Identifier of the type of time validation proof",
+                     "type": "string"
+                 },
+                 "iss": {
+                     "description": "Identifier of the issuer of the time proof",
+                     "type": "string"
+                 },
+                 "id": {
+                     "description": "A unique identifier assigned to the evidence of time",
+                     "type": ["string","null"]
+
+                 },
+                 "val": {
+                     "description": "Validation result of the time proof",
+                     "type": "array",
+                     "items": {
+                         "$ref": "#/$def/PolicyValidation"
+                     }
+                 },
+                 "ext": {
+                    "description": "Extensibility map with string values",
+                    "$ref": "#/$def/Extension"
+                }
+             },
+            "additionalProperties": false
+         },
+         "Extension": {
+           "description": "Extensibility map with string values",
+           "type": ["object","null"],
+           "required": [],
+           "additionalProperties": {
+               "type": "string"
+           }
+         }
+     }
+}
+~~~
 
 # Appendix: Examples
 

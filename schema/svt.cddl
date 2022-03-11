@@ -1,0 +1,63 @@
+svt = {
+  jti: text,
+  iss: text,
+  iat: uint,
+  ? aud: text / [+ text],
+  ? exp: uint,
+  sig_val_claims 
+}
+
+sig_val_claims = (
+  ver: text,
+  profile: text,
+  hash_algo: text,
+  sig: [+ Signature],
+  ? ext: Extension
+)
+
+Signature = (
+  sig_ref: SigReference,
+  sig_data_ref: [+ SignedData],
+  signer_cert_ref: CertReference,
+  sig_val: [+ PolicyValidation],
+  ? time_val: [+ TimeValidation]
+  ? ext: Extension
+)
+
+SigReference = (
+  ? id: text,
+  sig_hash: bstr,
+  sb_hash: bstr,
+)
+
+SignedData = (
+  ref: text,
+  hash: bstr
+)
+
+CertReference = (
+  type: "chain" / "chain_hash"
+  ref: [+ text]
+)
+
+PolicyValidation = (
+  pol: text,
+  res: "PASSED" / "FAILED" / "INDETERMINATE",
+  ? msg: text,
+  ? ext: Extension
+)
+
+TimeValidation = (
+  time: uint,
+  type: text,
+  iss: text,
+  ? id: text,
+  ? val: [+ PolicyValidation],
+  ? ext: Extension
+)
+
+
+Extension = (
+ + text => text
+)
+
