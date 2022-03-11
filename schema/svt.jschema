@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "Signature Validation Token JSON Schema",
-    "description": "Schema defining the payload format for a Signature Validation Token (SVT)",
+    "description": "Schema defining the payload format for SVT",
     "type": "object",
     "required": [
         "jti",
@@ -11,19 +11,19 @@
     ],
     "properties": {
         "jti": {
-            "description": " String data type that is a JWT ID registered claim according to [RFC7519]",
+            "description": "JWT ID registered claim according to [RFC7519]",
             "type": "string"
         },
         "iss": {
-            "description": "A StringOrURI data type that is an Issuer registered claim according to [RFC7519]",
+            "description": "Issuer registered claim according to [RFC7519]",
             "type": "string"
         },
         "iat": {
-            "description": "A NumericDate data type that is an Issued At registered claim according to [RFC7519]",
+            "description": "Issued At registered claim according to [RFC7519]",
             "type": "integer"
         },
         "aud": {
-            "description": "A [StringOrURI] data type or a StringOrURI data type that is an Audience registered claim according to [RFC7519]",
+            "description": "Audience registered claim according to [RFC7519]",
             "type": [
                 "string",
                 "array"
@@ -57,7 +57,7 @@
                     "type": "string"
                 },
                 "sig": {
-                    "description": "Information about validated electronic signatures",
+                    "description": "Information about validated signatures",
                     "type": "array",
                     "items": {"$ref": "#/$def/Signature"}
                 },
@@ -126,19 +126,19 @@
                  "sig_hash": {
                      "description": "Hash of the signature value",
                      "type": "string",
-                     "format": "base64"                     
+                     "format": "base64"
                  },
                  "sb_hash": {
-                     "description": "Hash of the document bytes ultimately signed by the signature",
+                     "description": "Hash of the signed document bytes",
                      "type": "string",
-                     "format": "base64"                                          
+                     "format": "base64"
                  },
                  "id": {
                      "description": "ID reference for this signature",
                      "type": ["string","null"]
                  }
              },
-            "additionalProperties": false    
+            "additionalProperties": false
          },
          "SignedData": {
              "type": "object",
@@ -149,15 +149,15 @@
              "properties": {
                  "ref": {
                      "description": "Reference to the signed data",
-                     "type": "string"                     
+                     "type": "string"
                  },
                  "hash": {
                      "description": "Hash of the bytes encrypted by the signature value",
                      "type": "string",
-                     "format": "base64"                                                               
+                     "format": "base64"
                  }
              },
-            "additionalProperties": false          
+            "additionalProperties": false
          },
          "CertReference":{
              "type": "object",
@@ -176,8 +176,8 @@
                      "type": "array",
                      "items": {
                          "type": "string",
-                         "format": "base64"                                                               
-                     }                     
+                         "format": "base64"
+                     }
                  }
              },
             "additionalProperties": false
@@ -191,7 +191,7 @@
              "properties": {
                  "pol": {
                      "description": "Identifier of the policy used to validate the signature",
-                     "type": "string"                     
+                     "type": "string"
                  },
                  "res": {
                      "description": "Signature validation result",
@@ -222,23 +222,23 @@
                      "type": "integer"
                  },
                  "type": {
-                     "description": "Identifier of the type of time validation proof supporting this claim",
+                     "description": "Identifier of the type of time validation proof",
                      "type": "string"
                  },
                  "iss": {
                      "description": "Identifier of the issuer of the time proof",
-                     "type": "string"                     
+                     "type": "string"
                  },
                  "id": {
                      "description": "A unique identifier assigned to the evidence of time",
                      "type": ["string","null"]
-                     
+
                  },
                  "val": {
                      "description": "Validation result of the time proof",
                      "type": "array",
                      "items": {
-                         "$ref": "#/$def/PolicyValidation"                         
+                         "$ref": "#/$def/PolicyValidation"
                      }
                  },
                  "ext": {
