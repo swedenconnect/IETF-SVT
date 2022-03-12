@@ -535,7 +535,7 @@ SigValClaims = {
   profile: text
   hash_algo: text
   sig: [+ Signature]
-  ? ext: Extension / null
+  ? ext: Extension
 }
 
 Signature = {
@@ -544,18 +544,18 @@ Signature = {
   signer_cert_ref: CertReference
   sig_val: [+ PolicyValidation]
   ? time_val: [+ TimeValidation]
-  ? ext: Extension / null
+  ? ext: Extension
 }
 
 SigReference = {
   ? id: text / null
-  sig_hash: text
-  sb_hash: text
+  sig_hash: binary-value
+  sb_hash: binary-value
 }
 
 SignedData = {
   ref: text
-  hash: text
+  hash: binary-value
 }
 
 
@@ -568,7 +568,7 @@ PolicyValidation = {
   pol: text
   res: "PASSED" / "FAILED" / "INDETERMINATE"
   ? msg: text / null
-  ? ext: Extension / null
+  ? ext: Extension
 }
 
 TimeValidation = {
@@ -577,13 +577,15 @@ TimeValidation = {
   iss: text
   ? id: text / null
   ? val: [+ PolicyValidation]
-  ? ext: Extension / null
+  ? ext: Extension
 }
 
 
 Extension = {
   + text => text
-}
+} / null
+
+binary-value = text      ; base64 classic with padding
 ~~~
 
 ## JSON Schema
