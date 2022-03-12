@@ -1,9 +1,9 @@
 ---
 title: Signature Validation Token
-docname: draft-santesson-svt-02
+docname: draft-santesson-svt-03
 date: 2022-03-11
 category: info
-consensus: true
+submissionType: independent
 
 ipr: trust200902
 area: Security
@@ -106,6 +106,9 @@ normative:
     date: 2016-04
     seriesinfo:
       "ETSI": "EN 319 122-1 v1.1.1"
+
+informative:
+  RFC8610:
 
 --- abstract
 
@@ -318,7 +321,7 @@ evidence for one signature, and it contains the following parameters:
 
 - sig_ref -- A Object&lt;SigReference&gt; data type that contains reference information identifying the target signature. This parameter MUST be present.
 
-- sig_data -- A \[Object&lt;SignedData&gt;\] data type that contains an array of references to Signed Data that was signed by the target electronic signature.  This parameter MUST be present.
+- sig_data_ref -- A \[Object&lt;SignedData&gt;\] data type that contains an array of references to Signed Data that was signed by the target electronic signature.  This parameter MUST be present.
 
 - signer_cert_ref -- A Object&lt;CertReference&gt; data type that references the signer's certificate and optionally reference to a supporting certification path that was used to verify the target electronic signature. This parameter MUST be present.
 
@@ -343,7 +346,7 @@ of the target signature value and Signed Bytes, and it contains the following pa
 
 ### SignedData Claims Object Class {#signeddata-obj-class}
 
-The sig_data parameter in the Signature object class uses the SignedData object
+The sig_data_ref parameter in the Signature object class uses the SignedData object
 class. The SignedData object provides information used to verify the target electronic
 signature references to Signed Data as well as to verify the integrity of all data that
 is signed by the target signature, and it contains the following parameters:
@@ -537,7 +540,7 @@ The following informative CDDL {{RFC8610}} express the structure of an SVT token
 
   Signature = (
     sig_ref: SigReference,
-    sig_data: [+ SignedData],
+    sig_data_ref: [+ SignedData],
     signer_cert_ref: CertReference,
     sig_val: [+ PolicyValidation],
     ? time_val: [+ TimeValidation]
@@ -600,19 +603,19 @@ The following informative JSON schema describes the syntax of the SVT token payl
     ],
     "properties": {
         "jti": {
-            "description": "JWT ID registered claim according to [RFC7519]",
+            "description": "JWT ID",
             "type": "string"
         },
         "iss": {
-            "description": "Issuer registered claim according to [RFC7519]",
+            "description": "Issuer",
             "type": "string"
         },
         "iat": {
-            "description": "Issued At registered claim according to [RFC7519]",
+            "description": "Issued At",
             "type": "integer"
         },
         "aud": {
-            "description": "Audience registered claim according to [RFC7519]",
+            "description": "Audience",
             "type": [
                 "string",
                 "array"
@@ -646,12 +649,12 @@ The following informative JSON schema describes the syntax of the SVT token payl
                     "type": "string"
                 },
                 "sig": {
-                    "description": "Information about validated signatures",
+                    "description": "Validated signatures",
                     "type": "array",
                     "items": {"$ref": "#/$def/Signature"}
                 },
                 "ext": {
-                    "description": "Extensibility map with string values",
+                    "description": "Extension map",
                     "$ref": "#/$def/Extension"
                 }
             },
@@ -699,7 +702,7 @@ The following informative JSON schema describes the syntax of the SVT token payl
                      }
                  },
                 "ext": {
-                    "description": "Extensibility map with string values",
+                    "description": "Extension map",
                     "$ref": "#/$def/Extension"
                 }
              },
@@ -718,12 +721,12 @@ The following informative JSON schema describes the syntax of the SVT token payl
                      "format": "base64"
                  },
                  "sb_hash": {
-                     "description": "Hash of the signed document bytes",
+                     "description": "Hash of the Signed Bytes",
                      "type": "string",
                      "format": "base64"
                  },
                  "id": {
-                     "description": "ID reference for this signature",
+                     "description": "Signature ID reference",
                      "type": ["string","null"]
                  }
              },
@@ -741,7 +744,7 @@ The following informative JSON schema describes the syntax of the SVT token payl
                      "type": "string"
                  },
                  "hash": {
-                     "description": "Hash of the bytes encrypted by the signature value",
+                     "description": "Signed data hash",
                      "type": "string",
                      "format": "base64"
                  }
@@ -779,7 +782,7 @@ The following informative JSON schema describes the syntax of the SVT token payl
              ],
              "properties": {
                  "pol": {
-                     "description": "Identifier of the policy used to validate the signature",
+                     "description": "Policy identifier",
                      "type": "string"
                  },
                  "res": {
@@ -792,7 +795,7 @@ The following informative JSON schema describes the syntax of the SVT token payl
                      "type": ["string","null"]
                  },
                  "ext": {
-                    "description": "Extensibility map with string values",
+                    "description": "Extension map",
                     "$ref": "#/$def/Extension"
                 }
              },
@@ -807,38 +810,38 @@ The following informative JSON schema describes the syntax of the SVT token payl
              ],
              "properties": {
                  "time": {
-                     "description": "Verified time when this signature existed",
+                     "description": "Verified time",
                      "type": "integer"
                  },
                  "type": {
-                     "description": "Identifier of the type of time validation proof",
+                     "description": "Type of time validation proof",
                      "type": "string"
                  },
                  "iss": {
-                     "description": "Identifier of the issuer of the time proof",
+                     "description": "Issuer of the time proof",
                      "type": "string"
                  },
                  "id": {
-                     "description": "A unique identifier assigned to the evidence of time",
+                     "description": "Tiem evidence identifier",
                      "type": ["string","null"]
 
                  },
                  "val": {
-                     "description": "Validation result of the time proof",
+                     "description": "Validation result",
                      "type": "array",
                      "items": {
                          "$ref": "#/$def/PolicyValidation"
                      }
                  },
                  "ext": {
-                    "description": "Extensibility map with string values",
+                    "description": "Extension map",
                     "$ref": "#/$def/Extension"
                 }
              },
             "additionalProperties": false
          },
          "Extension": {
-           "description": "Extensibility map with string values",
+           "description": "Extension map",
            "type": ["object","null"],
            "required": [],
            "additionalProperties": {

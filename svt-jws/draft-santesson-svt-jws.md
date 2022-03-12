@@ -1,9 +1,9 @@
 ---
 title: JWS Signature Validation Token
-docname: draft-santesson-svt-jws-00
-date: 2021-09-03
+docname: draft-santesson-svt-jws-01
+date: 2022-03-12
 category: info
-consensus: true
+submissionType: independent
 
 ipr: trust200902
 area: Security

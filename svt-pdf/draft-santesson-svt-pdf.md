@@ -1,9 +1,9 @@
 ---
 title: PDF Signature Validation Token
-docname: draft-santesson-svt-pdf-02
-date: 2021-09-03
+docname: draft-santesson-svt-pdf-03
+date: 2022-03-12
 category: info
-consensus: true
+submissionType: independent
 
 ipr: trust200902
 area: Security
