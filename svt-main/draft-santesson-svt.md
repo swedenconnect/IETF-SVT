@@ -521,68 +521,69 @@ One way to increase the resistance of algorithms becoming insecure, is to issue 
 The following informative CDDL {{RFC8610}} express the structure of an SVT token:
 
 ~~~
-  svt = {
-    jti: text,
-    iss: text,
-    iat: uint,
-    ? aud: text / [+ text],
-    ? exp: uint,
-    sig_val_claims
-  }
+svt = {
+  jti: text
+  iss: text
+  iat: uint
+  ? aud: text / [+ text]
+  ? exp: uint
+  sig_val_claims: SigValClaims
+}
 
-  sig_val_claims = (
-    ver: text,
-    profile: text,
-    hash_algo: text,
-    sig: [+ Signature],
-    ? ext: Extension
-  )
+SigValClaims = {
+  ver: text
+  profile: text
+  hash_algo: text
+  sig: [+ Signature]
+  ? ext: Extension / null
+}
 
-  Signature = (
-    sig_ref: SigReference,
-    sig_data_ref: [+ SignedData],
-    signer_cert_ref: CertReference,
-    sig_val: [+ PolicyValidation],
-    ? time_val: [+ TimeValidation]
-    ? ext: Extension
-  )
+Signature = {
+  sig_ref: SigReference
+  sig_data_ref: [+ SignedData]
+  signer_cert_ref: CertReference
+  sig_val: [+ PolicyValidation]
+  ? time_val: [+ TimeValidation]
+  ? ext: Extension / null
+}
 
-  SigReference = (
-    ? id: text,
-    sig_hash: bstr,
-    sb_hash: bstr,
-  )
+SigReference = {
+  ? id: text / null
+  sig_hash: text
+  sb_hash: text
+}
 
-  SignedData = (
-    ref: text,
-    hash: bstr
-  )
-
-  CertReference = (
-    type: "chain" / "chain_hash"
-    ref: [+ text]
-  )
-
-  PolicyValidation = (
-    pol: text,
-    res: "PASSED" / "FAILED" / "INDETERMINATE",
-    ? msg: text,
-    ? ext: Extension
-  )
-
-  TimeValidation = (
-    time: uint,
-    type: text,
-    iss: text,
-    ? id: text,
-    ? val: [+ PolicyValidation],
-    ? ext: Extension
-  )
+SignedData = {
+  ref: text
+  hash: text
+}
 
 
-  Extension = (
-   + text => text
-  )
+CertReference = {
+  type: "chain" / "chain_hash"
+  ref: [+ text]
+}
+
+PolicyValidation = {
+  pol: text
+  res: "PASSED" / "FAILED" / "INDETERMINATE"
+  ? msg: text / null
+  ? ext: Extension / null
+}
+
+TimeValidation = {
+  "time": uint
+  type: text
+  iss: text
+  ? id: text / null
+  ? val: [+ PolicyValidation]
+  ? ext: Extension / null
+}
+
+
+Extension = {
+  + text => text
+}
 ~~~
 
 ## JSON Schema

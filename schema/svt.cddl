@@ -1,63 +1,63 @@
 svt = {
-  jti: text,
-  iss: text,
-  iat: uint,
-  ? aud: text / [+ text],
-  ? exp: uint,
-  sig_val_claims 
+  jti: text
+  iss: text
+  iat: uint
+  ? aud: text / [+ text]
+  ? exp: uint
+  sig_val_claims: SigValClaims
 }
 
-sig_val_claims = (
-  ver: text,
-  profile: text,
-  hash_algo: text,
-  sig: [+ Signature],
-  ? ext: Extension
-)
+SigValClaims = {
+  ver: text
+  profile: text
+  hash_algo: text
+  sig: [+ Signature]
+  ? ext: Extension / null
+}
 
-Signature = (
-  sig_ref: SigReference,
-  sig_data_ref: [+ SignedData],
-  signer_cert_ref: CertReference,
-  sig_val: [+ PolicyValidation],
+Signature = {
+  sig_ref: SigReference
+  sig_data_ref: [+ SignedData]
+  signer_cert_ref: CertReference
+  sig_val: [+ PolicyValidation]
   ? time_val: [+ TimeValidation]
-  ? ext: Extension
-)
+  ? ext: Extension / null
+}
 
-SigReference = (
-  ? id: text,
-  sig_hash: bstr,
-  sb_hash: bstr,
-)
+SigReference = {
+  ? id: text / null
+  sig_hash: text
+  sb_hash: text
+}
 
-SignedData = (
-  ref: text,
-  hash: bstr
-)
+SignedData = {
+  ref: text
+  hash: text
+}
 
-CertReference = (
+
+CertReference = {
   type: "chain" / "chain_hash"
   ref: [+ text]
-)
+}
 
-PolicyValidation = (
-  pol: text,
-  res: "PASSED" / "FAILED" / "INDETERMINATE",
-  ? msg: text,
-  ? ext: Extension
-)
+PolicyValidation = {
+  pol: text
+  res: "PASSED" / "FAILED" / "INDETERMINATE"
+  ? msg: text / null
+  ? ext: Extension / null
+}
 
-TimeValidation = (
-  time: uint,
-  type: text,
-  iss: text,
-  ? id: text,
-  ? val: [+ PolicyValidation],
-  ? ext: Extension
-)
+TimeValidation = {
+  "time": uint
+  type: text
+  iss: text
+  ? id: text / null
+  ? val: [+ PolicyValidation]
+  ? ext: Extension / null
+}
 
 
-Extension = (
- + text => text
-)
-
+Extension = {
+  + text => text
+}
