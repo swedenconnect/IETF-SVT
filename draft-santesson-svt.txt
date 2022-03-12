@@ -24,7 +24,7 @@ Abstract
    validation of that electronic signature can be satisfied by
    validating the SVT without any need to also validate the original
    electronic signature or the associated digital certificates.  SVT
-   supports electronic signatures in CMS, XML, and PDF documents.
+   supports electronic signatures in CMS, XML, PDF and JSON documents.
 
 Status of This Memo
 

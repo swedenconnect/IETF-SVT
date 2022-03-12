@@ -119,8 +119,8 @@ electronic signature. The SVT is provided by a trusted authority, which asserts 
 a particular signature was successfully validated according to defined procedures at
 a certain time. Any future validation of that electronic signature can be satisfied by
 validating the SVT without any need to also validate the original electronic signature or
-the associated digital certificates. SVT supports electronic signatures in CMS, XML, and
-PDF documents.
+the associated digital certificates. SVT supports electronic signatures in CMS, XML,
+PDF and JSON documents.
 
 --- middle
 
