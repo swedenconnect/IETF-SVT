@@ -955,7 +955,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
      sig_ref: SigReference
-     sig_data_ref: [+ SignedData]
+     sig_data_ref: [+ SignedDataReference]
      signer_cert_ref: CertReference
      sig_val: [+ PolicyValidation]
      ? time_val: [+ TimeValidation]
@@ -968,7 +968,7 @@ Internet-Draft         Signature Validation Token             March 2022
      sb_hash: binary-value
    }
 
-   SignedData = {
+   SignedDataReference = {
      ref: text
      hash: binary-value
    }
@@ -1113,7 +1113,7 @@ Internet-Draft         Signature Validation Token             March 2022
                         "description": "Signed data array",
                         "type": "array",
                         "items": {
-                            "$ref" : "#/$def/SignedData"
+                            "$ref" : "#/$def/SignedDataReference"
 
 
 
@@ -1181,7 +1181,7 @@ Internet-Draft         Signature Validation Token             March 2022
                 },
                "additionalProperties": false
             },
-            "SignedData": {
+            "SignedDataReference": {
                 "type": "object",
                 "required": [
                     "ref",

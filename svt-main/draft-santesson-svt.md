@@ -540,7 +540,7 @@ SigValClaims = {
 
 Signature = {
   sig_ref: SigReference
-  sig_data_ref: [+ SignedData]
+  sig_data_ref: [+ SignedDataReference]
   signer_cert_ref: CertReference
   sig_val: [+ PolicyValidation]
   ? time_val: [+ TimeValidation]
@@ -553,7 +553,7 @@ SigReference = {
   sb_hash: binary-value
 }
 
-SignedData = {
+SignedDataReference = {
   ref: text
   hash: binary-value
 }
@@ -683,7 +683,7 @@ The following informative JSON schema describes the syntax of the SVT token payl
                      "description": "Signed data array",
                      "type": "array",
                      "items": {
-                         "$ref" : "#/$def/SignedData"
+                         "$ref" : "#/$def/SignedDataReference"
                      }
                  },
                  "signer_cert_ref": {
@@ -735,7 +735,7 @@ The following informative JSON schema describes the syntax of the SVT token payl
              },
             "additionalProperties": false
          },
-         "SignedData": {
+         "SignedDataReference": {
              "type": "object",
              "required": [
                  "ref",

@@ -88,7 +88,7 @@
                      "description": "Signed data array",
                      "type": "array",
                      "items": {
-                         "$ref" : "#/$def/SignedData"
+                         "$ref" : "#/$def/SignedDataReference"
                      }
                  },
                  "signer_cert_ref": {
@@ -140,7 +140,7 @@
              },
             "additionalProperties": false
          },
-         "SignedData": {
+         "SignedDataReference": {
              "type": "object",
              "required": [
                  "ref",
