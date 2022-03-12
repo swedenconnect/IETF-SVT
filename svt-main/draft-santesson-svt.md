@@ -525,7 +525,7 @@ svt = {
   jti: text
   iss: text
   iat: uint
-  ? aud: text / [+ text]
+  ? aud: text / [* text]
   ? exp: uint
   sig_val_claims: SigValClaims
 }
