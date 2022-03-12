@@ -4,60 +4,61 @@ svt = {
   iat: uint,
   ? aud: text / [+ text],
   ? exp: uint,
-  sig_val_claims 
+  sig_val_claims: sig_val_claims
 }
 
-sig_val_claims = (
+sig_val_claims = {
   ver: text,
   profile: text,
   hash_algo: text,
   sig: [+ Signature],
   ? ext: Extension
-)
+}
 
-Signature = (
+Signature = {
   sig_ref: SigReference,
   sig_data_ref: [+ SignedData],
   signer_cert_ref: CertReference,
   sig_val: [+ PolicyValidation],
   ? time_val: [+ TimeValidation]
   ? ext: Extension
-)
+}
 
-SigReference = (
+SigReference = {
   ? id: text,
-  sig_hash: bstr,
-  sb_hash: bstr,
-)
+  sig_hash: binary-value,
+  sb_hash: binary-value,
+}
 
-SignedData = (
+SignedData = {
   ref: text,
-  hash: bstr
-)
+  hash: binary-value
+}
 
-CertReference = (
+CertReference = {
   type: "chain" / "chain_hash"
   ref: [+ text]
-)
+}
 
-PolicyValidation = (
+PolicyValidation = {
   pol: text,
   res: "PASSED" / "FAILED" / "INDETERMINATE",
-  ? msg: text,
+  ? msg: text / null,
   ? ext: Extension
-)
+}
 
-TimeValidation = (
+TimeValidation = {
   time: uint,
   type: text,
   iss: text,
   ? id: text,
   ? val: [+ PolicyValidation],
   ? ext: Extension
-)
+}
 
 
-Extension = (
+Extension = {
  + text => text
-)
+} / null
 
+binary-value = text             ; base64 classic with padding
