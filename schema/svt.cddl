@@ -20,7 +20,7 @@ Signature = {
   sig_data_ref: [+ SignedDataReference]
   signer_cert_ref: CertReference
   sig_val: [+ PolicyValidation]
-  ? time_val: [+ TimeValidation]
+  ? time_val: [* TimeValidation]
   ? ext: Extension
 }
 
@@ -53,7 +53,7 @@ TimeValidation = {
   type: text
   iss: text
   ? id: text / null
-  ? val: [+ PolicyValidation]
+  ? val: [* PolicyValidation]
   ? ext: Extension
 }
 

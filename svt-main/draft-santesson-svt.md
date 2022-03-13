@@ -305,7 +305,7 @@ holds all custom claims, and a SigValidation object contains the following param
 
 - ver -- A String data type representing the version. This parameter MUST be present, and the version in this specification indicated by the value "1.0".
 
-- profile -- A StringOrURI data type representing the name of a profile that defines conventions followed for specific claims and any extension points used by the SVT issuer. Inclusion of this parameter is OPTIONAL.
+- profile -- A StringOrURI data type representing the name of a profile that defines conventions followed for specific claims and any extension points used by the SVT issuer. This parameter MUST be present.
 
 - hash_algo -- A URI data type that identifies the hash algorithm used to compute the hash values within the SVT. The URI identifier MUST be one defined in {{RFC6931}} or in the IANA registry defined by this specification. This parameter MUST be present.
 
@@ -321,11 +321,11 @@ evidence for one signature, and it contains the following parameters:
 
 - sig_ref -- A Object&lt;SigReference&gt; data type that contains reference information identifying the target signature. This parameter MUST be present.
 
-- sig_data_ref -- A \[Object&lt;SignedDataReference&gt;\] data type that contains an array of references to Signed Data that was signed by the target electronic signature.  This parameter MUST be present.
+- sig_data_ref -- A \[Object&lt;SignedDataReference&gt;\] data type that contains an array of references to Signed Data that was signed by the target electronic signature. At least one SignedDataReference object MUST be present.
 
 - signer_cert_ref -- A Object&lt;CertReference&gt; data type that references the signer's certificate and optionally reference to a supporting certification path that was used to verify the target electronic signature. This parameter MUST be present.
 
-- sig_val -- A \[Object&lt;PolicyValidation&gt;\] data type that contains an array of results of signature verification according to defined procedures. This parameter MUST be present.
+- sig_val -- A \[Object&lt;PolicyValidation&gt;\] data type that contains an array of results of signature verification according to defined procedures. At least one PolicyValidation object MUST be present.
 
 - time_val -- A \[Object&lt;TimeValidation&gt;\] data type that contains an array of time verification results that the target signature has existed at a specific date and time in the past. Inclusion of this parameter is OPTIONAL.
 
@@ -398,7 +398,7 @@ it contains the following parameters:
 
 - type -- A StringOrURI data type that contains an identifier of the type of reference. The type identifier MUST be one of the identifiers defined below, an identifier specified by the selected profile, or a URI identifier. This parameter MUST be present.
 
-- ref -- A \[String\] data type that contains an array of string parameters according to conventions defined by the type identifier. This parameter MUST be present.
+- ref -- A \[String\] data type that contains an array of string parameters according to conventions defined by the type identifier. At least one parameter MUST be present.
 
 The following type identifiers are defined:
 
@@ -543,7 +543,7 @@ Signature = {
   sig_data_ref: [+ SignedDataReference]
   signer_cert_ref: CertReference
   sig_val: [+ PolicyValidation]
-  ? time_val: [+ TimeValidation]
+  ? time_val: [* TimeValidation]
   ? ext: Extension
 }
 
@@ -576,7 +576,7 @@ TimeValidation = {
   type: text
   iss: text
   ? id: text / null
-  ? val: [+ PolicyValidation]
+  ? val: [* PolicyValidation]
   ? ext: Extension
 }
 
@@ -585,7 +585,7 @@ Extension = {
   + text => text
 } / null
 
-binary-value = text      ; base64 classic with padding
+binary-value = text             ; base64 classic with padding
 ~~~
 
 ## JSON Schema
@@ -654,7 +654,10 @@ The following informative JSON schema describes the syntax of the SVT token payl
                 "sig": {
                     "description": "Validated signatures",
                     "type": "array",
-                    "items": {"$ref": "#/$def/Signature"}
+                    "items": {
+                        "$ref": "#/$def/Signature"
+                    },
+                    "minItems": 1
                 },
                 "ext": {
                     "description": "Extension map",
@@ -684,7 +687,8 @@ The following informative JSON schema describes the syntax of the SVT token payl
                      "type": "array",
                      "items": {
                          "$ref" : "#/$def/SignedDataReference"
-                     }
+                     },
+                     "minItems": 1
                  },
                  "signer_cert_ref": {
                      "description": "Signer certificate reference",
@@ -695,7 +699,8 @@ The following informative JSON schema describes the syntax of the SVT token payl
                      "type": "array",
                      "items": {
                          "$ref": "#/$def/PolicyValidation"
-                     }
+                     },
+                     "minItems": 1
                  },
                  "time_val": {
                      "description": "Time validations",
@@ -772,7 +777,8 @@ The following informative JSON schema describes the syntax of the SVT token payl
                      "items": {
                          "type": "string",
                          "format": "base64"
-                     }
+                     },
+                     "minItems": 1
                  }
              },
             "additionalProperties": false

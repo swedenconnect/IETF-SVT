@@ -419,8 +419,8 @@ Internet-Draft         Signature Validation Token             March 2022
 
    *  profile -- A StringOrURI data type representing the name of a
       profile that defines conventions followed for specific claims and
-      any extension points used by the SVT issuer.  Inclusion of this
-      parameter is OPTIONAL.
+      any extension points used by the SVT issuer.  This parameter MUST
+      be present.
 
    *  hash_algo -- A URI data type that identifies the hash algorithm
       used to compute the hash values within the SVT.  The URI
@@ -463,7 +463,8 @@ Internet-Draft         Signature Validation Token             March 2022
 
    *  sig_data_ref -- A [Object<SignedDataReference>] data type that
       contains an array of references to Signed Data that was signed by
-      the target electronic signature.  This parameter MUST be present.
+      the target electronic signature.  At least one SignedDataReference
+      object MUST be present.
 
    *  signer_cert_ref -- A Object<CertReference> data type that
       references the signer's certificate and optionally reference to a
@@ -472,7 +473,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
    *  sig_val -- A [Object<PolicyValidation>] data type that contains an
       array of results of signature verification according to defined
-      procedures.  This parameter MUST be present.
+      procedures.  At least one PolicyValidation object MUST be present.
 
    *  time_val -- A [Object<TimeValidation>] data type that contains an
       array of time verification results that the target signature has
@@ -496,7 +497,6 @@ Internet-Draft         Signature Validation Token             March 2022
 
    *  id -- A String data type that contains an identifier assigned to
       the target signature.  Inclusion of this parameter is OPTIONAL.
-
 
 
 
@@ -625,7 +625,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
    *  ref -- A [String] data type that contains an array of string
       parameters according to conventions defined by the type
-      identifier.  This parameter MUST be present.
+      identifier.  At least one parameter MUST be present.
 
    The following type identifiers are defined:
 
@@ -962,7 +962,7 @@ Internet-Draft         Signature Validation Token             March 2022
      sig_data_ref: [+ SignedDataReference]
      signer_cert_ref: CertReference
      sig_val: [+ PolicyValidation]
-     ? time_val: [+ TimeValidation]
+     ? time_val: [* TimeValidation]
      ? ext: Extension
    }
 
@@ -995,7 +995,7 @@ Internet-Draft         Signature Validation Token             March 2022
      type: text
      iss: text
      ? id: text / null
-     ? val: [+ PolicyValidation]
+     ? val: [* PolicyValidation]
      ? ext: Extension
    }
 
@@ -1012,7 +1012,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
    } / null
 
-   binary-value = text      ; base64 classic with padding
+   binary-value = text             ; base64 classic with padding
 
 A.2.  JSON Schema
 
@@ -1088,7 +1088,10 @@ Internet-Draft         Signature Validation Token             March 2022
                    "sig": {
                        "description": "Validated signatures",
                        "type": "array",
-                       "items": {"$ref": "#/$def/Signature"}
+                       "items": {
+                           "$ref": "#/$def/Signature"
+                       },
+                       "minItems": 1
                    },
                    "ext": {
                        "description": "Extension map",
@@ -1111,9 +1114,6 @@ Internet-Draft         Signature Validation Token             March 2022
                 "properties": {
                     "sig_ref": {
                         "description": "Signature Reference",
-                        "$ref": "#/$def/SigReference"
-                    },
-                    "sig_data_ref": {
 
 
 
@@ -1122,11 +1122,15 @@ Santesson & Housley     Expires 12 September 2022              [Page 20]
 Internet-Draft         Signature Validation Token             March 2022
 
 
+                        "$ref": "#/$def/SigReference"
+                    },
+                    "sig_data_ref": {
                         "description": "Signed data array",
                         "type": "array",
                         "items": {
                             "$ref" : "#/$def/SignedDataReference"
-                        }
+                        },
+                        "minItems": 1
                     },
                     "signer_cert_ref": {
                         "description": "Signer certificate reference",
@@ -1137,7 +1141,8 @@ Internet-Draft         Signature Validation Token             March 2022
                         "type": "array",
                         "items": {
                             "$ref": "#/$def/PolicyValidation"
-                        }
+                        },
+                        "minItems": 1
                     },
                     "time_val": {
                         "description": "Time validations",
@@ -1165,11 +1170,6 @@ Internet-Draft         Signature Validation Token             March 2022
                         "type": "string",
                         "format": "base64"
                     },
-                    "sb_hash": {
-                        "description": "Hash of the Signed Bytes",
-                        "type": "string",
-                        "format": "base64"
-                    },
 
 
 
@@ -1178,6 +1178,11 @@ Santesson & Housley     Expires 12 September 2022              [Page 21]
 Internet-Draft         Signature Validation Token             March 2022
 
 
+                    "sb_hash": {
+                        "description": "Hash of the Signed Bytes",
+                        "type": "string",
+                        "format": "base64"
+                    },
                     "id": {
                         "description": "Signature ID reference",
                         "type": ["string","null"]
@@ -1221,11 +1226,6 @@ Internet-Draft         Signature Validation Token             March 2022
                         "type": "array",
                         "items": {
                             "type": "string",
-                            "format": "base64"
-                        }
-                    }
-                },
-               "additionalProperties": false
 
 
 
@@ -1234,6 +1234,12 @@ Santesson & Housley     Expires 12 September 2022              [Page 22]
 Internet-Draft         Signature Validation Token             March 2022
 
 
+                            "format": "base64"
+                        },
+                        "minItems": 1
+                    }
+                },
+               "additionalProperties": false
             },
             "PolicyValidation":{
                 "type": "object",
@@ -1276,12 +1282,6 @@ Internet-Draft         Signature Validation Token             March 2022
                     },
                     "type": {
                         "description": "Type of time validation proof",
-                        "type": "string"
-                    },
-                    "iss": {
-                        "description": "Issuer of the time proof",
-                        "type": "string"
-                    },
 
 
 
@@ -1290,6 +1290,12 @@ Santesson & Housley     Expires 12 September 2022              [Page 23]
 Internet-Draft         Signature Validation Token             March 2022
 
 
+                        "type": "string"
+                    },
+                    "iss": {
+                        "description": "Issuer of the time proof",
+                        "type": "string"
+                    },
                     "id": {
                         "description": "Tiem evidence identifier",
                         "type": ["string","null"]
@@ -1329,12 +1335,6 @@ Appendix B.  Appendix: Examples
    readablilty.  Line breaks are not allowed in valid JSON data.
 
    Signature validation token JWT:
-
-
-
-
-
-
 
 
 

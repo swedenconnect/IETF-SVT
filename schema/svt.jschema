@@ -11,19 +11,19 @@
     ],
     "properties": {
         "jti": {
-            "description": "JWT ID registered claim according to [RFC7519]",
+            "description": "JWT ID",
             "type": "string"
         },
         "iss": {
-            "description": "Issuer registered claim according to [RFC7519]",
+            "description": "Issuer",
             "type": "string"
         },
         "iat": {
-            "description": "Issued At registered claim according to [RFC7519]",
+            "description": "Issued At",
             "type": "integer"
         },
         "aud": {
-            "description": "Audience registered claim according to [RFC7519]",
+            "description": "Audience",
             "type": [
                 "string",
                 "array"
@@ -57,12 +57,15 @@
                     "type": "string"
                 },
                 "sig": {
-                    "description": "Information about validated signatures",
+                    "description": "Validated signatures",
                     "type": "array",
-                    "items": {"$ref": "#/$def/Signature"}
+                    "items": {
+                        "$ref": "#/$def/Signature"
+                    },
+                    "minItems": 1
                 },
                 "ext": {
-                    "description": "Extensibility map with string values",
+                    "description": "Extension map",
                     "$ref": "#/$def/Extension"
                 }
             },
@@ -89,7 +92,8 @@
                      "type": "array",
                      "items": {
                          "$ref" : "#/$def/SignedDataReference"
-                     }
+                     },
+                     "minItems": 1
                  },
                  "signer_cert_ref": {
                      "description": "Signer certificate reference",
@@ -100,7 +104,8 @@
                      "type": "array",
                      "items": {
                          "$ref": "#/$def/PolicyValidation"
-                     }
+                     },
+                     "minItems": 1
                  },
                  "time_val": {
                      "description": "Time validations",
@@ -110,7 +115,7 @@
                      }
                  },
                 "ext": {
-                    "description": "Extensibility map with string values",
+                    "description": "Extension map",
                     "$ref": "#/$def/Extension"
                 }
              },
@@ -129,12 +134,12 @@
                      "format": "base64"
                  },
                  "sb_hash": {
-                     "description": "Hash of the signed document bytes",
+                     "description": "Hash of the Signed Bytes",
                      "type": "string",
                      "format": "base64"
                  },
                  "id": {
-                     "description": "ID reference for this signature",
+                     "description": "Signature ID reference",
                      "type": ["string","null"]
                  }
              },
@@ -152,7 +157,7 @@
                      "type": "string"
                  },
                  "hash": {
-                     "description": "Hash of the bytes encrypted by the signature value",
+                     "description": "Signed data hash",
                      "type": "string",
                      "format": "base64"
                  }
@@ -177,7 +182,8 @@
                      "items": {
                          "type": "string",
                          "format": "base64"
-                     }
+                     },
+                     "minItems": 1
                  }
              },
             "additionalProperties": false
@@ -190,7 +196,7 @@
              ],
              "properties": {
                  "pol": {
-                     "description": "Identifier of the policy used to validate the signature",
+                     "description": "Policy identifier",
                      "type": "string"
                  },
                  "res": {
@@ -203,7 +209,7 @@
                      "type": ["string","null"]
                  },
                  "ext": {
-                    "description": "Extensibility map with string values",
+                    "description": "Extension map",
                     "$ref": "#/$def/Extension"
                 }
              },
@@ -218,38 +224,38 @@
              ],
              "properties": {
                  "time": {
-                     "description": "Verified time when this signature existed",
+                     "description": "Verified time",
                      "type": "integer"
                  },
                  "type": {
-                     "description": "Identifier of the type of time validation proof",
+                     "description": "Type of time validation proof",
                      "type": "string"
                  },
                  "iss": {
-                     "description": "Identifier of the issuer of the time proof",
+                     "description": "Issuer of the time proof",
                      "type": "string"
                  },
                  "id": {
-                     "description": "A unique identifier assigned to the evidence of time",
+                     "description": "Tiem evidence identifier",
                      "type": ["string","null"]
 
                  },
                  "val": {
-                     "description": "Validation result of the time proof",
+                     "description": "Validation result",
                      "type": "array",
                      "items": {
                          "$ref": "#/$def/PolicyValidation"
                      }
                  },
                  "ext": {
-                    "description": "Extensibility map with string values",
+                    "description": "Extension map",
                     "$ref": "#/$def/Extension"
                 }
              },
             "additionalProperties": false
          },
          "Extension": {
-           "description": "Extensibility map with string values",
+           "description": "Extension map",
            "type": ["object","null"],
            "required": [],
            "additionalProperties": {
