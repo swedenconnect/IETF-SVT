@@ -321,7 +321,7 @@ evidence for one signature, and it contains the following parameters:
 
 - sig_ref -- A Object&lt;SigReference&gt; data type that contains reference information identifying the target signature. This parameter MUST be present.
 
-- sig_data_ref -- A \[Object&lt;SignedData&gt;\] data type that contains an array of references to Signed Data that was signed by the target electronic signature.  This parameter MUST be present.
+- sig_data_ref -- A \[Object&lt;SignedDataReference&gt;\] data type that contains an array of references to Signed Data that was signed by the target electronic signature.  This parameter MUST be present.
 
 - signer_cert_ref -- A Object&lt;CertReference&gt; data type that references the signer's certificate and optionally reference to a supporting certification path that was used to verify the target electronic signature. This parameter MUST be present.
 
@@ -344,10 +344,10 @@ of the target signature value and Signed Bytes, and it contains the following pa
 
 - sb_hash -- A Base64Binary data type that contains a hash value of the Signed Bytes of the target electronic signature. This parameter MUST be present.
 
-### SignedData Claims Object Class {#signeddata-obj-class}
+### SignedDataReference Claims Object Class {#signeddatareference-obj-class}
 
-The sig_data_ref parameter in the Signature object class uses the SignedData object
-class. The SignedData object provides information used to verify the target electronic
+The sig_data_ref parameter in the Signature object class uses the SignedDataReference object
+class. The SignedDataReference object provides information used to verify the target electronic
 signature references to Signed Data as well as to verify the integrity of all data that
 is signed by the target signature, and it contains the following parameters:
 

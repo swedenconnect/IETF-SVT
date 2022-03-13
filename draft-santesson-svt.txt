@@ -76,7 +76,7 @@ Table of Contents
        3.2.3.  SigValidation Object Class  . . . . . . . . . . . . .   8
        3.2.4.  Signature Claims Object Class . . . . . . . . . . . .   9
        3.2.5.  SigReference Claims Object Class  . . . . . . . . . .   9
-       3.2.6.  SignedData Claims Object Class  . . . . . . . . . . .  10
+       3.2.6.  SignedDataReference Claims Object Class . . . . . . .  10
        3.2.7.  PolicyValidation Claims Object Class  . . . . . . . .  10
        3.2.8.  TimeValidation Claims Object Class  . . . . . . . . .  11
        3.2.9.  CertReference Claims Object Class . . . . . . . . . .  11
@@ -86,7 +86,7 @@ Table of Contents
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
      6.1.  Claim Names Registration  . . . . . . . . . . . . . . . .  14
        6.1.1.  Registry Contents . . . . . . . . . . . . . . . . . .  14
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  14
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
      7.1.  Level of reliance . . . . . . . . . . . . . . . . . . . .  15
      7.2.  Aging algorithms  . . . . . . . . . . . . . . . . . . . .  15
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
@@ -461,9 +461,9 @@ Internet-Draft         Signature Validation Token             March 2022
       reference information identifying the target signature.  This
       parameter MUST be present.
 
-   *  sig_data_ref -- A [Object<SignedData>] data type that contains an
-      array of references to Signed Data that was signed by the target
-      electronic signature.  This parameter MUST be present.
+   *  sig_data_ref -- A [Object<SignedDataReference>] data type that
+      contains an array of references to Signed Data that was signed by
+      the target electronic signature.  This parameter MUST be present.
 
    *  signer_cert_ref -- A Object<CertReference> data type that
       references the signer's certificate and optionally reference to a
@@ -514,13 +514,14 @@ Internet-Draft         Signature Validation Token             March 2022
       the Signed Bytes of the target electronic signature.  This
       parameter MUST be present.
 
-3.2.6.  SignedData Claims Object Class
+3.2.6.  SignedDataReference Claims Object Class
 
    The sig_data_ref parameter in the Signature object class uses the
-   SignedData object class.  The SignedData object provides information
-   used to verify the target electronic signature references to Signed
-   Data as well as to verify the integrity of all data that is signed by
-   the target signature, and it contains the following parameters:
+   SignedDataReference object class.  The SignedDataReference object
+   provides information used to verify the target electronic signature
+   references to Signed Data as well as to verify the integrity of all
+   data that is signed by the target signature, and it contains the
+   following parameters:
 
    *  ref -- A String data type that contains a reference identifier for
       the data or data fragment covered by the target electronic
@@ -549,11 +550,10 @@ Internet-Draft         Signature Validation Token             March 2022
    *  msg -- A String data type that contains a message describing the
       result.  Inclusion of this parameter is OPTIONAL.
 
-   *  ext -- A MAP<String> data type that provides additional claims
-      related to the target signature.  Extension claims are added at
-      the discretion of the SVT Issuer; however, extension claims MUST
-      follow any conventions defined in a profile of this specification
-      (see Section 4).  Inclusion of this parameter is OPTIONAL.
+
+
+
+
 
 
 
@@ -561,6 +561,12 @@ Santesson & Housley     Expires 12 September 2022              [Page 10]
 
 Internet-Draft         Signature Validation Token             March 2022
 
+
+   *  ext -- A MAP<String> data type that provides additional claims
+      related to the target signature.  Extension claims are added at
+      the discretion of the SVT Issuer; however, extension claims MUST
+      follow any conventions defined in a profile of this specification
+      (see Section 4).  Inclusion of this parameter is OPTIONAL.
 
 3.2.8.  TimeValidation Claims Object Class
 
@@ -604,12 +610,6 @@ Internet-Draft         Signature Validation Token             March 2022
    certificates that can be located in the target electronic signature,
    and it contains the following parameters:
 
-   *  type -- A StringOrURI data type that contains an identifier of the
-      type of reference.  The type identifier MUST be one of the
-      identifiers defined below, an identifier specified by the selected
-      profile, or a URI identifier.  This parameter MUST be present.
-
-
 
 
 
@@ -617,6 +617,11 @@ Santesson & Housley     Expires 12 September 2022              [Page 11]
 
 Internet-Draft         Signature Validation Token             March 2022
 
+
+   *  type -- A StringOrURI data type that contains an identifier of the
+      type of reference.  The type identifier MUST be one of the
+      identifiers defined below, an identifier specified by the selected
+      profile, or a URI identifier.  This parameter MUST be present.
 
    *  ref -- A [String] data type that contains an array of string
       parameters according to conventions defined by the type
@@ -656,13 +661,8 @@ Internet-Draft         Signature Validation Token             March 2022
    *  typ -- This parameter MUST have the string value "JWT" (upper
       case).
 
-   *  alg -- This parameter identifies the algorithm used to sign the
-      SVT JWT.  The algorithm identifier MUST be specified in [RFC7518]
-      or the IANA JSON Web Signature and Encryption Algorithms Registry
-      [ add a ref ].  The specified signature hash algorithm MUST be
-      identical to the hash algorithm specified in the hash_algo
-      parameter of the SigValidation object within the sig_val_claims
-      claim.
+
+
 
 
 
@@ -673,6 +673,14 @@ Santesson & Housley     Expires 12 September 2022              [Page 12]
 
 Internet-Draft         Signature Validation Token             March 2022
 
+
+   *  alg -- This parameter identifies the algorithm used to sign the
+      SVT JWT.  The algorithm identifier MUST be specified in [RFC7518]
+      or the IANA JSON Web Signature and Encryption Algorithms Registry
+      [ add a ref ].  The specified signature hash algorithm MUST be
+      identical to the hash algorithm specified in the hash_algo
+      parameter of the SigValidation object within the sig_val_claims
+      claim.
 
    The SVT header MUST contain a public key or a reference to a public
    key used to verify the signature on the SVT in accordance with
@@ -714,6 +722,14 @@ Internet-Draft         Signature Validation Token             March 2022
 
    Signature verification based on an a SVT MUST follow these steps:
 
+
+
+
+Santesson & Housley     Expires 12 September 2022              [Page 13]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
    1.  Locate all available SVTs available for the signed document that
        are relevant for the target electronic signature.
 
@@ -722,13 +738,6 @@ Internet-Draft         Signature Validation Token             March 2022
 
    3.  Verify the integrity of the signature and the Signed Bytes of the
        target electronic signature using the sig_ref claim.
-
-
-
-Santesson & Housley     Expires 12 September 2022              [Page 13]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
    4.  Verify that the Signed Data reference in the original electronic
        signature matches the reference values in the sig_data_ref claim.
@@ -768,15 +777,6 @@ Internet-Draft         Signature Validation Token             March 2022
 
    *  Specification Document(s): Section 3.2.3 of {this document}
 
-   NOTE to RFC editor: Please replace {this document} with its assigned
-   RFC number.
-
-7.  Security Considerations
-
-
-
-
-
 
 
 
@@ -785,6 +785,11 @@ Santesson & Housley     Expires 12 September 2022              [Page 14]
 
 Internet-Draft         Signature Validation Token             March 2022
 
+
+   NOTE to RFC editor: Please replace {this document} with its assigned
+   RFC number.
+
+7.  Security Considerations
 
 7.1.  Level of reliance
 
@@ -827,11 +832,6 @@ Internet-Draft         Signature Validation Token             March 2022
 
 8.1.  Normative References
 
-   [CADES]    ETSI, "Electronic Signatures and Infrastructures (ESI);
-              CAdES digital signatures; Part 1: Building blocks and
-              CAdES baseline signatures", ETSI EN 319 122-1 v1.1.1,
-              April 2016.
-
 
 
 
@@ -841,6 +841,11 @@ Santesson & Housley     Expires 12 September 2022              [Page 15]
 
 Internet-Draft         Signature Validation Token             March 2022
 
+
+   [CADES]    ETSI, "Electronic Signatures and Infrastructures (ESI);
+              CAdES digital signatures; Part 1: Building blocks and
+              CAdES baseline signatures", ETSI EN 319 122-1 v1.1.1,
+              April 2016.
 
    [ETSI319102-1]
               ETSI, "ETSI - Electronic Signatures and Infrastructures
@@ -884,11 +889,6 @@ Internet-Draft         Signature Validation Token             March 2022
               DOI 10.17487/RFC7518, May 2015,
               <https://www.rfc-editor.org/info/rfc7518>.
 
-   [RFC7519]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web Token
-              (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015,
-              <https://www.rfc-editor.org/info/rfc7519>.
-
-
 
 
 
@@ -897,6 +897,10 @@ Santesson & Housley     Expires 12 September 2022              [Page 16]
 
 Internet-Draft         Signature Validation Token             March 2022
 
+
+   [RFC7519]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web Token
+              (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015,
+              <https://www.rfc-editor.org/info/rfc7519>.
 
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
@@ -942,10 +946,6 @@ A.1.  Concise Data Definition Language (CDDL)
      profile: text
      hash_algo: text
      sig: [+ Signature]
-     ? ext: Extension
-   }
-
-   Signature = {
 
 
 
@@ -954,6 +954,10 @@ Santesson & Housley     Expires 12 September 2022              [Page 17]
 Internet-Draft         Signature Validation Token             March 2022
 
 
+     ? ext: Extension
+   }
+
+   Signature = {
      sig_ref: SigReference
      sig_data_ref: [+ SignedDataReference]
      signer_cert_ref: CertReference
@@ -998,10 +1002,6 @@ Internet-Draft         Signature Validation Token             March 2022
 
    Extension = {
      + text => text
-   } / null
-
-   binary-value = text      ; base64 classic with padding
-
 
 
 
@@ -1009,6 +1009,10 @@ Santesson & Housley     Expires 12 September 2022              [Page 18]
 
 Internet-Draft         Signature Validation Token             March 2022
 
+
+   } / null
+
+   binary-value = text      ; base64 classic with padding
 
 A.2.  JSON Schema
 
@@ -1054,10 +1058,6 @@ A.2.  JSON Schema
            "sig_val_claims": {
                "description": "Signature validation claims",
                "type": "object",
-               "required": [
-                   "ver",
-                   "profile",
-                   "hash_algo",
 
 
 
@@ -1066,6 +1066,10 @@ Santesson & Housley     Expires 12 September 2022              [Page 19]
 Internet-Draft         Signature Validation Token             March 2022
 
 
+               "required": [
+                   "ver",
+                   "profile",
+                   "hash_algo",
                    "sig"
                ],
                "properties": {
@@ -1110,10 +1114,6 @@ Internet-Draft         Signature Validation Token             March 2022
                         "$ref": "#/$def/SigReference"
                     },
                     "sig_data_ref": {
-                        "description": "Signed data array",
-                        "type": "array",
-                        "items": {
-                            "$ref" : "#/$def/SignedDataReference"
 
 
 
@@ -1122,6 +1122,10 @@ Santesson & Housley     Expires 12 September 2022              [Page 20]
 Internet-Draft         Signature Validation Token             March 2022
 
 
+                        "description": "Signed data array",
+                        "type": "array",
+                        "items": {
+                            "$ref" : "#/$def/SignedDataReference"
                         }
                     },
                     "signer_cert_ref": {
@@ -1166,10 +1170,6 @@ Internet-Draft         Signature Validation Token             March 2022
                         "type": "string",
                         "format": "base64"
                     },
-                    "id": {
-                        "description": "Signature ID reference",
-                        "type": ["string","null"]
-                    }
 
 
 
@@ -1178,6 +1178,10 @@ Santesson & Housley     Expires 12 September 2022              [Page 21]
 Internet-Draft         Signature Validation Token             March 2022
 
 
+                    "id": {
+                        "description": "Signature ID reference",
+                        "type": ["string","null"]
+                    }
                 },
                "additionalProperties": false
             },
@@ -1222,10 +1226,6 @@ Internet-Draft         Signature Validation Token             March 2022
                     }
                 },
                "additionalProperties": false
-            },
-            "PolicyValidation":{
-                "type": "object",
-                "required": [
 
 
 
@@ -1234,6 +1234,10 @@ Santesson & Housley     Expires 12 September 2022              [Page 22]
 Internet-Draft         Signature Validation Token             March 2022
 
 
+            },
+            "PolicyValidation":{
+                "type": "object",
+                "required": [
                     "pol",
                     "res"
                 ],
@@ -1278,10 +1282,6 @@ Internet-Draft         Signature Validation Token             March 2022
                         "description": "Issuer of the time proof",
                         "type": "string"
                     },
-                    "id": {
-                        "description": "Tiem evidence identifier",
-                        "type": ["string","null"]
-
 
 
 
@@ -1289,6 +1289,10 @@ Santesson & Housley     Expires 12 September 2022              [Page 23]
 
 Internet-Draft         Signature Validation Token             March 2022
 
+
+                    "id": {
+                        "description": "Tiem evidence identifier",
+                        "type": ["string","null"]
 
                     },
                     "val": {
@@ -1325,10 +1329,6 @@ Appendix B.  Appendix: Examples
    readablilty.  Line breaks are not allowed in valid JSON data.
 
    Signature validation token JWT:
-
-
-
-
 
 
 
