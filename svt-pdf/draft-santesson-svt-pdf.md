@@ -115,6 +115,10 @@ Note: Extensions in timestamp tokens according to {{RFC3161}} are imported from 
 
 # SVT Claims {#svt-claims}
 
+## Profile
+
+When this profile is used the SigValidation object MUST contain a "profile" claim with the value "PDF".
+
 ## Signature Reference Data {#signature-reference-data}
 
 The SVT Signature object MUST contain a "sig_ref" claim (SigReference object) with the following elements:

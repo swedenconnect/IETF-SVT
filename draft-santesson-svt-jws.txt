@@ -61,10 +61,11 @@ Internet-Draft       JWS Signature Validation Token           March 2022
      3.1.  "svt" Header Parameter  . . . . . . . . . . . . . . . . .   3
      3.2.  Multiple SVT in a signature . . . . . . . . . . . . . . .   3
    4.  SVT Claims  . . . . . . . . . . . . . . . . . . . . . . . . .   3
-     4.1.  Signature Reference Data  . . . . . . . . . . . . . . . .   3
-     4.2.  Signed Data Reference Data  . . . . . . . . . . . . . . .   4
-     4.3.  Signer Certificate References . . . . . . . . . . . . . .   4
-   5.  SVT JOSE Header . . . . . . . . . . . . . . . . . . . . . . .   4
+     4.1.  Profile Identifer{#profile-identifier}  . . . . . . . . .   3
+     4.2.  Signature Reference Data  . . . . . . . . . . . . . . . .   4
+     4.3.  Signed Data Reference Data  . . . . . . . . . . . . . . .   4
+     4.4.  Signer Certificate References . . . . . . . . . . . . . .   4
+   5.  SVT JOSE Header . . . . . . . . . . . . . . . . . . . . . . .   5
      5.1.  SVT Signing Key Reference . . . . . . . . . . . . . . . .   5
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
      6.1.  Header Parameter Names Registration . . . . . . . . . . .   5
@@ -105,7 +106,6 @@ Internet-Draft       JWS Signature Validation Token           March 2022
    capitals, as shown here.
 
    The definitions in [SVT] and [RFC7515] apply also to this document.
-
 
 
 
@@ -156,10 +156,10 @@ Internet-Draft       JWS Signature Validation Token           March 2022
 
 4.  SVT Claims
 
-4.1.  Signature Reference Data
+4.1.  Profile Identifer{#profile-identifier}
 
-   The SVT Signature object MUST contain a "sig_ref" claim (SigReference
-   object) with the following elements:
+   When this profile is used the SigValidation object MUST contain a
+   "profile" claim with the value "JWS".
 
 
 
@@ -170,13 +170,18 @@ Santesson & Housley     Expires 22 September 2022               [Page 3]
 Internet-Draft       JWS Signature Validation Token           March 2022
 
 
+4.2.  Signature Reference Data
+
+   The SVT Signature object MUST contain a "sig_ref" claim (SigReference
+   object) with the following elements:
+
    *  "sig_hash" -- The hash over the associated signature value (the
       bytes of the base64url-decoded signature parameter).
 
    *  "sb_hash" -- The hash over all bytes signed by the associated
       signature (the JWS Signing Input according to [RFC7515]).
 
-4.2.  Signed Data Reference Data
+4.3.  Signed Data Reference Data
 
    The SVT Signature object MUST contain one instance of the "sig_data"
    claim (SignedData object) with the following elements:
@@ -197,7 +202,7 @@ Internet-Draft       JWS Signature Validation Token           March 2022
    *  "hash" -- The hash over the JWS Payload data bytes (not its
       base64url-encoded string representation).
 
-4.3.  Signer Certificate References
+4.4.  Signer Certificate References
 
    The SVT Signature object MUST contain a "signer_cert_ref" claim
    (CertReference object).  The "type" parameter of the
@@ -212,11 +217,6 @@ Internet-Draft       JWS Signature Validation Token           March 2022
       certificates are present in the target signature JOSE header using
       the "x5c" Header Parameter.
 
-5.  SVT JOSE Header
-
-
-
-
 
 
 
@@ -225,6 +225,8 @@ Santesson & Housley     Expires 22 September 2022               [Page 4]
 
 Internet-Draft       JWS Signature Validation Token           March 2022
 
+
+5.  SVT JOSE Header
 
 5.1.  SVT Signing Key Reference
 
@@ -270,8 +272,6 @@ Internet-Draft       JWS Signature Validation Token           March 2022
    The security considerations of [SVT] applies also to this document.
 
 8.  Normative References
-
-
 
 
 

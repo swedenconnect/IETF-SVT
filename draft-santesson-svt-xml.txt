@@ -64,9 +64,10 @@ Internet-Draft       XML Signature Validation Token           March 2022
      3.1.  SignatureValidationToken Signature Property . . . . . . .   3
      3.2.  Multiple SVT in a signature . . . . . . . . . . . . . . .   5
    4.  SVT Claims  . . . . . . . . . . . . . . . . . . . . . . . . .   5
-     4.1.  Signature Reference Data  . . . . . . . . . . . . . . . .   5
-     4.2.  Signed Data Reference Data  . . . . . . . . . . . . . . .   5
-     4.3.  Signer Certificate References . . . . . . . . . . . . . .   6
+     4.1.  Profile Identifer{#profile-identifier}  . . . . . . . . .   5
+     4.2.  Signature Reference Data  . . . . . . . . . . . . . . . .   5
+     4.3.  Signed Data Reference Data  . . . . . . . . . . . . . . .   5
+     4.4.  Signer Certificate References . . . . . . . . . . . . . .   6
    5.  JOSE Header . . . . . . . . . . . . . . . . . . . . . . . . .   6
      5.1.  SVT Signing Key Reference . . . . . . . . . . . . . . . .   6
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
@@ -105,7 +106,6 @@ Internet-Draft       XML Signature Validation Token           March 2022
    "OPTIONAL" in this document are to be interpreted as described in
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
-
 
 
 
@@ -243,7 +243,12 @@ Internet-Draft       XML Signature Validation Token           March 2022
 
 4.  SVT Claims
 
-4.1.  Signature Reference Data
+4.1.  Profile Identifer{#profile-identifier}
+
+   When this profile is used the SigValidation object MUST contain a
+   "profile" claim with the value "XML".
+
+4.2.  Signature Reference Data
 
    The SVT Signature object MUST contain a "sig_ref" claim (SigReference
    object) with the following elements:
@@ -256,7 +261,7 @@ Internet-Draft       XML Signature Validation Token           March 2022
       element (the bytes the XML signature algorithm has signed to
       generated the signature value).
 
-4.2.  Signed Data Reference Data
+4.3.  Signed Data Reference Data
 
    The SVT Signature object MUST contain one instance of the "sig_data"
    claim (SignedData object) for each <ds:Reference> element in the
@@ -266,11 +271,6 @@ Internet-Draft       XML Signature Validation Token           March 2022
    *  "ref" -- The value of the URI attribute of the corresponding
       <ds:Reference> element.
 
-   *  "hash" -- The hash of all bytes identified corresponding
-      <ds:Reference> element after applying all identified
-      canonicalization and transformation algorithms.  These are the
-      same bytes that is hashed by the hash value in the
-      <ds:DigestValue> element inside the <ds:Reference> element.
 
 
 
@@ -282,7 +282,13 @@ Santesson & Housley     Expires 22 September 2022               [Page 5]
 Internet-Draft       XML Signature Validation Token           March 2022
 
 
-4.3.  Signer Certificate References
+   *  "hash" -- The hash of all bytes identified corresponding
+      <ds:Reference> element after applying all identified
+      canonicalization and transformation algorithms.  These are the
+      same bytes that is hashed by the hash value in the
+      <ds:DigestValue> element inside the <ds:Reference> element.
+
+4.4.  Signer Certificate References
 
    The SVT Signature object MUST contain a "signer_cert_ref" claim
    (CertReference object).  The "type" parameter of the
@@ -324,12 +330,6 @@ Internet-Draft       XML Signature Validation Token           March 2022
 
 8.  Normative References
 
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/info/rfc2119>.
-
-
 
 
 
@@ -337,6 +337,11 @@ Santesson & Housley     Expires 22 September 2022               [Page 6]
 
 Internet-Draft       XML Signature Validation Token           March 2022
 
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
 
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key
@@ -377,11 +382,6 @@ Authors' Addresses
    Herndon, VA,  20170
    United States of America
    Email: housley@vigilsec.com
-
-
-
-
-
 
 
 

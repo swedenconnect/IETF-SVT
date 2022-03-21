@@ -82,7 +82,7 @@ Table of Contents
        3.2.9.  CertReference Claims Object Class . . . . . . . . . .  11
        3.2.10. SVT JOSE Header . . . . . . . . . . . . . . . . . . .  12
    4.  Profiles  . . . . . . . . . . . . . . . . . . . . . . . . . .  13
-   5.  Signature Verification with a SVT . . . . . . . . . . . . . .  13
+   5.  Signature Verification with a SVT . . . . . . . . . . . . . .  14
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
      6.1.  Claim Names Registration  . . . . . . . . . . . . . . . .  14
        6.1.1.  Registry Contents . . . . . . . . . . . . . . . . . .  14
@@ -695,6 +695,8 @@ Internet-Draft         Signature Validation Token             March 2022
 
    Each profile MUST as a minimum define:
 
+   *  The identifier of the profile.
+
    *  How to reference the Signed Data content of the signed document.
 
    *  How to reference to the target electronic signature and the Signed
@@ -718,9 +720,7 @@ Internet-Draft         Signature Validation Token             March 2022
    *  How to attach an SVT to an electronic signature or signed
       document.
 
-5.  Signature Verification with a SVT
 
-   Signature verification based on an a SVT MUST follow these steps:
 
 
 
@@ -729,6 +729,10 @@ Santesson & Housley     Expires 22 September 2022              [Page 13]
 
 Internet-Draft         Signature Validation Token             March 2022
 
+
+5.  Signature Verification with a SVT
+
+   Signature verification based on an a SVT MUST follow these steps:
 
    1.  Locate all available SVTs available for the signed document that
        are relevant for the target electronic signature.
@@ -775,16 +779,14 @@ Internet-Draft         Signature Validation Token             March 2022
 
    *  Change Controller: IESG
 
-   *  Specification Document(s): Section 3.2.3 of {this document}
-
-
-
 
 
 Santesson & Housley     Expires 22 September 2022              [Page 14]
 
 Internet-Draft         Signature Validation Token             March 2022
 
+
+   *  Specification Document(s): Section 3.2.3 of {this document}
 
    NOTE to RFC editor: Please replace {this document} with its assigned
    RFC number.
@@ -831,8 +833,6 @@ Internet-Draft         Signature Validation Token             March 2022
 8.  References
 
 8.1.  Normative References
-
-
 
 
 

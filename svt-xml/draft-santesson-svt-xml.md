@@ -192,6 +192,10 @@ For interoperability robustness, signature validation applications MUST be able 
 
 # SVT Claims {#svt-claims}
 
+## Profile Identifer{#profile-identifier}
+
+When this profile is used the SigValidation object MUST contain a "profile" claim with the value "XML".
+
 ## Signature Reference Data {#signature-reference-data}
 
 The SVT Signature object MUST contain a "sig_ref" claim (SigReference object) with the following elements:

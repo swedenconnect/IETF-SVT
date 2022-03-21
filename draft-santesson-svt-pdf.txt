@@ -60,9 +60,10 @@ Internet-Draft       PDF Signature Validation Token           March 2022
 
      3.1.  SVT Extension to Timestamp Tokens . . . . . . . . . . . .   3
    4.  SVT Claims  . . . . . . . . . . . . . . . . . . . . . . . . .   3
-     4.1.  Signature Reference Data  . . . . . . . . . . . . . . . .   3
-     4.2.  Signed Data Reference Data  . . . . . . . . . . . . . . .   4
-     4.3.  Signer Certificate References . . . . . . . . . . . . . .   4
+     4.1.  Profile . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     4.2.  Signature Reference Data  . . . . . . . . . . . . . . . .   3
+     4.3.  Signed Data Reference Data  . . . . . . . . . . . . . . .   4
+     4.4.  Signer Certificate References . . . . . . . . . . . . . .   4
    5.  JOSE Header . . . . . . . . . . . . . . . . . . . . . . . . .   4
      5.1.  SVT Signing Key Reference . . . . . . . . . . . . . . . .   4
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
@@ -105,7 +106,6 @@ Internet-Draft       PDF Signature Validation Token           March 2022
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-   The definitions in [SVT] apply also to this document.
 
 
 
@@ -113,6 +113,8 @@ Santesson & Housley     Expires 22 September 2022               [Page 2]
 
 Internet-Draft       PDF Signature Validation Token           March 2022
 
+
+   The definitions in [SVT] apply also to this document.
 
 3.  SVT in PDF Documents
 
@@ -151,17 +153,15 @@ Internet-Draft       PDF Signature Validation Token           March 2022
 
 4.  SVT Claims
 
-4.1.  Signature Reference Data
+4.1.  Profile
+
+   When this profile is used the SigValidation object MUST contain a
+   "profile" claim with the value "PDF".
+
+4.2.  Signature Reference Data
 
    The SVT Signature object MUST contain a "sig_ref" claim (SigReference
    object) with the following elements:
-
-   *  "id" -- Absent or a Null value.
-
-   *  "sig_hash" -- The hash over the signature value bytes.
-
-   *  "sb_hash" -- The hash over the DER encoded SignedAttributes in
-      SignerInfo.
 
 
 
@@ -170,7 +170,14 @@ Santesson & Housley     Expires 22 September 2022               [Page 3]
 Internet-Draft       PDF Signature Validation Token           March 2022
 
 
-4.2.  Signed Data Reference Data
+   *  "id" -- Absent or a Null value.
+
+   *  "sig_hash" -- The hash over the signature value bytes.
+
+   *  "sb_hash" -- The hash over the DER encoded SignedAttributes in
+      SignerInfo.
+
+4.3.  Signed Data Reference Data
 
    The SVT Signature object MUST contain one instance of the "sig_data"
    claim (SignedData object) with the following elements:
@@ -184,7 +191,7 @@ Internet-Draft       PDF Signature Validation Token           March 2022
       This is the concatenation of all byte ranges identified by the
       ByteRange value.
 
-4.3.  Signer Certificate References
+4.4.  Signer Certificate References
 
    The SVT Signature object MUST contain a "signer_cert_ref" claim
    (CertReference object).  The "type" parameter of the
@@ -209,13 +216,6 @@ Internet-Draft       PDF Signature Validation Token           March 2022
    parameters in accordance with [RFC7515], for storing a reference to
    the public key used to verify the signature on the SVT:
 
-   *  "x5c" -- Holds an X.509 certificate [RFC5280] or a chain of
-      certificates.  The certificate holding the public key that
-      verifies the signature on the SVT MUST be the first certificate in
-      the chain.
-
-
-
 
 
 
@@ -225,6 +225,11 @@ Santesson & Housley     Expires 22 September 2022               [Page 4]
 
 Internet-Draft       PDF Signature Validation Token           March 2022
 
+
+   *  "x5c" -- Holds an X.509 certificate [RFC5280] or a chain of
+      certificates.  The certificate holding the public key that
+      verifies the signature on the SVT MUST be the first certificate in
+      the chain.
 
    *  "kid" -- A key identifier holding the Base64 encoded hash value of
       the certificate that can verify the signature on the SVT.  The
@@ -267,13 +272,8 @@ Internet-Draft       PDF Signature Validation Token           March 2022
               (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
               <https://www.rfc-editor.org/info/rfc5280>.
 
-   [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
-              Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
-              2015, <https://www.rfc-editor.org/info/rfc7515>.
 
-   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
 
 
 
@@ -281,6 +281,14 @@ Santesson & Housley     Expires 22 September 2022               [Page 5]
 
 Internet-Draft       PDF Signature Validation Token           March 2022
 
+
+   [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
+              Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
+              2015, <https://www.rfc-editor.org/info/rfc7515>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
    [SVT]      Santesson, S. and R. Housley, "Signature Validation
               Token", IETF draft-santesson-svt-02, September 2021.
@@ -301,14 +309,6 @@ Authors' Addresses
    Herndon, VA,  20170
    United States of America
    Email: housley@vigilsec.com
-
-
-
-
-
-
-
-
 
 
 

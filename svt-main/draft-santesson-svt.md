@@ -431,6 +431,8 @@ use of several claims in the SVT.
 
 Each profile MUST as a minimum define:
 
+- The identifier of the profile.
+
 - How to reference the Signed Data content of the signed document.
 
 - How to reference to the target electronic signature and the Signed Bytes of the signature.
