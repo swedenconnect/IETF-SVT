@@ -1,7 +1,7 @@
 ---
 title: XML Signature Validation Token
 docname: draft-santesson-svt-xml-03
-date: 2022-03-12
+date: 2022-03-21
 category: info
 submissionType: independent
 

@@ -1,7 +1,7 @@
 ---
 title: Signature Validation Token
 docname: draft-santesson-svt-03
-date: 2022-03-11
+date: 2022-03-21
 category: info
 submissionType: independent
 

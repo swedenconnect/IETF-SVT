@@ -1,7 +1,7 @@
 ---
 title: JWS Signature Validation Token
 docname: draft-santesson-svt-jws-01
-date: 2022-03-12
+date: 2022-03-21
 category: info
 submissionType: independent
 

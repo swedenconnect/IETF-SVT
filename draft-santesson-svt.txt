@@ -5,8 +5,8 @@
 Network Working Group                                       S. Santesson
 Internet-Draft                                           IDsec Solutions
 Intended status: Informational                                R. Housley
-Expires: 12 September 2022                                Vigil Security
-                                                           11 March 2022
+Expires: 22 September 2022                                Vigil Security
+                                                           21 March 2022
 
 
                        Signature Validation Token
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 September 2022.
+   This Internet-Draft will expire on 22 September 2022.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Santesson & Housley     Expires 12 September 2022               [Page 1]
+Santesson & Housley     Expires 22 September 2022               [Page 1]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Santesson & Housley     Expires 12 September 2022               [Page 2]
+Santesson & Housley     Expires 22 September 2022               [Page 2]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -165,7 +165,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022               [Page 3]
+Santesson & Housley     Expires 22 September 2022               [Page 3]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -221,7 +221,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022               [Page 4]
+Santesson & Housley     Expires 22 September 2022               [Page 4]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -277,7 +277,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022               [Page 5]
+Santesson & Housley     Expires 22 September 2022               [Page 5]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -333,7 +333,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022               [Page 6]
+Santesson & Housley     Expires 22 September 2022               [Page 6]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -389,7 +389,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022               [Page 7]
+Santesson & Housley     Expires 22 September 2022               [Page 7]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -445,7 +445,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022               [Page 8]
+Santesson & Housley     Expires 22 September 2022               [Page 8]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -501,7 +501,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022               [Page 9]
+Santesson & Housley     Expires 22 September 2022               [Page 9]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -557,7 +557,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 10]
+Santesson & Housley     Expires 22 September 2022              [Page 10]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -613,7 +613,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 11]
+Santesson & Housley     Expires 22 September 2022              [Page 11]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -669,7 +669,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 12]
+Santesson & Housley     Expires 22 September 2022              [Page 12]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -725,7 +725,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 13]
+Santesson & Housley     Expires 22 September 2022              [Page 13]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -781,7 +781,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 14]
+Santesson & Housley     Expires 22 September 2022              [Page 14]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -837,7 +837,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 15]
+Santesson & Housley     Expires 22 September 2022              [Page 15]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -893,7 +893,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 16]
+Santesson & Housley     Expires 22 September 2022              [Page 16]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -949,7 +949,7 @@ A.1.  Concise Data Definition Language (CDDL)
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 17]
+Santesson & Housley     Expires 22 September 2022              [Page 17]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -1005,7 +1005,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 18]
+Santesson & Housley     Expires 22 September 2022              [Page 18]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -1061,7 +1061,7 @@ A.2.  JSON Schema
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 19]
+Santesson & Housley     Expires 22 September 2022              [Page 19]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -1117,7 +1117,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 20]
+Santesson & Housley     Expires 22 September 2022              [Page 20]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -1173,7 +1173,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 21]
+Santesson & Housley     Expires 22 September 2022              [Page 21]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -1229,7 +1229,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 22]
+Santesson & Housley     Expires 22 September 2022              [Page 22]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -1285,7 +1285,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 23]
+Santesson & Housley     Expires 22 September 2022              [Page 23]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -1341,7 +1341,7 @@ Appendix B.  Appendix: Examples
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 24]
+Santesson & Housley     Expires 22 September 2022              [Page 24]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -1397,7 +1397,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 25]
+Santesson & Housley     Expires 22 September 2022              [Page 25]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -1453,7 +1453,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 26]
+Santesson & Housley     Expires 22 September 2022              [Page 26]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -1509,4 +1509,4 @@ Authors' Addresses
 
 
 
-Santesson & Housley     Expires 12 September 2022              [Page 27]
+Santesson & Housley     Expires 22 September 2022              [Page 27]
