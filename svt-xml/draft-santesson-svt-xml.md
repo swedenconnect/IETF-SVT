@@ -192,7 +192,7 @@ For interoperability robustness, signature validation applications MUST be able 
 
 # SVT Claims {#svt-claims}
 
-## Profile Identifer{#profile-identifier}
+## Profile Identifer {#profile-identifier}
 
 When this profile is used the SigValidation object MUST contain a "profile" claim with the value "XML".
 

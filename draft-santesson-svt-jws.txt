@@ -61,7 +61,7 @@ Internet-Draft       JWS Signature Validation Token           March 2022
      3.1.  "svt" Header Parameter  . . . . . . . . . . . . . . . . .   3
      3.2.  Multiple SVT in a signature . . . . . . . . . . . . . . .   3
    4.  SVT Claims  . . . . . . . . . . . . . . . . . . . . . . . . .   3
-     4.1.  Profile Identifer{#profile-identifier}  . . . . . . . . .   3
+     4.1.  Profile Identifer . . . . . . . . . . . . . . . . . . . .   3
      4.2.  Signature Reference Data  . . . . . . . . . . . . . . . .   4
      4.3.  Signed Data Reference Data  . . . . . . . . . . . . . . .   4
      4.4.  Signer Certificate References . . . . . . . . . . . . . .   4
@@ -156,7 +156,7 @@ Internet-Draft       JWS Signature Validation Token           March 2022
 
 4.  SVT Claims
 
-4.1.  Profile Identifer{#profile-identifier}
+4.1.  Profile Identifer
 
    When this profile is used the SigValidation object MUST contain a
    "profile" claim with the value "JWS".

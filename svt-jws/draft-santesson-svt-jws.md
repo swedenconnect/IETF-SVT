@@ -104,7 +104,7 @@ If a JWS signature already contains an array of SVTs and a new SVT is to be adde
 
 # SVT Claims {#svt-claims}
 
-## Profile Identifer{#profile-identifier}
+## Profile Identifer {#profile-identifier}
 
 When this profile is used the SigValidation object MUST contain a "profile" claim with the value "JWS".
 

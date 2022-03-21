@@ -60,7 +60,7 @@ Internet-Draft       PDF Signature Validation Token           March 2022
 
      3.1.  SVT Extension to Timestamp Tokens . . . . . . . . . . . .   3
    4.  SVT Claims  . . . . . . . . . . . . . . . . . . . . . . . . .   3
-     4.1.  Profile . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     4.1.  Profile Identifer . . . . . . . . . . . . . . . . . . . .   3
      4.2.  Signature Reference Data  . . . . . . . . . . . . . . . .   3
      4.3.  Signed Data Reference Data  . . . . . . . . . . . . . . .   4
      4.4.  Signer Certificate References . . . . . . . . . . . . . .   4
@@ -153,7 +153,7 @@ Internet-Draft       PDF Signature Validation Token           March 2022
 
 4.  SVT Claims
 
-4.1.  Profile
+4.1.  Profile Identifer
 
    When this profile is used the SigValidation object MUST contain a
    "profile" claim with the value "PDF".
