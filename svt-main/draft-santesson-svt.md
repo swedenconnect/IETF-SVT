@@ -728,7 +728,7 @@ The SVT Signature object MUST contain a "sig_ref" claim (SigReference object) wi
 - "sb_hash" -- The hash over the DER encoded SignedAttributes in SignerInfo.
 
 
-## PDF Signed Data Reference Data {#pdf-signed-data-reference}
+### PDF Signed Data Reference Data {#pdf-signed-data-reference}
 
 The SVT Signature object MUST contain one instance of the "sig_data" claim (SignedData object) with the following elements:
 
@@ -736,7 +736,7 @@ The SVT Signature object MUST contain one instance of the "sig_data" claim (Sign
 
 - "hash" -- The hash of all bytes identified by the ByteRange value. This is the concatenation of all byte ranges identified by the ByteRange value.
 
-## PDF Signer Certificate References {#pdf-signer-certificate-references}
+### PDF Signer Certificate References {#pdf-signer-certificate-references}
 
 The SVT Signature object MUST contain a "signer_cert_ref" claim (CertReference object). The "type" parameter of the "signer_cert_ref" claim MUST be either "chain" or "chain_hash".
 

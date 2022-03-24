@@ -122,10 +122,10 @@ Internet-Draft         Signature Validation Token             March 2022
      B.2.  PDF signature SVT Claims  . . . . . . . . . . . . . . . .  24
        B.2.1.  PDF Profile Identifier  . . . . . . . . . . . . . . .  24
        B.2.2.  PDF Signature Reference Data  . . . . . . . . . . . .  25
-     B.3.  PDF Signed Data Reference Data  . . . . . . . . . . . . .  25
-     B.4.  PDF Signer Certificate References . . . . . . . . . . . .  25
-     B.5.  JOSE Header . . . . . . . . . . . . . . . . . . . . . . .  25
-       B.5.1.  SVT Signing Key Reference . . . . . . . . . . . . . .  26
+       B.2.3.  PDF Signed Data Reference Data  . . . . . . . . . . .  25
+       B.2.4.  PDF Signer Certificate References . . . . . . . . . .  25
+     B.3.  JOSE Header . . . . . . . . . . . . . . . . . . . . . . .  25
+       B.3.1.  SVT Signing Key Reference . . . . . . . . . . . . . .  26
    Appendix C.  Appendix: JWS Profile  . . . . . . . . . . . . . . .  26
      C.1.  SVT in JWS  . . . . . . . . . . . . . . . . . . . . . . .  26
        C.1.1.  "svt" Header Parameter  . . . . . . . . . . . . . . .  27
@@ -1358,7 +1358,7 @@ B.2.2.  PDF Signature Reference Data
    *  "sb_hash" -- The hash over the DER encoded SignedAttributes in
       SignerInfo.
 
-B.3.  PDF Signed Data Reference Data
+B.2.3.  PDF Signed Data Reference Data
 
    The SVT Signature object MUST contain one instance of the "sig_data"
    claim (SignedData object) with the following elements:
@@ -1372,7 +1372,7 @@ B.3.  PDF Signed Data Reference Data
       This is the concatenation of all byte ranges identified by the
       ByteRange value.
 
-B.4.  PDF Signer Certificate References
+B.2.4.  PDF Signer Certificate References
 
    The SVT Signature object MUST contain a "signer_cert_ref" claim
    (CertReference object).  The "type" parameter of the
@@ -1389,7 +1389,7 @@ B.4.  PDF Signer Certificate References
    Note: The referenced signer certificate MUST match any certificates
    referenced using ESSCertID or ESSCertIDv2 from [RFC5035].
 
-B.5.  JOSE Header
+B.3.  JOSE Header
 
 
 
@@ -1402,7 +1402,7 @@ Santesson & Housley     Expires 25 September 2022              [Page 25]
 Internet-Draft         Signature Validation Token             March 2022
 
 
-B.5.1.  SVT Signing Key Reference
+B.3.1.  SVT Signing Key Reference
 
    The SVT JOSE header must contain one of the following header
    parameters in accordance with [RFC7515], for storing a reference to
