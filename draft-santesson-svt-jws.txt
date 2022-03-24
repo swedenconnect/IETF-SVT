@@ -9,10 +9,13 @@ Expires: 22 September 2022                                Vigil Security
                                                            21 March 2022
 
 
-                     JWS Signature Validation Token
+              DEPRECATED - JWS Signature Validation Token
                        draft-santesson-svt-jws-01
 
 Abstract
+
+   NOTE: This draft is DEPRECATED as its content has been moved into an
+   Annex of the main specification.
 
    This document defines a JSON Web Signature (JWS) profile for the
    Signature Validation Token defined in [SVT].
@@ -45,23 +48,25 @@ Copyright Notice
    Please review these documents carefully, as they describe your rights
    and restrictions with respect to this document.
 
-Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Definitions . . . . . . . . . . . . . . . . . . . . . . . . .   2
-   3.  SVT in JWS  . . . . . . . . . . . . . . . . . . . . . . . . .   3
+
 
 
 
 Santesson & Housley     Expires 22 September 2022               [Page 1]
 
-Internet-Draft       JWS Signature Validation Token           March 2022
+Internet-Draft  DEPRECATED - JWS Signature Validation To      March 2022
 
 
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Definitions . . . . . . . . . . . . . . . . . . . . . . . . .   3
+   3.  SVT in JWS  . . . . . . . . . . . . . . . . . . . . . . . . .   3
      3.1.  "svt" Header Parameter  . . . . . . . . . . . . . . . . .   3
      3.2.  Multiple SVT in a signature . . . . . . . . . . . . . . .   3
-   4.  SVT Claims  . . . . . . . . . . . . . . . . . . . . . . . . .   3
-     4.1.  Profile Identifer . . . . . . . . . . . . . . . . . . . .   3
+   4.  SVT Claims  . . . . . . . . . . . . . . . . . . . . . . . . .   4
+     4.1.  Profile Identifer . . . . . . . . . . . . . . . . . . . .   4
      4.2.  Signature Reference Data  . . . . . . . . . . . . . . . .   4
      4.3.  Signed Data Reference Data  . . . . . . . . . . . . . . .   4
      4.4.  Signer Certificate References . . . . . . . . . . . . . .   4
@@ -70,8 +75,8 @@ Internet-Draft       JWS Signature Validation Token           March 2022
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
      6.1.  Header Parameter Names Registration . . . . . . . . . . .   5
        6.1.1.  Registry Contents . . . . . . . . . . . . . . . . . .   5
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
-   8.  Normative References  . . . . . . . . . . . . . . . . . . . .   5
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
+   8.  Normative References  . . . . . . . . . . . . . . . . . . . .   6
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
@@ -97,6 +102,18 @@ Internet-Draft       JWS Signature Validation Token           March 2022
    present signature as a JWS Unprotected Header.  If a JWS includes
    multiple signatures, then each signature includes its own SVT.
 
+
+
+
+
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 2]
+
+Internet-Draft  DEPRECATED - JWS Signature Validation To      March 2022
+
+
 2.  Definitions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -106,13 +123,6 @@ Internet-Draft       JWS Signature Validation Token           March 2022
    capitals, as shown here.
 
    The definitions in [SVT] and [RFC7515] apply also to this document.
-
-
-
-Santesson & Housley     Expires 22 September 2022               [Page 2]
-
-Internet-Draft       JWS Signature Validation Token           March 2022
-
 
 3.  SVT in JWS
 
@@ -150,6 +160,16 @@ Internet-Draft       JWS Signature Validation Token           March 2022
    the existing SVT or to store the new SVT in addition to the existing
    SVT.
 
+
+
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 3]
+
+Internet-Draft  DEPRECATED - JWS Signature Validation To      March 2022
+
+
    If a JWS signature already contains an array of SVTs and a new SVT is
    to be added, then the new SVT MUST be added to the array of SVT
    tokens in the existing "svt" Header Parameter.
@@ -160,15 +180,6 @@ Internet-Draft       JWS Signature Validation Token           March 2022
 
    When this profile is used the SigValidation object MUST contain a
    "profile" claim with the value "JWS".
-
-
-
-
-
-Santesson & Housley     Expires 22 September 2022               [Page 3]
-
-Internet-Draft       JWS Signature Validation Token           March 2022
-
 
 4.2.  Signature Reference Data
 
@@ -208,6 +219,13 @@ Internet-Draft       JWS Signature Validation Token           March 2022
    (CertReference object).  The "type" parameter of the
    "signer_cert_ref" claim MUST be either "chain" or "chain_hash".
 
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 4]
+
+Internet-Draft  DEPRECATED - JWS Signature Validation To      March 2022
+
+
    *  The "chain" type MUST be used when signature validation was
       performed using one or more certificates where some or all of the
       certificates in the chain are not present in the target signature.
@@ -216,15 +234,6 @@ Internet-Draft       JWS Signature Validation Token           March 2022
       performed using one or more certificates where all of the
       certificates are present in the target signature JOSE header using
       the "x5c" Header Parameter.
-
-
-
-
-
-Santesson & Housley     Expires 22 September 2022               [Page 4]
-
-Internet-Draft       JWS Signature Validation Token           March 2022
-
 
 5.  SVT JOSE Header
 
@@ -264,6 +273,15 @@ Internet-Draft       JWS Signature Validation Token           March 2022
 
    *  Specification Document(s): Section 3.1 of {this document}
 
+
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 5]
+
+Internet-Draft  DEPRECATED - JWS Signature Validation To      March 2022
+
+
    NOTE to RFC editor: Please replace {this document} with its assigned
    RFC number.
 
@@ -272,15 +290,6 @@ Internet-Draft       JWS Signature Validation Token           March 2022
    The security considerations of [SVT] applies also to this document.
 
 8.  Normative References
-
-
-
-
-
-Santesson & Housley     Expires 22 September 2022               [Page 5]
-
-Internet-Draft       JWS Signature Validation Token           March 2022
-
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -318,6 +327,17 @@ Authors' Addresses
    Email: sts@aaa-sec.com
 
 
+
+
+
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 6]
+
+Internet-Draft  DEPRECATED - JWS Signature Validation To      March 2022
+
+
    Russ Housley
    Vigil Security, LLC
    516 Dranesville Road
@@ -333,4 +353,40 @@ Authors' Addresses
 
 
 
-Santesson & Housley     Expires 22 September 2022               [Page 6]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 7]

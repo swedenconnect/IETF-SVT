@@ -9,10 +9,13 @@ Expires: 22 September 2022                                Vigil Security
                                                            21 March 2022
 
 
-                     PDF Signature Validation Token
+              DEPRECATED - PDF Signature Validation Token
                        draft-santesson-svt-pdf-03
 
 Abstract
+
+   NOTE: This draft is DEPRECATED as its content has been moved into an
+   Annex of the main specification.
 
    This document defines a PDF profile for the Signature Validation
    Token defined in [SVT].
@@ -45,27 +48,29 @@ Copyright Notice
    Please review these documents carefully, as they describe your rights
    and restrictions with respect to this document.
 
-Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Definitions . . . . . . . . . . . . . . . . . . . . . . . . .   2
-   3.  SVT in PDF Documents  . . . . . . . . . . . . . . . . . . . .   3
+
 
 
 
 Santesson & Housley     Expires 22 September 2022               [Page 1]
 
-Internet-Draft       PDF Signature Validation Token           March 2022
+Internet-Draft  DEPRECATED - PDF Signature Validation To      March 2022
 
 
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Definitions . . . . . . . . . . . . . . . . . . . . . . . . .   3
+   3.  SVT in PDF Documents  . . . . . . . . . . . . . . . . . . . .   3
      3.1.  SVT Extension to Timestamp Tokens . . . . . . . . . . . .   3
-   4.  SVT Claims  . . . . . . . . . . . . . . . . . . . . . . . . .   3
-     4.1.  Profile Identifer . . . . . . . . . . . . . . . . . . . .   3
-     4.2.  Signature Reference Data  . . . . . . . . . . . . . . . .   3
+   4.  SVT Claims  . . . . . . . . . . . . . . . . . . . . . . . . .   4
+     4.1.  Profile Identifer . . . . . . . . . . . . . . . . . . . .   4
+     4.2.  Signature Reference Data  . . . . . . . . . . . . . . . .   4
      4.3.  Signed Data Reference Data  . . . . . . . . . . . . . . .   4
      4.4.  Signer Certificate References . . . . . . . . . . . . . .   4
-   5.  JOSE Header . . . . . . . . . . . . . . . . . . . . . . . . .   4
-     5.1.  SVT Signing Key Reference . . . . . . . . . . . . . . . .   4
+   5.  JOSE Header . . . . . . . . . . . . . . . . . . . . . . . . .   5
+     5.1.  SVT Signing Key Reference . . . . . . . . . . . . . . . .   5
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   5
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .   5
    8.  Normative References  . . . . . . . . . . . . . . . . . . . .   5
@@ -98,6 +103,17 @@ Internet-Draft       PDF Signature Validation Token           March 2022
    incremental update.  This SVT covers all signatures of the signed
    PDF.
 
+
+
+
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 2]
+
+Internet-Draft  DEPRECATED - PDF Signature Validation To      March 2022
+
+
 2.  Definitions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -105,14 +121,6 @@ Internet-Draft       PDF Signature Validation Token           March 2022
    "OPTIONAL" in this document are to be interpreted as described in
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
-
-
-
-
-Santesson & Housley     Expires 22 September 2022               [Page 2]
-
-Internet-Draft       PDF Signature Validation Token           March 2022
-
 
    The definitions in [SVT] apply also to this document.
 
@@ -151,6 +159,17 @@ Internet-Draft       PDF Signature Validation Token           March 2022
    imported from the definition of the X.509 certificate extensions
    defined in [RFC5280].
 
+
+
+
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 3]
+
+Internet-Draft  DEPRECATED - PDF Signature Validation To      March 2022
+
+
 4.  SVT Claims
 
 4.1.  Profile Identifer
@@ -162,13 +181,6 @@ Internet-Draft       PDF Signature Validation Token           March 2022
 
    The SVT Signature object MUST contain a "sig_ref" claim (SigReference
    object) with the following elements:
-
-
-
-Santesson & Housley     Expires 22 September 2022               [Page 3]
-
-Internet-Draft       PDF Signature Validation Token           March 2022
-
 
    *  "id" -- Absent or a Null value.
 
@@ -205,6 +217,15 @@ Internet-Draft       PDF Signature Validation Token           March 2022
       performed using one or more certificates where all of the
       certificates are present in the target signature.
 
+
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 4]
+
+Internet-Draft  DEPRECATED - PDF Signature Validation To      March 2022
+
+
    Note: The referenced signer certificate MUST match any certificates
    referenced using ESSCertID or ESSCertIDv2 from [RFC5035].
 
@@ -215,16 +236,6 @@ Internet-Draft       PDF Signature Validation Token           March 2022
    The SVT JOSE header must contain one of the following header
    parameters in accordance with [RFC7515], for storing a reference to
    the public key used to verify the signature on the SVT:
-
-
-
-
-
-
-Santesson & Housley     Expires 22 September 2022               [Page 4]
-
-Internet-Draft       PDF Signature Validation Token           March 2022
-
 
    *  "x5c" -- Holds an X.509 certificate [RFC5280] or a chain of
       certificates.  The certificate holding the public key that
@@ -261,6 +272,16 @@ Internet-Draft       PDF Signature Validation Token           March 2022
               Protocol (TSP)", RFC 3161, DOI 10.17487/RFC3161, August
               2001, <https://www.rfc-editor.org/info/rfc3161>.
 
+
+
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 5]
+
+Internet-Draft  DEPRECATED - PDF Signature Validation To      March 2022
+
+
    [RFC5035]  Schaad, J., "Enhanced Security Services (ESS) Update:
               Adding CertID Algorithm Agility", RFC 5035,
               DOI 10.17487/RFC5035, August 2007,
@@ -271,16 +292,6 @@ Internet-Draft       PDF Signature Validation Token           March 2022
               Infrastructure Certificate and Certificate Revocation List
               (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
               <https://www.rfc-editor.org/info/rfc5280>.
-
-
-
-
-
-
-Santesson & Housley     Expires 22 September 2022               [Page 5]
-
-Internet-Draft       PDF Signature Validation Token           March 2022
-
 
    [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
               Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
@@ -309,17 +320,6 @@ Authors' Addresses
    Herndon, VA,  20170
    United States of America
    Email: housley@vigilsec.com
-
-
-
-
-
-
-
-
-
-
-
 
 
 

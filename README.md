@@ -8,12 +8,14 @@ An orientation to the subject is available in the following presentation: [https
 
 Current working draft for SVT specifications are located in the folders:
 
-- **svt-main** for the main protocol
-- **svt-xml** for the XML profile
-- **svt-pdf** for the PDF profile
-- **svt-jws** for the JWS profile
+- **svt-main** for the main protocol (including profiles for XML, PDF and JWS)
 
-The latest compiled versions of each draft are located in the this root directory.
+The profiles used to have their own independent drafts. These are now moved to the main document. The old deprecated profiles drafts are kept for reference here:
+- **svt-xml** for the DEPRECATED XML profile
+- **svt-pdf** for the DEPRECATED PDF profile
+- **svt-jws** for the DEPRECATED JWS profile
+
+The latest compiled version of the main draft is located in the this root directory.
 
 Note: That the latest working version found here normally is a later version than the last version submitted to the IETF.
 
@@ -24,6 +26,8 @@ Note: That the latest working version found here normally is a later version tha
 - [https://datatracker.ietf.org/doc/draft-santesson-svt-xml/](https://datatracker.ietf.org/doc/draft-santesson-svt-xml/)
 - [https://datatracker.ietf.org/doc/draft-santesson-svt-jws/](https://datatracker.ietf.org/doc/draft-santesson-svt-jws/)
 
+Note: The consolidated main specification provided here is not yet published at the IETF. This list will be updated when the consolidated draft is submitted.
+
 ## Open source and reference implementation
 Implementation of version 1.0 of this specification is available as open source. This open source is free to use under the Apache 2.0 license.
 
@@ -33,6 +37,7 @@ Repo | Description
 [https://github.com/idsec-solutions/sig-validation-base](https://github.com/idsec-solutions/sig-validation-base)  |  SVT enhanced signature validation and functions to extend XML and PDF documents with SVT tokens.
 
 A reference implementation is available at: [https://sandbox.swedenconnect.se/sigval/](https://sandbox.swedenconnect.se/sigval/). This implementation validates elecronic signatures against the EU trusted list (TSL) as well as validatin based on SVT and provides the capability to extend XML and PDF docuemtns with SVT tokens.
+
 
 
 Contributing
