@@ -6,27 +6,25 @@ This is the working area for the [TBD Working Group]() draft of [Signature Valid
 
 An orientation to the subject is available in the following presentation: [https://youtu.be/IEJBmHJklHY](https://youtu.be/IEJBmHJklHY)
 
-Current working draft for SVT specifications are located in the folders:
+Current working draft for the SVT specification is located in the folder:
 
 - **svt-main** for the main protocol (including profiles for XML, PDF and JWS)
-
-The profiles used to have their own independent drafts. These are now moved to the main document. The old deprecated profiles drafts are kept for reference here:
-- **svt-xml** for the DEPRECATED XML profile
-- **svt-pdf** for the DEPRECATED PDF profile
-- **svt-jws** for the DEPRECATED JWS profile
 
 The latest compiled version of the main draft is located in the this root directory.
 
 Note: That the latest working version found here normally is a later version than the last version submitted to the IETF.
 
-**Latest drafts submitted to the IETF:**
+**Latest draft submitted to the IETF:**
 
 - [https://datatracker.ietf.org/doc/draft-santesson-svt/](https://datatracker.ietf.org/doc/draft-santesson-svt/?include_text=1)
-- [https://datatracker.ietf.org/doc/draft-santesson-svt-pdf/](https://datatracker.ietf.org/doc/draft-santesson-svt-pdf/)
-- [https://datatracker.ietf.org/doc/draft-santesson-svt-xml/](https://datatracker.ietf.org/doc/draft-santesson-svt-xml/)
-- [https://datatracker.ietf.org/doc/draft-santesson-svt-jws/](https://datatracker.ietf.org/doc/draft-santesson-svt-jws/)
 
-Note: The consolidated main specification provided here is not yet published at the IETF. This list will be updated when the consolidated draft is submitted.
+
+**Deprecated documents:**
+
+Profiles for XML, PDF and JWS were previously specified in their own independent drafts. These are now moved to the main document. The old deprecated profiles drafts are kept for reference here:
+- **svt-xml** previous XML profile drafts
+- **svt-pdf** previous PDF profile drafts
+- **svt-jws** previous JWS profile drafts
 
 ## Open source and reference implementation
 Implementation of version 1.0 of this specification is available as open source. This open source is free to use under the Apache 2.0 license.
