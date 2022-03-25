@@ -1,5 +1,5 @@
 ---
-title: PDF Signature Validation Token
+title: DEPRECATED - PDF Signature Validation Token
 docname: draft-santesson-svt-pdf-03
 date: 2022-03-21
 category: info
@@ -63,6 +63,8 @@ normative:
       "IETF": "draft-santesson-svt-02"
 
 --- abstract
+
+NOTE: This draft is DEPRECATED as its content has been moved into an Annex of the main specification.
 
 This document defines a PDF profile for the Signature Validation Token defined in {{SVT}}.
 

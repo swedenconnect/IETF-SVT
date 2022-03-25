@@ -1,5 +1,5 @@
 ---
-title: XML Signature Validation Token
+title: DEPRECATED - XML Signature Validation Token
 docname: draft-santesson-svt-xml-03
 date: 2022-03-21
 category: info
@@ -81,6 +81,8 @@ normative:
       "IETF": "draft-santesson-svt-02"
 
 --- abstract
+
+NOTE: This draft is DEPRECATED as its content has been moved into an Annex of the main specification.
 
 This document defines a XML profile for the Signature Validation Token defined in {{SVT}}.
 

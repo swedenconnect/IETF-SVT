@@ -1,7 +1,7 @@
 ---
 title: Signature Validation Token
-docname: draft-santesson-svt-03
-date: 2022-03-21
+docname: draft-santesson-svt-04
+date: 2022-03-24
 category: info
 submissionType: independent
 
@@ -37,6 +37,8 @@ author:
 
 normative:
   RFC2119:
+  RFC3161:
+  RFC5035:
   RFC8174:
   RFC5280:
   RFC5652:
@@ -449,6 +451,16 @@ A profile MAY also define:
 
 - How to attach an SVT to an electronic signature or signed document.
 
+## Defined Profiles
+
+The following profiles are defined in Appendixes of this document:
+
+- {{appendix-xml-profile}}: XML Profile
+- {{appendix-pdf-profile}}: PDF Profile
+- {{appendix-jws-profile}}: JWS Profile
+
+Other documents MAY define other profiles that MAY complement, ammend or supersede these profiles.
+
 # Signature Verification with a SVT
 
 Signature verification based on an a SVT MUST follow these steps:
@@ -488,6 +500,20 @@ This section registers the "sig_val_claims" claim name in the IANA "JSON Web Tok
 
 NOTE to RFC editor: Please replace {this document} with its assigned RFC number.
 
+## Header Parameter Names Registration {#iana-header-params}
+
+This section registers the "svt" Header Parameter in the IANA "JSON Web Signature and Encryption Header Parameters" registry established by {{RFC7515}}.
+
+### Registry Contents {#iana-header-params-reg}
+
+- Header Parameter Name: "svt"
+- Header Parameter Description: Signature Validation Token
+- Header Parameter Usage Location(s): JWS
+- Change Controller: IESG
+- Specification Document(s): {{svt-header}} of {this document}
+
+NOTE to RFC editor: Please replace {this document} with its assigned RFC number.
+
 
 # Security Considerations {#seccons}
 
@@ -516,7 +542,296 @@ One way to increase the resistance of algorithms becoming insecure, is to issue 
 
 --- back
 
-# Appendix: Schemas
+# Appendix: XML signature profile {#appendix-xml-profile}
+
+This appendix defines a profile for implementing SVT with a signed XML document, and defines the following aspects of SVT usage:
+
+- How to include reference data related to XML signatures and XML documents in an SVT.
+- How to add an SVT token to a XML signature.
+
+XML documents can have any number of signature elements, signing an arbitrary number of fragments of XML documents. The actual signature element may be included in the signed XML document (enveloped), include the signed data (enveloping) or may be separate from the signed content (detached).
+
+To provide a generic solution for any type of XML signature an SVT is added to each XML signature element within the XML signature &lt;ds:Object&gt; element.
+
+## Notation {#notation}
+
+### References to XML Elements from XML Schemas {#ref-to-xml-elements}
+
+When referring to elements from the W3C XML Signature namespace
+(http://www.w3.org/2000/09/xmldsig\#) the following syntax is used:
+
+-  &lt;ds:Signature&gt;
+
+When referring to elements from the ETSI XAdES XML Signature namespace
+(http://uri.etsi.org/01903/v1.3.2#) the following syntax is used:
+
+-  &lt;xades:CertDigest&gt;
+
+When referring to elements defined in this specification
+(http://id.swedenconnect.se/svt/1.0/sig-prop/ns) the following syntax is used:
+
+-  &lt;svt:Element&gt;
+
+
+## SVT in XML Documents {#svt-in-xml}
+
+When SVT is provided for XML signatures then one SVT MUST be provided for each XML signature.
+
+An SVT embedded within the XML signature element MUST be placed in a  &lt;svt:SignatureValidationToken&gt; element as defined in {{signaturevalidationtoken-signature-property}}.
+
+### SignatureValidationToken Signature Property {#signaturevalidationtoken-signature-property}
+
+The &lt;svt:SignatureValidationToken&gt; element MUST be placed in a &lt;ds:SignatureProperty&gt; element in accordance with {{XMLDSIG11}}. The &lt;ds:SignatureProperty&gt; element MUST be placed inside a &lt;ds:SignatureProperties&gt; element inside a &lt;ds:Object&gt; element inside a &lt;ds:Signature&gt; element.
+
+Note: {{XMLDSIG11}} requires the Target attribute to be present in &lt;ds:SignatureProperty&gt;, referencing the signature targeted by this signature property. If an SVT is added to a signature that do not have an Id attribute, implementations SHOULD add an Id attribute to the &lt;ds:Signature&gt; element and reference that Id in the Target attribute. This Id attribute and Target attribute value matching is required by the {{XMLDSIG11}} standard, but it is redundant in the context of SVT validation as the SVT already contains information that uniquely identifies the target signature. Validation applications SHOULD not reject an SVT token because of Id and Target attribute mismatch, and MUST rely on matching against signature using signed information in the SVT itself.
+
+The &lt;svt:SignatureValidationToken&gt; element is defined by the following XML Schema:
+
+~~~
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    targetNamespace="http://id.swedenconnect.se/svt/1.0/sig-prop/ns"
+    xmlns:svt="http://id.swedenconnect.se/svt/1.0/sig-prop/ns">
+
+  <xs:element name="SignatureValidationToken"
+      type="svt:SignatureValidationTokenType" />
+
+  <xs:complexType name="SignatureValidationTokenType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+</xs:schema>
+~~~
+
+The SVT token MUST be included as a string representation of the SVT JWT. Note that this is the string representation of the JWT without further encoding. The SVT MUST NOT be represented by the Base64 encoded bytes of the JWT string.
+
+Example:
+
+~~~
+<ds:Signature Id="MySignatureId">
+  ...
+  <ds:Object>
+    <ds:SignatureProperties>
+      <ds:SignatureProperty Target="#MySignatureId">
+        <svt:SignatureValidationToken>
+              eyJ0eXAiOiJKV1QiLCJhb...2aNZ
+        </svt:SignatureValidationToken>
+      </ds:SignatureProperty>
+    </ds:SignatureProperties>
+  </ds:Object>
+</ds:Signature>
+~~~
+
+### Multiple SVT in an XML signature {#xml-multiple-svt-tokens}
+
+If a new SVT is stored in a signature which already contains a previously issued SVT, implementations can choose to either replace the existing SVT or to store the new SVT in addition to the existing SVT.
+
+If the new SVT is stored in addition to the old SVT, it SHOULD be stored in a new &lt;ds:SignatureProperty&gt; element inside the existing &lt;ds:SignatureProperties&gt; element where the old SVT is located.
+
+For interoperability robustness, signature validation applications MUST be able to handle signatures where the new SVT is located in a new &lt;ds:Object&gt; element.
+
+
+## XML signature SVT Claims {#xml-svt-claims}
+
+### XML Profile Identifier {#xml-profile-identifier}
+
+When this profile is used the SigValidation object MUST contain a "profile" claim with the value "XML".
+
+### XML Signature Reference Data {#xml-signature-reference-data}
+
+The SVT Signature object MUST contain a "sig_ref" claim (SigReference object) with the following elements:
+
+- "id" -- The Id-attribute of the XML signature, if present.
+
+- "sig_hash" -- The hash over the signature value bytes.
+
+- "sb_hash" -- The hash over the canonicalized &lt;ds:SignedInfo&gt; element (the bytes the XML signature algorithm has signed to generated the signature value).
+
+
+### XML Signed Data Reference Data {#xml-signed-data-reference}
+
+The SVT Signature object MUST contain one instance of the "sig_data" claim (SignedData object) for each &lt;ds:Reference&gt; element in the &lt;ds:SignedInfo&gt; element. The "sig_data" claim MUST contain the following elements:
+
+- "ref" -- The value of the URI attribute of the corresponding &lt;ds:Reference&gt; element.
+
+- "hash" -- The hash of all bytes identified corresponding &lt;ds:Reference&gt; element after applying all identified canonicalization and transformation algorithms. These are the same bytes that is hashed by the hash value in the &lt;ds:DigestValue&gt; element inside the &lt;ds:Reference&gt; element.
+
+### XML Signer Certificate References {#xml-signer-certificate-references}
+
+The SVT Signature object MUST contain a "signer_cert_ref" claim (CertReference object). The "type" parameter of the "signer_cert_ref" claim MUST be either "chain" or "chain_hash".
+
+- The "chain" type MUST be used when signature validation was performed using one or more certificates where some or all of the certificates in the chain are not present in the target signature.
+- The "chain_hash" type MUST be used when signature validation was performed using one or more certificates where all of the certificates are present in the target signature.
+
+## JOSE Header {#xml-jose-header}
+
+### SVT Signing Key Reference {#xml-svt-signing-key-reference}
+
+The SVT JOSE header for XML signatures must contain one of the following header parameters in accordance with {{RFC7515}}, for storing a reference to the public key used to verify the signature on the SVT:
+
+- "x5c" -- Holds an X.509 certificate {{RFC5280}} or a chain of certificates. The certificate holding the public key that verifies the signature on the SVT MUST be the first certificate in the chain.
+- "kid" -- A key identifier holding the Base64 encoded hash value of the certificate that can verify the signature on the SVT. The hash algorithm MUST be the same hash algorithm used when signing the SVT as specified by the `alg` header parameter.
+
+
+# Appendix: PDF signature profile {#appendix-pdf-profile}
+
+This appendix defines a profile for implementing SVT with a signed PDF document, and defines the following aspects of SVT usage:
+
+- How to include reference data related to PDF signatures and PDF documents in an SVT.
+- How to add an SVT token to a PDF document.
+
+PDF document signatures are added as incremental updates to the signed PDF document and signs all data of the PDF document up until the current signature. When more than one signature is added to a PDF document the previous signature is signed by the next signature and can not be updated with additional data after this event.
+
+To minimize the impact on PDF documents with multiple signatures and to stay backwards compatible with PDF software that do not understand SVT, PDF documents add one SVT token for all signatures of the PDF as an extension to a document timestamp added to the signed PDF as an incremental update. This SVT covers all signatures of the signed PDF.
+
+
+## SVT in PDF Documents {#svt-in-pdf}
+
+The SVT for a signed PDF document MAY provide signature validation information about any of the present signatures in the PDF. The SVT MUST contain a separate "sig" claim (Signature object) for each signature on the PDF that is covered by the SVT.
+
+An SVT added to a signed PDF document MUST be added to a document timestamp accordance with ISO 32000-2:2017 {{ISOPDF2}}.
+
+The document timestamp contains an {{RFC3161}} timestamp token (TSTInfo) in EncapsulatedContentInfo of the CMS signature. The SVT MUST be added to the timestamp token (TSTInfo) as an Extension object as defined in  {{svt-extension-to-timestamps}}.
+
+### SVT Extension to Timestamp Tokens {#svt-extension-to-timestamps}
+
+The SVT extension is an Extension suitable to be included in TSTInfo as defined by {{RFC3161}}.
+
+The SVT extension is identified by the Object Identifier (OID) 1.2.752.201.5.2
+
+Editors note: This is the current used OID. Consider assigning an IETF extension OID.
+
+This extension data (OCTET STRING) holds the bytes of SVT JWT, represented as a UTF-8 encoded string.
+
+This extension MUST NOT be marked critical.
+
+Note: Extensions in timestamp tokens according to {{RFC3161}} are imported from the definition of the X.509 certificate extensions defined in {{RFC5280}}.
+
+## PDF signature SVT Claims {#pdf-svt-claims}
+
+### PDF Profile Identifier {#pdf-profile-identifier}
+
+When this profile is used the SigValidation object MUST contain a "profile" claim with the value "PDF".
+
+### PDF Signature Reference Data {#pdf-signature-reference-data}
+
+The SVT Signature object MUST contain a "sig_ref" claim (SigReference object) with the following elements:
+
+- "id" -- Absent or a Null value.
+
+- "sig_hash" -- The hash over the signature value bytes.
+
+- "sb_hash" -- The hash over the DER encoded SignedAttributes in SignerInfo.
+
+
+### PDF Signed Data Reference Data {#pdf-signed-data-reference}
+
+The SVT Signature object MUST contain one instance of the "sig_data" claim (SignedData object) with the following elements:
+
+- "ref" -- The string representation of the ByteRange value of the PDF signature dictionary of the target signature. This is a sequence of integers separated by space where each integer pair specifies the start index and length of a byte range.
+
+- "hash" -- The hash of all bytes identified by the ByteRange value. This is the concatenation of all byte ranges identified by the ByteRange value.
+
+### PDF Signer Certificate References {#pdf-signer-certificate-references}
+
+The SVT Signature object MUST contain a "signer_cert_ref" claim (CertReference object). The "type" parameter of the "signer_cert_ref" claim MUST be either "chain" or "chain_hash".
+
+- The "chain" type MUST be used when signature validation was performed using one or more certificates where some or all of the certificates in the chain are not present in the target signature.
+- The "chain_hash" type MUST be used when signature validation was performed using one or more certificates where all of the certificates are present in the target signature.
+
+Note: The referenced signer certificate MUST match any certificates referenced using ESSCertID or ESSCertIDv2 from {{RFC5035}}.
+
+## JOSE Header {#pdf-jose-header}
+
+### SVT Signing Key Reference {#pdf-svt-signing-key-reference}
+
+The SVT JOSE header must contain one of the following header parameters in accordance with {{RFC7515}}, for storing a reference to the public key used to verify the signature on the SVT:
+
+- "x5c" -- Holds an X.509 certificate {{RFC5280}} or a chain of certificates. The certificate holding the public key that verifies the signature on the SVT MUST be the first certificate in the chain.
+- "kid" -- A key identifier holding the Base64 encoded hash value of the certificate that can verify the signature on the SVT. The hash algorithm MUST be the same hash algorithm used when signing the SVT as specified by the `alg` header parameter. The referenced certificate SHOULD be the same certificate that was used to sign the document timestamp that contains the SVT.
+
+# Appendix: JWS Profile {#appendix-jws-profile}
+
+This appendix defines a profile for implementing SVT with a JWS signed payload according to {{RFC7515}}, and defines the following aspects of SVT usage:
+
+- How to include reference data related to JWS signatures in an SVT.
+- How to add an SVT token to JWS signatures.
+
+A JWS may have one or more signatures depending on its serialization format, signing the same payload data. A JWS either contains the data to be signed (enveloping) or may sign any externally associated payload data (detached).
+
+To provide a generic solution for JWS, an SVT is added to each present signature as a JWS Unprotected Header. If a JWS includes multiple signatures, then each signature includes its own SVT.
+
+## SVT in JWS {#svt-in-jws}
+
+An SVT token MAY be added to any signature of a JWS to support validation of that signature. If more than one signature is present then each present SVT MUST provide information exclusively related to one associated signature and MUST NOT include information about any other signature in the JWS.
+
+Each SVT is stored in its associated signature's "svt" header as defined in {{svt-header}}.
+
+### "svt" Header Parameter {#svt-header}
+
+The "svt" (Signature Validation Token) Header Parameter is used to contain an array of SVT tokens to support validation of the associated signature. Each SVT token in the array has the format of a JWT as defined in {{RFC7519}} and is stored using its natural string representation without further wrapping or encoding.
+
+The "svt" Header Parameter, when used, MUST be included as a JWS Unprotected Header.
+
+Note: JWS Unprotected Header is not supported with JWS Compact Serialization. A consequence of adding an SVT token to a JWS is therefore that JWS JSON Serialization MUST be used, either in the form of general JWS JSON Serialization (for one or more signatures) or in the form of flattened JWS JSON Serialization (optionally used when only one signature is present in the JWS).
+
+### Multiple SVT in a JWS signature {#jws-multiple-svt-tokens}
+
+If a new SVT is stored in a signature which already contains a previously issued SVT, implementations can choose to either replace the existing SVT or to store the new SVT in addition to the existing SVT.
+
+If a JWS signature already contains an array of SVTs and a new SVT is to be added, then the new SVT MUST be added to the array of SVT tokens in the existing "svt" Header Parameter.
+
+## JWS signature SVT Claims {#jws-svt-claims}
+
+### JWS Profile Identifier {#jws-profile-identifier}
+
+When this profile is used the SigValidation object MUST contain a "profile" claim with the value "JWS".
+
+### JWS Signature Reference Data {#jws-signature-reference-data}
+
+The SVT Signature object MUST contain a "sig_ref" claim (SigReference object) with the following elements:
+
+- "sig_hash" -- The hash over the associated signature value (the bytes of the base64url-decoded signature parameter).
+
+- "sb_hash" -- The hash over all bytes signed by the associated signature (the JWS Signing Input according to {{RFC7515}}).
+
+
+### JWS Signed Data Reference Data {#jws-signed-data-reference}
+
+The SVT Signature object MUST contain one instance of the "sig_data" claim (SignedData object) with the following elements:
+
+- "ref" -- This parameter MUST hold one of the following thee possible values.
+
+  1. The explicit string value "payload" if the signed JWS Payload is embedded in a "payload" member of the JWS.
+
+  2. The explicit string value "detached" if the JWS signs detached payload data without explicit reference.
+
+  3. A URI that can be used to identify or fetch the detached signed data. The means to determine the URI for the detached signed data is outside the scope of this specification.
+
+- "hash" -- The hash over the JWS Payload data bytes (not its base64url-encoded string representation).
+
+### JWS Signer Certificate References {#jws-signer-certificate-references}
+
+The SVT Signature object MUST contain a "signer_cert_ref" claim (CertReference object). The "type" parameter of the "signer_cert_ref" claim MUST be either "chain" or "chain_hash".
+
+- The "chain" type MUST be used when signature validation was performed using one or more certificates where some or all of the certificates in the chain are not present in the target signature.
+- The "chain_hash" type MUST be used when signature validation was performed using one or more certificates where all of the certificates are present in the target signature JOSE header using the "x5c" Header Parameter.
+
+## SVT JOSE Header {#jws-svt-jose-header}
+
+### SVT Signing Key Reference {#jws-svt-signing-key-reference}
+
+The SVT JOSE header must contain one of the following header parameters in accordance with {{RFC7515}}, for storing a reference to the public key used to verify the signature on the SVT:
+
+- "x5c" -- Holds an X.509 certificate {{RFC5280}} or a chain of certificates. The certificate holding the public key that verifies the signature on the SVT MUST be the first certificate in the chain.
+- "kid" -- A key identifier holding the Base64 encoded hash value of the certificate that can verify the signature on the SVT. The hash algorithm MUST be the same hash algorithm used when signing the SVT as specified by the `alg` header parameter.
+
+
+# Appendix: Schemas {#schema-appendix}
 
 ## Concise Data Definition Language (CDDL)
 

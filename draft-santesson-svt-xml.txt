@@ -9,10 +9,13 @@ Expires: 22 September 2022                                Vigil Security
                                                            21 March 2022
 
 
-                     XML Signature Validation Token
+              DEPRECATED - XML Signature Validation Token
                        draft-santesson-svt-xml-03
 
 Abstract
+
+   NOTE: This draft is DEPRECATED as its content has been moved into an
+   Annex of the main specification.
 
    This document defines a XML profile for the Signature Validation
    Token defined in [SVT].
@@ -45,19 +48,20 @@ Copyright Notice
    Please review these documents carefully, as they describe your rights
    and restrictions with respect to this document.
 
-Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Definitions . . . . . . . . . . . . . . . . . . . . . . . . .   2
 
 
 
 
 Santesson & Housley     Expires 22 September 2022               [Page 1]
 
-Internet-Draft       XML Signature Validation Token           March 2022
+Internet-Draft  DEPRECATED - XML Signature Validation To      March 2022
 
 
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Definitions . . . . . . . . . . . . . . . . . . . . . . . . .   3
      2.1.  Notation  . . . . . . . . . . . . . . . . . . . . . . . .   3
        2.1.1.  References to XML Elements from XML Schemas . . . . .   3
    3.  SVT in XML Documents  . . . . . . . . . . . . . . . . . . . .   3
@@ -66,13 +70,13 @@ Internet-Draft       XML Signature Validation Token           March 2022
    4.  SVT Claims  . . . . . . . . . . . . . . . . . . . . . . . . .   5
      4.1.  Profile Identifer . . . . . . . . . . . . . . . . . . . .   5
      4.2.  Signature Reference Data  . . . . . . . . . . . . . . . .   5
-     4.3.  Signed Data Reference Data  . . . . . . . . . . . . . . .   5
+     4.3.  Signed Data Reference Data  . . . . . . . . . . . . . . .   6
      4.4.  Signer Certificate References . . . . . . . . . . . . . .   6
    5.  JOSE Header . . . . . . . . . . . . . . . . . . . . . . . . .   6
      5.1.  SVT Signing Key Reference . . . . . . . . . . . . . . . .   6
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
-   8.  Normative References  . . . . . . . . . . . . . . . . . . . .   6
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   7
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   7
+   8.  Normative References  . . . . . . . . . . . . . . . . . . . .   7
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   7
 
 1.  Introduction
@@ -99,6 +103,17 @@ Internet-Draft       XML Signature Validation Token           March 2022
    added to each XML signature element within the XML signature
    <ds:Object> element.
 
+
+
+
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 2]
+
+Internet-Draft  DEPRECATED - XML Signature Validation To      March 2022
+
+
 2.  Definitions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -106,13 +121,6 @@ Internet-Draft       XML Signature Validation Token           March 2022
    "OPTIONAL" in this document are to be interpreted as described in
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
-
-
-
-Santesson & Housley     Expires 22 September 2022               [Page 2]
-
-Internet-Draft       XML Signature Validation Token           March 2022
-
 
    The definitions in [SVT] apply also to this document.
 
@@ -153,6 +161,15 @@ Internet-Draft       XML Signature Validation Token           March 2022
    <ds:SignatureProperties> element inside a <ds:Object> element inside
    a <ds:Signature> element.
 
+
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 3]
+
+Internet-Draft  DEPRECATED - XML Signature Validation To      March 2022
+
+
    Note: [XMLDSIG11] requires the Target attribute to be present in
    <ds:SignatureProperty>, referencing the signature targeted by this
    signature property.  If an SVT is added to a signature that do not
@@ -162,14 +179,6 @@ Internet-Draft       XML Signature Validation Token           March 2022
    required by the [XMLDSIG11] standard, but it is redundant in the
    context of SVT validation as the SVT already contains information
    that uniquely identifies the target signature.  Validation
-
-
-
-Santesson & Housley     Expires 22 September 2022               [Page 3]
-
-Internet-Draft       XML Signature Validation Token           March 2022
-
-
    applications SHOULD not reject an SVT token because of Id and Target
    attribute mismatch, and MUST rely on matching against signature using
    signed information in the SVT itself.
@@ -202,6 +211,21 @@ Internet-Draft       XML Signature Validation Token           March 2022
 
    Example:
 
+
+
+
+
+
+
+
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 4]
+
+Internet-Draft  DEPRECATED - XML Signature Validation To      March 2022
+
+
    <ds:Signature Id="MySignatureId">
      ...
      <ds:Object>
@@ -214,17 +238,6 @@ Internet-Draft       XML Signature Validation Token           March 2022
        </ds:SignatureProperties>
      </ds:Object>
    </ds:Signature>
-
-
-
-
-
-
-
-Santesson & Housley     Expires 22 September 2022               [Page 4]
-
-Internet-Draft       XML Signature Validation Token           March 2022
-
 
 3.2.  Multiple SVT in a signature
 
@@ -261,6 +274,14 @@ Internet-Draft       XML Signature Validation Token           March 2022
       element (the bytes the XML signature algorithm has signed to
       generated the signature value).
 
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 5]
+
+Internet-Draft  DEPRECATED - XML Signature Validation To      March 2022
+
+
 4.3.  Signed Data Reference Data
 
    The SVT Signature object MUST contain one instance of the "sig_data"
@@ -270,17 +291,6 @@ Internet-Draft       XML Signature Validation Token           March 2022
 
    *  "ref" -- The value of the URI attribute of the corresponding
       <ds:Reference> element.
-
-
-
-
-
-
-
-Santesson & Housley     Expires 22 September 2022               [Page 5]
-
-Internet-Draft       XML Signature Validation Token           March 2022
-
 
    *  "hash" -- The hash of all bytes identified corresponding
       <ds:Reference> element after applying all identified
@@ -320,6 +330,14 @@ Internet-Draft       XML Signature Validation Token           March 2022
       hash algorithm MUST be the same hash algorithm used when signing
       the SVT as specified by the alg header parameter.
 
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 6]
+
+Internet-Draft  DEPRECATED - XML Signature Validation To      March 2022
+
+
 6.  IANA Considerations
 
    This document has no IANA actions.
@@ -329,14 +347,6 @@ Internet-Draft       XML Signature Validation Token           March 2022
    The security considerations of [SVT] applies also to this document.
 
 8.  Normative References
-
-
-
-
-Santesson & Housley     Expires 22 September 2022               [Page 6]
-
-Internet-Draft       XML Signature Validation Token           March 2022
-
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -376,6 +386,14 @@ Authors' Addresses
    Email: sts@aaa-sec.com
 
 
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 7]
+
+Internet-Draft  DEPRECATED - XML Signature Validation To      March 2022
+
+
    Russ Housley
    Vigil Security, LLC
    516 Dranesville Road
@@ -389,4 +407,42 @@ Authors' Addresses
 
 
 
-Santesson & Housley     Expires 22 September 2022               [Page 7]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Santesson & Housley     Expires 22 September 2022               [Page 8]
