@@ -243,6 +243,8 @@ Internet-Draft         Signature Validation Token             March 2022
       data can be the collection of several data fragments each
       referenced by the signature.  In the case of PDF, this is the data
       covered by the "ByteRange" parameter in the signature dictionary.
+      In JWS, this is the unencoded payload data (before base64url
+      encoding).
 
    *  Signed Bytes -- These are the actual bytes of data that were
       hashed and signed by the digital signature algorithm.  In most
@@ -251,7 +253,8 @@ Internet-Draft         Signature Validation Token             March 2022
       Data as well as information about algorithms and other data bound
       to a signature.  In XML, this is the canonicalized SignedInfo
       element.  In CMS and PDF signatures, this is the DER-encoded
-      SignedAttributes structure.
+      SignedAttributes structure.  In JWS, this is the protected header
+      and payload data formatted according to [RFC7515].
 
    When these terms are used as defined in this section, they appear
    with a capitalized first letter.
@@ -271,9 +274,6 @@ Internet-Draft         Signature Validation Token             March 2022
    repeated cryptographic validation of the original electronic
    signature value, as well as reliance on any hash values bound to that
    signature.  The SVT achieves this by binding the following
-   information to a specific electronic signature:
-
-   *  A unique identification of the electronic signature.
 
 
 
@@ -281,6 +281,10 @@ Santesson & Housley      Expires 1 October 2022                 [Page 5]
 
 Internet-Draft         Signature Validation Token             March 2022
 
+
+   information to a specific electronic signature:
+
+   *  A unique identification of the electronic signature.
 
    *  The data and metadata signed by the electronic signature.
 
@@ -327,16 +331,15 @@ Internet-Draft         Signature Validation Token             March 2022
    The contents of claims in an SVT are specified using the following
    data types:
 
-   *  String -- JSON Data Type of string that contains an arbitrary case
-      sensitive string value.
-
-
 
 
 Santesson & Housley      Expires 1 October 2022                 [Page 6]
 
 Internet-Draft         Signature Validation Token             March 2022
 
+
+   *  String -- JSON Data Type of string that contains an arbitrary case
+      sensitive string value.
 
    *  Base64Binary -- JSON Data Type of string that contains of Base64
       encoded byte array of binary data.
@@ -382,9 +385,6 @@ Internet-Draft         Signature Validation Token             March 2022
 3.2.2.  Signature Validation Token JWT Claims
 
    The SVT MUST contain only JWT claims in the following list:
-
-
-
 
 
 

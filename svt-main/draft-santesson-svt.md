@@ -190,7 +190,7 @@ equivalent to the signed content of a document, and it represents the data that 
 signer intended to sign. In some cases, such as in some XML signatures, the signed data
 can be the collection of several data fragments each referenced by the signature. In the
 case of PDF, this is the data covered by the "ByteRange" parameter in the signature
-dictionary.
+dictionary. In JWS, this is the unencoded payload data (before base64url encoding).
 
 - Signed Bytes -- These are the actual bytes of data that were hashed and signed by the
 digital signature algorithm. In most cases, this is not the actual Signed Data, but a
