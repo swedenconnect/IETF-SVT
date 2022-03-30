@@ -197,7 +197,8 @@ digital signature algorithm. In most cases, this is not the actual Signed Data, 
 collection of signature metadata that includes references (hash) of the Signed Data as
 well as information about algorithms and other data bound to a signature. In XML, this
 is the canonicalized SignedInfo element. In CMS and PDF signatures, this is the
-DER-encoded SignedAttributes structure.
+DER-encoded SignedAttributes structure. In JWS, this is the protected header and payload
+data formatted according to {{RFC7515}}.
 
 When these terms are used as defined in this section, they appear with a
 capitalized first letter.
