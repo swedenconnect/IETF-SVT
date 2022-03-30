@@ -5,12 +5,12 @@
 Network Working Group                                       S. Santesson
 Internet-Draft                                           IDsec Solutions
 Intended status: Informational                                R. Housley
-Expires: 25 September 2022                                Vigil Security
-                                                           24 March 2022
+Expires: 1 October 2022                                   Vigil Security
+                                                           30 March 2022
 
 
                        Signature Validation Token
-                         draft-santesson-svt-04
+                    draft-santesson-svt-05-SNAPSHOT
 
 Abstract
 
@@ -41,7 +41,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 September 2022.
+   This Internet-Draft will expire on 1 October 2022.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Santesson & Housley     Expires 25 September 2022               [Page 1]
+Santesson & Housley      Expires 1 October 2022                 [Page 1]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -82,34 +82,34 @@ Table of Contents
        3.2.9.  CertReference Claims Object Class . . . . . . . . . .  12
        3.2.10. SVT JOSE Header . . . . . . . . . . . . . . . . . . .  13
    4.  Profiles  . . . . . . . . . . . . . . . . . . . . . . . . . .  14
-     4.1.  Defined Profiles  . . . . . . . . . . . . . . . . . . . .  14
+     4.1.  Defined Profiles  . . . . . . . . . . . . . . . . . . . .  15
    5.  Signature Verification with a SVT . . . . . . . . . . . . . .  15
    6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
-     6.1.  Claim Names Registration  . . . . . . . . . . . . . . . .  15
-       6.1.1.  Registry Contents . . . . . . . . . . . . . . . . . .  15
+     6.1.  Claim Names Registration  . . . . . . . . . . . . . . . .  16
+       6.1.1.  Registry Contents . . . . . . . . . . . . . . . . . .  16
      6.2.  Header Parameter Names Registration . . . . . . . . . . .  16
        6.2.1.  Registry Contents . . . . . . . . . . . . . . . . . .  16
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
-     7.1.  Level of reliance . . . . . . . . . . . . . . . . . . . .  16
+     7.1.  Level of reliance . . . . . . . . . . . . . . . . . . . .  17
      7.2.  Aging algorithms  . . . . . . . . . . . . . . . . . . . .  17
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  17
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .  17
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  19
    Appendix A.  Appendix: XML signature profile  . . . . . . . . . .  19
-     A.1.  Notation  . . . . . . . . . . . . . . . . . . . . . . . .  19
-       A.1.1.  References to XML Elements from XML Schemas . . . . .  19
+     A.1.  Notation  . . . . . . . . . . . . . . . . . . . . . . . .  20
+       A.1.1.  References to XML Elements from XML Schemas . . . . .  20
      A.2.  SVT in XML Documents  . . . . . . . . . . . . . . . . . .  20
        A.2.1.  SignatureValidationToken Signature Property . . . . .  20
-       A.2.2.  Multiple SVT in an XML signature  . . . . . . . . . .  21
+       A.2.2.  Multiple SVT in an XML signature  . . . . . . . . . .  22
      A.3.  XML signature SVT Claims  . . . . . . . . . . . . . . . .  22
        A.3.1.  XML Profile Identifier  . . . . . . . . . . . . . . .  22
        A.3.2.  XML Signature Reference Data  . . . . . . . . . . . .  22
        A.3.3.  XML Signed Data Reference Data  . . . . . . . . . . .  22
-       A.3.4.  XML Signer Certificate References . . . . . . . . . .  22
+       A.3.4.  XML Signer Certificate References . . . . . . . . . .  23
 
 
 
-Santesson & Housley     Expires 25 September 2022               [Page 2]
+Santesson & Housley      Expires 1 October 2022                 [Page 2]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -119,24 +119,24 @@ Internet-Draft         Signature Validation Token             March 2022
    Appendix B.  Appendix: PDF signature profile  . . . . . . . . . .  23
      B.1.  SVT in PDF Documents  . . . . . . . . . . . . . . . . . .  24
        B.1.1.  SVT Extension to Timestamp Tokens . . . . . . . . . .  24
-     B.2.  PDF signature SVT Claims  . . . . . . . . . . . . . . . .  24
-       B.2.1.  PDF Profile Identifier  . . . . . . . . . . . . . . .  24
+     B.2.  PDF signature SVT Claims  . . . . . . . . . . . . . . . .  25
+       B.2.1.  PDF Profile Identifier  . . . . . . . . . . . . . . .  25
        B.2.2.  PDF Signature Reference Data  . . . . . . . . . . . .  25
        B.2.3.  PDF Signed Data Reference Data  . . . . . . . . . . .  25
        B.2.4.  PDF Signer Certificate References . . . . . . . . . .  25
-     B.3.  JOSE Header . . . . . . . . . . . . . . . . . . . . . . .  25
+     B.3.  JOSE Header . . . . . . . . . . . . . . . . . . . . . . .  26
        B.3.1.  SVT Signing Key Reference . . . . . . . . . . . . . .  26
    Appendix C.  Appendix: JWS Profile  . . . . . . . . . . . . . . .  26
-     C.1.  SVT in JWS  . . . . . . . . . . . . . . . . . . . . . . .  26
+     C.1.  SVT in JWS  . . . . . . . . . . . . . . . . . . . . . . .  27
        C.1.1.  "svt" Header Parameter  . . . . . . . . . . . . . . .  27
        C.1.2.  Multiple SVT in a JWS signature . . . . . . . . . . .  27
      C.2.  JWS signature SVT Claims  . . . . . . . . . . . . . . . .  27
        C.2.1.  JWS Profile Identifier  . . . . . . . . . . . . . . .  27
-       C.2.2.  JWS Signature Reference Data  . . . . . . . . . . . .  27
+       C.2.2.  JWS Signature Reference Data  . . . . . . . . . . . .  28
        C.2.3.  JWS Signed Data Reference Data  . . . . . . . . . . .  28
        C.2.4.  JWS Signer Certificate References . . . . . . . . . .  28
-     C.3.  SVT JOSE Header . . . . . . . . . . . . . . . . . . . . .  28
-       C.3.1.  SVT Signing Key Reference . . . . . . . . . . . . . .  28
+     C.3.  SVT JOSE Header . . . . . . . . . . . . . . . . . . . . .  29
+       C.3.1.  SVT Signing Key Reference . . . . . . . . . . . . . .  29
    Appendix D.  Appendix: Schemas  . . . . . . . . . . . . . . . . .  29
      D.1.  Concise Data Definition Language (CDDL) . . . . . . . . .  29
      D.2.  JSON Schema . . . . . . . . . . . . . . . . . . . . . . .  30
@@ -165,7 +165,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 25 September 2022               [Page 3]
+Santesson & Housley      Expires 1 October 2022                 [Page 3]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -221,7 +221,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 25 September 2022               [Page 4]
+Santesson & Housley      Expires 1 October 2022                 [Page 4]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -277,7 +277,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 25 September 2022               [Page 5]
+Santesson & Housley      Expires 1 October 2022                 [Page 5]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -333,7 +333,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 25 September 2022               [Page 6]
+Santesson & Housley      Expires 1 October 2022                 [Page 6]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -389,7 +389,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 25 September 2022               [Page 7]
+Santesson & Housley      Expires 1 October 2022                 [Page 7]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -445,7 +445,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 25 September 2022               [Page 8]
+Santesson & Housley      Expires 1 October 2022                 [Page 8]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -501,7 +501,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 25 September 2022               [Page 9]
+Santesson & Housley      Expires 1 October 2022                 [Page 9]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -557,7 +557,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 25 September 2022              [Page 10]
+Santesson & Housley      Expires 1 October 2022                [Page 10]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -613,7 +613,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 25 September 2022              [Page 11]
+Santesson & Housley      Expires 1 October 2022                [Page 11]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -640,6 +640,10 @@ Internet-Draft         Signature Validation Token             March 2022
       assigned to the evidence of time.  Inclusion of this parameter is
       OPTIONAL.
 
+   *  hash -- A Base64Binary data type that contains the hash value of
+      the complete evidence of time.  Inclusion of this parameter is
+      OPTIONAL.
+
    *  val -- A [Object<PolicyValidation>] data type that contains an
       array of results of the time evidence validation according to
       defined validation procedures.  Inclusion of this parameter is
@@ -660,19 +664,20 @@ Internet-Draft         Signature Validation Token             March 2022
    certificates that can be located in the target electronic signature,
    and it contains the following parameters:
 
+
+
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 12]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
    *  type -- A StringOrURI data type that contains an identifier of the
       type of reference.  The type identifier MUST be one of the
       identifiers defined below, an identifier specified by the selected
       profile, or a URI identifier.  This parameter MUST be present.
-
-
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 12]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
    *  ref -- A [String] data type that contains an array of string
       parameters according to conventions defined by the type
@@ -712,6 +717,19 @@ Internet-Draft         Signature Validation Token             March 2022
    *  typ -- This parameter MUST have the string value "JWT" (upper
       case).
 
+
+
+
+
+
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 13]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
    *  alg -- This parameter identifies the algorithm used to sign the
       SVT JWT.  The algorithm identifier MUST be specified in [RFC7518]
       or the IANA JSON Web Signature and Encryption Algorithms Registry
@@ -719,16 +737,6 @@ Internet-Draft         Signature Validation Token             March 2022
       identical to the hash algorithm specified in the hash_algo
       parameter of the SigValidation object within the sig_val_claims
       claim.
-
-
-
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 13]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
    The SVT header MUST contain a public key or a reference to a public
    key used to verify the signature on the SVT in accordance with
@@ -768,6 +776,16 @@ Internet-Draft         Signature Validation Token             March 2022
    *  How to attach an SVT to an electronic signature or signed
       document.
 
+
+
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 14]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
 4.1.  Defined Profiles
 
    The following profiles are defined in Appendixes of this document:
@@ -777,14 +795,6 @@ Internet-Draft         Signature Validation Token             March 2022
    *  Appendix B: PDF Profile
 
    *  Appendix C: JWS Profile
-
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 14]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
    Other documents MAY define other profiles that MAY complement, ammend
    or supersede these profiles.
@@ -824,6 +834,14 @@ Internet-Draft         Signature Validation Token             March 2022
 
 6.  IANA Considerations
 
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 15]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
 6.1.  Claim Names Registration
 
    This section registers the "sig_val_claims" claim name in the IANA
@@ -833,14 +851,6 @@ Internet-Draft         Signature Validation Token             March 2022
 6.1.1.  Registry Contents
 
    *  Claim Name: "sig_val_claims"
-
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 15]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
    *  Claim Description: Signature Validation Token
 
@@ -874,6 +884,20 @@ Internet-Draft         Signature Validation Token             March 2022
 
 7.  Security Considerations
 
+
+
+
+
+
+
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 16]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
 7.1.  Level of reliance
 
    An SVT allows a signature verifier to still validate the original
@@ -890,13 +914,6 @@ Internet-Draft         Signature Validation Token             March 2022
 
    This choice is a decision made by the verifier according to its own
    policy and risk assessment.
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 16]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
    However, even when relying on the SVT validation conclusion of an SVT
    it is vital to still verify that the present SVT is correctly
@@ -927,6 +944,16 @@ Internet-Draft         Signature Validation Token             March 2022
               CAdES baseline signatures", ETSI EN 319 122-1 v1.1.1,
               April 2016.
 
+
+
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 17]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
    [ETSI319102-1]
               ETSI, "ETSI - Electronic Signatures and Infrastructures
               (ESI); Procedures for Creation and Validation of AdES
@@ -945,14 +972,6 @@ Internet-Draft         Signature Validation Token             March 2022
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
-
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 17]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
    [RFC3161]  Adams, C., Cain, P., Pinkas, D., and R. Zuccherato,
               "Internet X.509 Public Key Infrastructure Time-Stamp
@@ -983,6 +1002,14 @@ Internet-Draft         Signature Validation Token             March 2022
               Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
               2015, <https://www.rfc-editor.org/info/rfc7515>.
 
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 18]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
    [RFC7518]  Jones, M., "JSON Web Algorithms (JWA)", RFC 7518,
               DOI 10.17487/RFC7518, May 2015,
               <https://www.rfc-editor.org/info/rfc7518>.
@@ -999,16 +1026,6 @@ Internet-Draft         Signature Validation Token             March 2022
               XAdES digital signatures; Part 1: Building blocks and
               XAdES baseline signatures", ETSI EN 319 132-1 v1.1.1,
               April 2016.
-
-
-
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 18]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
    [XMLDSIG11]
               Eastlake, D., Reagle, J., Solo, D., Hirsch, F., Nystrom,
@@ -1040,6 +1057,15 @@ Appendix A.  Appendix: XML signature profile
    include the signed data (enveloping) or may be separate from the
    signed content (detached).
 
+
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 19]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
    To provide a generic solution for any type of XML signature an SVT is
    added to each XML signature element within the XML signature
    <ds:Object> element.
@@ -1058,13 +1084,6 @@ A.1.1.  References to XML Elements from XML Schemas
    used:
 
    *  <xades:CertDigest>
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 19]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
    When referring to elements defined in this specification
    (http://id.swedenconnect.se/svt/1.0/sig-prop/ns) the following syntax
@@ -1095,6 +1114,14 @@ A.2.1.  SignatureValidationToken Signature Property
    the <ds:Signature> element and reference that Id in the Target
    attribute.  This Id attribute and Target attribute value matching is
    required by the [XMLDSIG11] standard, but it is redundant in the
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 20]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
    context of SVT validation as the SVT already contains information
    that uniquely identifies the target signature.  Validation
    applications SHOULD not reject an SVT token because of Id and Target
@@ -1103,24 +1130,6 @@ A.2.1.  SignatureValidationToken Signature Property
 
    The <svt:SignatureValidationToken> element is defined by the
    following XML Schema:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 20]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
    <?xml version="1.0" encoding="UTF-8"?>
    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
@@ -1160,6 +1169,15 @@ Internet-Draft         Signature Validation Token             March 2022
      </ds:Object>
    </ds:Signature>
 
+
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 21]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
 A.2.2.  Multiple SVT in an XML signature
 
    If a new SVT is stored in a signature which already contains a
@@ -1170,13 +1188,6 @@ A.2.2.  Multiple SVT in an XML signature
    If the new SVT is stored in addition to the old SVT, it SHOULD be
    stored in a new <ds:SignatureProperty> element inside the existing
    <ds:SignatureProperties> element where the old SVT is located.
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 21]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
    For interoperability robustness, signature validation applications
    MUST be able to handle signatures where the new SVT is located in a
@@ -1212,6 +1223,17 @@ A.3.3.  XML Signed Data Reference Data
    *  "ref" -- The value of the URI attribute of the corresponding
       <ds:Reference> element.
 
+
+
+
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 22]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
    *  "hash" -- The hash of all bytes identified corresponding
       <ds:Reference> element after applying all identified
       canonicalization and transformation algorithms.  These are the
@@ -1223,16 +1245,6 @@ A.3.4.  XML Signer Certificate References
    The SVT Signature object MUST contain a "signer_cert_ref" claim
    (CertReference object).  The "type" parameter of the
    "signer_cert_ref" claim MUST be either "chain" or "chain_hash".
-
-
-
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 22]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
    *  The "chain" type MUST be used when signature validation was
       performed using one or more certificates where some or all of the
@@ -1271,24 +1283,18 @@ Appendix B.  Appendix: PDF signature profile
 
    *  How to add an SVT token to a PDF document.
 
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 23]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
    PDF document signatures are added as incremental updates to the
    signed PDF document and signs all data of the PDF document up until
    the current signature.  When more than one signature is added to a
    PDF document the previous signature is signed by the next signature
    and can not be updated with additional data after this event.
-
-
-
-
-
-
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 23]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
    To minimize the impact on PDF documents with multiple signatures and
    to stay backwards compatible with PDF software that do not understand
@@ -1332,19 +1338,20 @@ B.1.1.  SVT Extension to Timestamp Tokens
    imported from the definition of the X.509 certificate extensions
    defined in [RFC5280].
 
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 24]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
 B.2.  PDF signature SVT Claims
 
 B.2.1.  PDF Profile Identifier
 
    When this profile is used the SigValidation object MUST contain a
    "profile" claim with the value "PDF".
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 24]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
 B.2.2.  PDF Signature Reference Data
 
@@ -1386,21 +1393,19 @@ B.2.4.  PDF Signer Certificate References
       performed using one or more certificates where all of the
       certificates are present in the target signature.
 
+
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 25]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
    Note: The referenced signer certificate MUST match any certificates
    referenced using ESSCertID or ESSCertIDv2 from [RFC5035].
 
 B.3.  JOSE Header
-
-
-
-
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 25]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
 B.3.1.  SVT Signing Key Reference
 
@@ -1439,6 +1444,20 @@ Appendix C.  Appendix: JWS Profile
    present signature as a JWS Unprotected Header.  If a JWS includes
    multiple signatures, then each signature includes its own SVT.
 
+
+
+
+
+
+
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 26]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
 C.1.  SVT in JWS
 
    An SVT token MAY be added to any signature of a JWS to support
@@ -1449,14 +1468,6 @@ C.1.  SVT in JWS
 
    Each SVT is stored in its associated signature's "svt" header as
    defined in Appendix C.1.1.
-
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 26]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
 C.1.1.  "svt" Header Parameter
 
@@ -1494,6 +1505,15 @@ C.2.1.  JWS Profile Identifier
    When this profile is used the SigValidation object MUST contain a
    "profile" claim with the value "JWS".
 
+
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 27]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
 C.2.2.  JWS Signature Reference Data
 
    The SVT Signature object MUST contain a "sig_ref" claim (SigReference
@@ -1504,15 +1524,6 @@ C.2.2.  JWS Signature Reference Data
 
    *  "sb_hash" -- The hash over all bytes signed by the associated
       signature (the JWS Signing Input according to [RFC7515]).
-
-
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 27]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
 C.2.3.  JWS Signed Data Reference Data
 
@@ -1550,6 +1561,15 @@ C.2.4.  JWS Signer Certificate References
       certificates are present in the target signature JOSE header using
       the "x5c" Header Parameter.
 
+
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 28]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
 C.3.  SVT JOSE Header
 
 C.3.1.  SVT Signing Key Reference
@@ -1562,13 +1582,6 @@ C.3.1.  SVT Signing Key Reference
       certificates.  The certificate holding the public key that
       verifies the signature on the SVT MUST be the first certificate in
       the chain.
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 28]
-
-Internet-Draft         Signature Validation Token             March 2022
-
 
    *  "kid" -- A key identifier holding the Base64 encoded hash value of
       the certificate that can verify the signature on the SVT.  The
@@ -1605,6 +1618,14 @@ D.1.  Concise Data Definition Language (CDDL)
      signer_cert_ref: CertReference
      sig_val: [+ PolicyValidation]
      ? time_val: [* TimeValidation]
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 29]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
      ? ext: Extension
    }
 
@@ -1618,12 +1639,6 @@ D.1.  Concise Data Definition Language (CDDL)
      ref: text
      hash: binary-value
    }
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 29]
-
-Internet-Draft         Signature Validation Token             March 2022
 
 
    CertReference = {
@@ -1643,6 +1658,7 @@ Internet-Draft         Signature Validation Token             March 2022
      type: text
      iss: text
      ? id: text / null
+     ? hash: binary-value / null
      ? val: [* PolicyValidation]
      ? ext: Extension
    }
@@ -1659,6 +1675,13 @@ D.2.  JSON Schema
    The following informative JSON schema describes the syntax of the SVT
    token payload.
 
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 30]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
    {
        "$schema": "https://json-schema.org/draft/2020-12/schema",
        "title": "Signature Validation Token JSON Schema",
@@ -1674,14 +1697,6 @@ D.2.  JSON Schema
            "jti": {
                "description": "JWT ID",
                "type": "string"
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 30]
-
-Internet-Draft         Signature Validation Token             March 2022
-
-
            },
            "iss": {
                "description": "Issuer",
@@ -1715,6 +1730,14 @@ Internet-Draft         Signature Validation Token             March 2022
                "properties": {
                    "ver": {
                        "description": "Version",
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 31]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
                        "type": "string"
                    },
                    "profile": {
@@ -1730,14 +1753,6 @@ Internet-Draft         Signature Validation Token             March 2022
                        "type": "array",
                        "items": {
                            "$ref": "#/$def/Signature"
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 31]
-
-Internet-Draft         Signature Validation Token             March 2022
-
-
                        },
                        "minItems": 1
                    },
@@ -1771,6 +1786,14 @@ Internet-Draft         Signature Validation Token             March 2022
                             "$ref" : "#/$def/SignedDataReference"
                         },
                         "minItems": 1
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 32]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
                     },
                     "signer_cert_ref": {
                         "description": "Signer certificate reference",
@@ -1786,14 +1809,6 @@ Internet-Draft         Signature Validation Token             March 2022
                     },
                     "time_val": {
                         "description": "Time validations",
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 32]
-
-Internet-Draft         Signature Validation Token             March 2022
-
-
                         "type": "array",
                         "items": {
                             "$ref": "#/$def/TimeValidation"
@@ -1827,6 +1842,14 @@ Internet-Draft         Signature Validation Token             March 2022
                         "description": "Signature ID reference",
                         "type": ["string","null"]
                     }
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 33]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
                 },
                "additionalProperties": false
             },
@@ -1842,14 +1865,6 @@ Internet-Draft         Signature Validation Token             March 2022
                         "type": "string"
                     },
                     "hash": {
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 33]
-
-Internet-Draft         Signature Validation Token             March 2022
-
-
                         "description": "Signed data hash",
                         "type": "string",
                         "format": "base64"
@@ -1883,6 +1898,14 @@ Internet-Draft         Signature Validation Token             March 2022
             },
             "PolicyValidation":{
                 "type": "object",
+
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 34]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
                 "required": [
                     "pol",
                     "res"
@@ -1898,14 +1921,6 @@ Internet-Draft         Signature Validation Token             March 2022
                         "enum": ["PASSED","FAILED","INDETERMINATE"]
                     },
                     "msg": {
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 34]
-
-Internet-Draft         Signature Validation Token             March 2022
-
-
                         "description": "Message",
                         "type": ["string","null"]
                     },
@@ -1937,9 +1952,21 @@ Internet-Draft         Signature Validation Token             March 2022
                         "type": "string"
                     },
                     "id": {
-                        "description": "Tiem evidence identifier",
+                        "description": "Time evidence identifier",
                         "type": ["string","null"]
 
+
+
+Santesson & Housley      Expires 1 October 2022                [Page 35]
+
+Internet-Draft         Signature Validation Token             March 2022
+
+
+                    },
+                    "hash": {
+                        "description": "Hash of time evidence",
+                        "type": ["string","null"],
+                        "format": "base64"
                     },
                     "val": {
                         "description": "Validation result",
@@ -1954,14 +1981,6 @@ Internet-Draft         Signature Validation Token             March 2022
                    }
                 },
                "additionalProperties": false
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 35]
-
-Internet-Draft         Signature Validation Token             March 2022
-
-
             },
             "Extension": {
               "description": "Extension map",
@@ -1994,26 +2013,7 @@ Appendix E.  Appendix: Examples
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Santesson & Housley     Expires 25 September 2022              [Page 36]
+Santesson & Housley      Expires 1 October 2022                [Page 36]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -2069,7 +2069,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 25 September 2022              [Page 37]
+Santesson & Housley      Expires 1 October 2022                [Page 37]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -2125,7 +2125,7 @@ Internet-Draft         Signature Validation Token             March 2022
 
 
 
-Santesson & Housley     Expires 25 September 2022              [Page 38]
+Santesson & Housley      Expires 1 October 2022                [Page 38]
 
 Internet-Draft         Signature Validation Token             March 2022
 
@@ -2181,4 +2181,4 @@ Authors' Addresses
 
 
 
-Santesson & Housley     Expires 25 September 2022              [Page 39]
+Santesson & Housley      Expires 1 October 2022                [Page 39]

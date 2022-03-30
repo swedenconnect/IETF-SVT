@@ -1,7 +1,7 @@
 ---
 title: Signature Validation Token
-docname: draft-santesson-svt-04
-date: 2022-03-24
+docname: draft-santesson-svt-05-SNAPSHOT
+date: 2022-03-30
 category: info
 submissionType: independent
 
@@ -385,6 +385,8 @@ date and time in the past, and it contains the following parameters:
 - iss -- A StringOrURI data type that contains an identifier of the entity that issued the evidence of time. This parameter MUST be present.
 
 - id -- A String data type that contains an unique identifier assigned to the evidence of time.  Inclusion of this parameter is OPTIONAL.
+
+- hash -- A Base64Binary data type that contains the hash value of the complete evidence of time. Inclusion of this parameter is OPTIONAL.
 
 - val -- A \[Object&lt;PolicyValidation&gt;\] data type that contains an array of results of the time evidence validation according to defined validation procedures. Inclusion of this parameter is OPTIONAL.
 
@@ -893,6 +895,7 @@ TimeValidation = {
   type: text
   iss: text
   ? id: text / null
+  ? hash: binary-value / null
   ? val: [* PolicyValidation]
   ? ext: Extension
 }
@@ -1148,9 +1151,14 @@ The following informative JSON schema describes the syntax of the SVT token payl
                      "type": "string"
                  },
                  "id": {
-                     "description": "Tiem evidence identifier",
+                     "description": "Time evidence identifier",
                      "type": ["string","null"]
 
+                 },
+                 "hash": {
+                     "description": "Hash of time evidence",
+                     "type": ["string","null"],
+                     "format": "base64"
                  },
                  "val": {
                      "description": "Validation result",
