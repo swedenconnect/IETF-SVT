@@ -1,7 +1,7 @@
 ---
 title: Signature Validation Token
-docname: draft-santesson-svt-04
-date: 2022-03-24
+docname: draft-santesson-svt-05-SNAPSHOT
+date: 2022-03-30
 category: info
 submissionType: independent
 
@@ -190,14 +190,15 @@ equivalent to the signed content of a document, and it represents the data that 
 signer intended to sign. In some cases, such as in some XML signatures, the signed data
 can be the collection of several data fragments each referenced by the signature. In the
 case of PDF, this is the data covered by the "ByteRange" parameter in the signature
-dictionary.
+dictionary. In JWS, this is the unencoded payload data (before base64url encoding).
 
 - Signed Bytes -- These are the actual bytes of data that were hashed and signed by the
 digital signature algorithm. In most cases, this is not the actual Signed Data, but a
 collection of signature metadata that includes references (hash) of the Signed Data as
 well as information about algorithms and other data bound to a signature. In XML, this
 is the canonicalized SignedInfo element. In CMS and PDF signatures, this is the
-DER-encoded SignedAttributes structure.
+DER-encoded SignedAttributes structure. In JWS, this is the protected header and payload
+data formatted according to {{RFC7515}}.
 
 When these terms are used as defined in this section, they appear with a
 capitalized first letter.
@@ -375,8 +376,8 @@ process according to a spefific policy, and it contains the following parameters
 
 The time_val parameter in the Signature object class uses the TimeValidation object
 class. The TimeValidation claims object provides information about the result of
-validating time evidence asserting that the target signature existed at a particular
-date and time in the past, and it contains the following parameters:
+validating evidence of time asserting that the target signature existed at a particular
+date and time in the past. Evidence of time is typically a timestamp according to {{RFC3161}} but other types of evidence may be used such as a previously issued SVT for this signature. The TimeValidation claims object contains the following parameters:
 
 - time -- A NumericDate data type that contains the verified time. This parameter MUST be present.
 
@@ -386,9 +387,13 @@ date and time in the past, and it contains the following parameters:
 
 - id -- A String data type that contains an unique identifier assigned to the evidence of time.  Inclusion of this parameter is OPTIONAL.
 
+- hash -- A Base64Binary data type that contains the hash value of the validated evidence of time. Inclusion of this parameter is OPTIONAL.
+
 - val -- A \[Object&lt;PolicyValidation&gt;\] data type that contains an array of results of the time evidence validation according to defined validation procedures. Inclusion of this parameter is OPTIONAL.
 
 - ext -- A MAP&lt;String&gt; data type that provides additional claims related to the target signature. Extension claims are added at the discretion of the SVT Issuer; however, extension claims MUST follow any conventions defined in a profile of this specification (see {{profiles}}). Inclusion of this parameter is OPTIONAL.
+
+
 
 ### CertReference Claims Object Class {#certref-obj-class}
 
@@ -893,6 +898,7 @@ TimeValidation = {
   type: text
   iss: text
   ? id: text / null
+  ? hash: binary-value / null
   ? val: [* PolicyValidation]
   ? ext: Extension
 }
@@ -1148,9 +1154,14 @@ The following informative JSON schema describes the syntax of the SVT token payl
                      "type": "string"
                  },
                  "id": {
-                     "description": "Tiem evidence identifier",
+                     "description": "Time evidence identifier",
                      "type": ["string","null"]
 
+                 },
+                 "hash": {
+                     "description": "Hash of time evidence",
+                     "type": ["string","null"],
+                     "format": "base64"
                  },
                  "val": {
                      "description": "Validation result",
