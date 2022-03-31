@@ -236,9 +236,14 @@
                      "type": "string"
                  },
                  "id": {
-                     "description": "Tiem evidence identifier",
+                     "description": "Time evidence identifier",
                      "type": ["string","null"]
 
+                 },
+                 "hash": {
+                     "description": "Hash of time evidence",
+                     "type": ["string","null"],
+                     "format": "base64"
                  },
                  "val": {
                      "description": "Validation result",

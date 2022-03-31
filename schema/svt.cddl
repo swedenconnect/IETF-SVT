@@ -53,6 +53,7 @@ TimeValidation = {
   type: text
   iss: text
   ? id: text / null
+  ? hash: binary-value / null
   ? val: [* PolicyValidation]
   ? ext: Extension
 }
