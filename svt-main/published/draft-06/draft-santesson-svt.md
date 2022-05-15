@@ -1,6 +1,6 @@
 ---
 title: Signature Validation Token
-docname: draft-santesson-svt-07-SNAPSHOT
+docname: draft-santesson-svt-06
 date: 2022-05-15
 category: info
 submissionType: independent
