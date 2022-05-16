@@ -2,7 +2,7 @@
 Signature Validation Token (SVT) Draft Specifications
 =============================
 
-This is the working area for the draft of [Signature Validation Token] currently being processed in the IETF independent submission stream.
+This is the working area for the draft of **Signature Validation Token** (SVT) currently being processed in the IETF independent submission stream.
 
 An orientation to the subject is available in the following presentation: [https://youtu.be/IEJBmHJklHY](https://youtu.be/IEJBmHJklHY)
 
