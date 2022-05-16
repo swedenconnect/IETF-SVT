@@ -1,6 +1,6 @@
 ---
 title: Signature Validation Token
-docname: draft-santesson-svt-07
+docname: draft-santesson-svt-08-SNAPSHOT
 date: 2022-05-16
 category: info
 submissionType: independent
@@ -38,7 +38,6 @@ author:
 normative:
   RFC2119:
   RFC3125:
-  RFC3126:
   RFC3161:
   RFC3647:
   RFC5035:
@@ -164,7 +163,7 @@ path validation {{RFC5280}}.
 Those procedures MAY also include checks associated with a particular trust policy such as
 that an acceptable certificate policy {{RFC5280}} {{RFC3647}} was used to issue the
 signer's certificate and checks that an acceptable signature policy was used by
-the signer {{RFC3125}} {{RFC3126}}.
+the signer {{RFC3125}}.
 
 Once the SVT is issued by a trusted
 authority, any future validation of that electronic signature can be satisfied by validating
@@ -218,20 +217,17 @@ capitalized first letter.
 
 # Signature Validation Token {#svt}
 
-The Signature Validation Token (SVT) is created by a trusted service to capture
-evidence of successful electronic signature verification, and then relying
-parties can depend on the checking that has already taken place by the
-trusted service.
-
 ## Signature Validation Token Function {#svt-function}
 
-The function of the SVT is to capture the result of electronic signature
-validation using a well-defined and trustworthy signature validation process
-to make it possible to verify which signature, signed document and signer
-certificate that is bound to this signature validation result, without having to
-re-validate the original signature or to re-use any of its associated cryptographic
-algorithms. The SVT achieves this by binding the following information to a specific
-electronic signature:
+Signature Validation Token (SVT) is created by a trusted service to assert
+evidence of successful electronic signature validation using a well-defined and
+trustworthy signature validation process. The SVT binds the validation result to
+the validated signature, the document signed by the signature and the certificate of the signer.
+This allows a relying party to verify the validity of a signed document
+without having to re-validate the original signature or to re-use any of its associated
+cryptographic algorithms for as long as the SVT itself can be validated.
+The SVT achieves this by binding the following information to
+a specific electronic signature:
 
 - A unique identification of the electronic signature.
 
@@ -245,20 +241,15 @@ electronic signature:
 
 - An assertion providing evidence of the date and time at which the signature is known to have existed, the procedures used to validate the date and time of existence, and the outcome of the validation.
 
-Using an SVT is equivalent to validating a signed document in a system once, and then
-using that document multiple times without subsequent revalidating the electronic
-signature for each usage. Such procedures are common in systems where the document is
-residing in a safe and trusted environment where it is protected against modification. The
-SVT allows the safe and trusted environment to expand beyond a locally controlled
-environment, and the SVT allows a greater period between original electronic signature
-verification and subsequent usage.
 
-Using the SVT, the electronic signature verification of a document can be take place
-once using a reliable trusted service, and then any relying party that is able to
-depend on the verification process already performed by the trusted service. The SVT
-is therefore not only a valuable tool to extend the lifetime of a signed document, but
-also avoids the need for careful integration between electronic signature verification
-and document usage.
+The SVT aims to support long term validation that can be further extended into the future by applying the following strategies:
+
+- Applying secure algorithms with long life exepectancy when signing the SVT.
+
+- By re-issuing the SVT before it becomes insecure or is considered expired.
+
+- Optionally by issuing multipple SVT:s with different algorithms.
+
 
 ## Signature Validation Token Syntax {#svt-syntax}
 

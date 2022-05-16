@@ -10,7 +10,7 @@ Expires: 17 November 2022                                 Vigil Security
 
 
                        Signature Validation Token
-                         draft-santesson-svt-07
+                    draft-santesson-svt-08-SNAPSHOT
 
 Abstract
 
@@ -199,7 +199,7 @@ Internet-Draft         Signature Validation Token               May 2022
    associated with a particular trust policy such as that an acceptable
    certificate policy [RFC5280] [RFC3647] was used to issue the signer's
    certificate and checks that an acceptable signature policy was used
-   by the signer [RFC3125] [RFC3126].
+   by the signer [RFC3125] [RFC5126].
 
    Once the SVT is issued by a trusted authority, any future validation
    of that electronic signature can be satisfied by validating the SVT,
@@ -984,11 +984,6 @@ Internet-Draft         Signature Validation Token               May 2022
               Policies", RFC 3125, DOI 10.17487/RFC3125, September 2001,
               <https://www.rfc-editor.org/info/rfc3125>.
 
-   [RFC3126]  Pinkas, D., Ross, J., and N. Pope, "Electronic Signature
-              Formats for long term electronic signatures", RFC 3126,
-              DOI 10.17487/RFC3126, September 2001,
-              <https://www.rfc-editor.org/info/rfc3126>.
-
    [RFC3161]  Adams, C., Cain, P., Pinkas, D., and R. Zuccherato,
               "Internet X.509 Public Key Infrastructure Time-Stamp
               Protocol (TSP)", RFC 3161, DOI 10.17487/RFC3161, August
@@ -1000,6 +995,11 @@ Internet-Draft         Signature Validation Token               May 2022
               DOI 10.17487/RFC3647, November 2003,
               <https://www.rfc-editor.org/info/rfc3647>.
 
+   [RFC5035]  Schaad, J., "Enhanced Security Services (ESS) Update:
+              Adding CertID Algorithm Agility", RFC 5035,
+              DOI 10.17487/RFC5035, August 2007,
+              <https://www.rfc-editor.org/info/rfc5035>.
+
 
 
 
@@ -1010,10 +1010,10 @@ Santesson & Housley     Expires 17 November 2022               [Page 18]
 Internet-Draft         Signature Validation Token               May 2022
 
 
-   [RFC5035]  Schaad, J., "Enhanced Security Services (ESS) Update:
-              Adding CertID Algorithm Agility", RFC 5035,
-              DOI 10.17487/RFC5035, August 2007,
-              <https://www.rfc-editor.org/info/rfc5035>.
+   [RFC5126]  Pinkas, D., Pope, N., and J. Ross, "CMS Advanced
+              Electronic Signatures (CAdES)", RFC 5126,
+              DOI 10.17487/RFC5126, March 2008,
+              <https://www.rfc-editor.org/info/rfc5126>.
 
    [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
               Housley, R., and W. Polk, "Internet X.509 Public Key
