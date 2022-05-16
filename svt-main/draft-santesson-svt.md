@@ -244,11 +244,11 @@ a specific electronic signature:
 
 The SVT aims to support long term validation that can be further extended into the future by applying the following strategies:
 
-- Applying secure algorithms with long life exepectancy when signing the SVT.
+- By using secure algorithms with long life exepectancy when signing the SVT.
 
 - By re-issuing the SVT before it becomes insecure or is considered expired.
 
-- Optionally by issuing multipple SVT:s with different algorithms.
+- Optionally, by issuing multipple SVT:s with different algorithms to provide redundancy in case one algorithm is broken.
 
 
 ## Signature Validation Token Syntax {#svt-syntax}

@@ -70,16 +70,16 @@ Table of Contents
    2.  Definitions . . . . . . . . . . . . . . . . . . . . . . . . .   5
    3.  Signature Validation Token  . . . . . . . . . . . . . . . . .   5
      3.1.  Signature Validation Token Function . . . . . . . . . . .   6
-     3.2.  Signature Validation Token Syntax . . . . . . . . . . . .   6
+     3.2.  Signature Validation Token Syntax . . . . . . . . . . . .   7
        3.2.1.  Data Types  . . . . . . . . . . . . . . . . . . . . .   7
        3.2.2.  Signature Validation Token JWT Claims . . . . . . . .   8
        3.2.3.  SigValidation Object Class  . . . . . . . . . . . . .   9
-       3.2.4.  Signature Claims Object Class . . . . . . . . . . . .   9
+       3.2.4.  Signature Claims Object Class . . . . . . . . . . . .  10
        3.2.5.  SigReference Claims Object Class  . . . . . . . . . .  10
        3.2.6.  SignedDataReference Claims Object Class . . . . . . .  11
        3.2.7.  PolicyValidation Claims Object Class  . . . . . . . .  11
        3.2.8.  TimeValidation Claims Object Class  . . . . . . . . .  12
-       3.2.9.  CertReference Claims Object Class . . . . . . . . . .  12
+       3.2.9.  CertReference Claims Object Class . . . . . . . . . .  13
        3.2.10. SVT JOSE Header . . . . . . . . . . . . . . . . . . .  13
    4.  Profiles  . . . . . . . . . . . . . . . . . . . . . . . . . .  14
      4.1.  Defined Profiles  . . . . . . . . . . . . . . . . . . . .  15
@@ -318,17 +318,17 @@ Internet-Draft         Signature Validation Token               May 2022
    The SVT aims to support long term validation that can be further
    extended into the future by applying the following strategies:
 
-   *  Applying secure algorithms with long life exepectancy when signing
+   *  By using secure algorithms with long life exepectancy when signing
       the SVT.
 
    *  By re-issuing the SVT before it becomes insecure or is considered
       expired.
 
-   *  Optionally by issuing multipple SVT:s with different algorithms.
+   *  Optionally, by issuing multipple SVT:s with different algorithms
+      to provide redundancy in case one algorithm is broken.
 
-3.2.  Signature Validation Token Syntax
 
-   The SVT is carried in a JSON Web Token (JWT) as defined in [RFC7519].
+
 
 
 
@@ -337,6 +337,10 @@ Santesson & Housley     Expires 17 November 2022                [Page 6]
 
 Internet-Draft         Signature Validation Token               May 2022
 
+
+3.2.  Signature Validation Token Syntax
+
+   The SVT is carried in a JSON Web Token (JWT) as defined in [RFC7519].
 
 3.2.1.  Data Types
 
@@ -378,6 +382,18 @@ Internet-Draft         Signature Validation Token               May 2022
       Map<String> is a JSON object with name value pairs where all
       values are of type String.
 
+
+
+
+
+
+
+
+Santesson & Housley     Expires 17 November 2022                [Page 7]
+
+Internet-Draft         Signature Validation Token               May 2022
+
+
    *  Array -- A JSON array of a specific data type as defined in this
       section.  An array is expressed in this specification by square
       brackets.  For example, [String] indicates an array of String
@@ -386,13 +402,6 @@ Internet-Draft         Signature Validation Token               May 2022
 
    *  Null -- A JSON null that represents an absent value.  A claim with
       a null value is equivalent with an absent claim.
-
-
-
-Santesson & Housley     Expires 17 November 2022                [Page 7]
-
-Internet-Draft         Signature Validation Token               May 2022
-
 
 3.2.2.  Signature Validation Token JWT Claims
 
@@ -432,15 +441,6 @@ Internet-Draft         Signature Validation Token               May 2022
       implementation note below.  Inclusion of the "Expiration Time"
       claim in a SVT is OPTIONAL.
 
-   *  sig_val_claims -- A Object<SigValidation> data type that contains
-      signature validation claims for this SVT extending the standard
-      registered JTW claims above.  A SVT MUST contain one
-      sig_val_claims claim.
-
-
-
-
-
 
 
 
@@ -449,6 +449,11 @@ Santesson & Housley     Expires 17 November 2022                [Page 8]
 
 Internet-Draft         Signature Validation Token               May 2022
 
+
+   *  sig_val_claims -- A Object<SigValidation> data type that contains
+      signature validation claims for this SVT extending the standard
+      registered JTW claims above.  A SVT MUST contain one
+      sig_val_claims claim.
 
    Note: An SVT asserts that a particular validation process was
    undertaken at a stated date and time.  This fact never changes and
@@ -492,12 +497,7 @@ Internet-Draft         Signature Validation Token               May 2022
       conventions defined in a profile of this specification (see
       Section 4).  Inclusion of this parameter is OPTIONAL.
 
-3.2.4.  Signature Claims Object Class
 
-   The sig parameter in the SigValidation object class uses the
-   Signature object class.  The Signature object contains claims related
-   to signature validation evidence for one signature, and it contains
-   the following parameters:
 
 
 
@@ -505,6 +505,13 @@ Santesson & Housley     Expires 17 November 2022                [Page 9]
 
 Internet-Draft         Signature Validation Token               May 2022
 
+
+3.2.4.  Signature Claims Object Class
+
+   The sig parameter in the SigValidation object class uses the
+   Signature object class.  The Signature object contains claims related
+   to signature validation evidence for one signature, and it contains
+   the following parameters:
 
    *  sig_ref -- A Object<SigReference> data type that contains
       reference information identifying the target signature.  This
@@ -547,13 +554,6 @@ Internet-Draft         Signature Validation Token               May 2022
    *  id -- A String data type that contains an identifier assigned to
       the target signature.  Inclusion of this parameter is OPTIONAL.
 
-   *  sig_hash -- A Base64Binary data type that contains a hash value of
-      the target electronic signature value.  This parameter MUST be
-      present.
-
-   *  sb_hash -- A Base64Binary data type that contains a hash value of
-      the Signed Bytes of the target electronic signature.  This
-      parameter MUST be present.
 
 
 
@@ -561,6 +561,14 @@ Santesson & Housley     Expires 17 November 2022               [Page 10]
 
 Internet-Draft         Signature Validation Token               May 2022
 
+
+   *  sig_hash -- A Base64Binary data type that contains a hash value of
+      the target electronic signature value.  This parameter MUST be
+      present.
+
+   *  sb_hash -- A Base64Binary data type that contains a hash value of
+      the Signed Bytes of the target electronic signature.  This
+      parameter MUST be present.
 
 3.2.6.  SignedDataReference Claims Object Class
 
@@ -598,14 +606,6 @@ Internet-Draft         Signature Validation Token               May 2022
    *  msg -- A String data type that contains a message describing the
       result.  Inclusion of this parameter is OPTIONAL.
 
-   *  ext -- A MAP<String> data type that provides additional claims
-      related to the target signature.  Extension claims are added at
-      the discretion of the SVT Issuer; however, extension claims MUST
-      follow any conventions defined in a profile of this specification
-      (see Section 4).  Inclusion of this parameter is OPTIONAL.
-
-
-
 
 
 
@@ -617,6 +617,12 @@ Santesson & Housley     Expires 17 November 2022               [Page 11]
 
 Internet-Draft         Signature Validation Token               May 2022
 
+
+   *  ext -- A MAP<String> data type that provides additional claims
+      related to the target signature.  Extension claims are added at
+      the discretion of the SVT Issuer; however, extension claims MUST
+      follow any conventions defined in a profile of this specification
+      (see Section 4).  Inclusion of this parameter is OPTIONAL.
 
 3.2.8.  TimeValidation Claims Object Class
 
@@ -658,6 +664,16 @@ Internet-Draft         Signature Validation Token               May 2022
       follow any conventions defined in a profile of this specification
       (see Section 4).  Inclusion of this parameter is OPTIONAL.
 
+
+
+
+
+
+Santesson & Housley     Expires 17 November 2022               [Page 12]
+
+Internet-Draft         Signature Validation Token               May 2022
+
+
 3.2.9.  CertReference Claims Object Class
 
    The signer_cert_ref parameter in the Signature object class uses the
@@ -666,13 +682,6 @@ Internet-Draft         Signature Validation Token               May 2022
    providing the certificate data or by providing hash references for
    certificates that can be located in the target electronic signature,
    and it contains the following parameters:
-
-
-
-Santesson & Housley     Expires 17 November 2022               [Page 12]
-
-Internet-Draft         Signature Validation Token               May 2022
-
 
    *  type -- A StringOrURI data type that contains an identifier of the
       type of reference.  The type identifier MUST be one of the
@@ -714,21 +723,15 @@ Internet-Draft         Signature Validation Token               May 2022
    The SVT JWT MUST contain the following JOSE header parameters in
    accordance with Section 5 of [RFC7519]:
 
-   *  typ -- This parameter MUST have the string value "JWT" (upper
-      case).
-
-
-
-
-
-
-
 
 
 Santesson & Housley     Expires 17 November 2022               [Page 13]
 
 Internet-Draft         Signature Validation Token               May 2022
 
+
+   *  typ -- This parameter MUST have the string value "JWT" (upper
+      case).
 
    *  alg -- This parameter identifies the algorithm used to sign the
       SVT JWT.  The algorithm identifier MUST be specified in [RFC7518]
@@ -775,9 +778,6 @@ Internet-Draft         Signature Validation Token               May 2022
 
    *  How to attach an SVT to an electronic signature or signed
       document.
-
-
-
 
 
 
