@@ -1,7 +1,7 @@
 ---
 title: Signature Validation Token
-docname: draft-santesson-svt-07-SNAPSHOT
-date: 2022-05-15
+docname: draft-santesson-svt-07
+date: 2022-05-16
 category: info
 submissionType: independent
 
@@ -37,7 +37,10 @@ author:
 
 normative:
   RFC2119:
+  RFC3125:
+  RFC3126:
   RFC3161:
+  RFC3647:
   RFC5035:
   RFC8174:
   RFC5280:
@@ -150,11 +153,20 @@ validated at the cost of significant complexity which involves storing and
 validating significant amounts of external evidence data such as revocation data,
 signature time stamps and archival time stamps.
 
-The Signature Validation token (SVT) defined in this specification takes any
-trusted signature validation process as an input and preserves this validation result
+The Signature Validation token (SVT) defined in this specification takes a
+trusted signature validation process as an input and preserves the validation result
 for the associated signature and signed document. The SVT asserts that a particular
 electronic signature was successfully validated by a trusted authority according to
-defined procedures at a certain date and time. Once the SVT is issued by a trusted
+defined procedures at a certain date and time. Those procedures MUST include checks
+that the signature match the signed document, checks that the signature can be validated by
+the signing certificate and checks that the signing certificate pass certificate
+path validation {{RFC5280}}.
+Those procedures MAY also include checks associated with a particular trust policy such as
+that an acceptable certificate policy {{RFC5280}} {{RFC3647}} was used to issue the
+signer's certificate and checks that an acceptable signature policy was used by
+the signer {{RFC3125}} {{RFC3126}}.
+
+Once the SVT is issued by a trusted
 authority, any future validation of that electronic signature can be satisfied by validating
 the SVT, without any need to also re-validate the original electronic signature.
 
