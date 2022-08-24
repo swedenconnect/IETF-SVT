@@ -2,6 +2,15 @@
 Signature Validation Token (SVT) Draft Specifications
 =============================
 
+
+---
+### NEWS - This document has been approved for publication as RFC:
+This draft has been approved for publication by the IETF and the document is currently in the IETF RFC-Editors que for publication as RFC.
+
+Progress in the publication process is available here: [https://datatracker.ietf.org/doc/draft-santesson-svt](https://datatracker.ietf.org/doc/draft-santesson-svt)
+
+---
+
 This is the working area for the draft of **Signature Validation Token** (SVT) currently being processed in the IETF independent submission stream.
 
 An orientation to the subject is available in the following presentation: [https://youtu.be/IEJBmHJklHY](https://youtu.be/IEJBmHJklHY)
